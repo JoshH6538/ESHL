@@ -370,7 +370,7 @@
 /*Between Grid xl*/
 @media (min-width: 1200px) and (max-width: 1399px) {
   .theme-main-menu .gap-one {
-    padding: 28px 25px;
+    padding: 20px 25px;
   }
   .theme-main-menu .gap-two {
     padding: 20px 25px;

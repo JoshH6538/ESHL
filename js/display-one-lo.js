@@ -1,7 +1,5 @@
-import { findRealtorById } from "./retool-api.js";
 import { getBranches, arrayToMap } from "./branch-data.js";
 import { getUserData } from "./user-data.js";
-import { getListings } from "./listing-data.js";
 
 // Grab the userId from the URL query parameters
 const userId = new URLSearchParams(window.location.search).get("userId");
@@ -104,13 +102,13 @@ async function renderUser(user) {
   // }
 
   // SECTION: Update breadcrumb name
-  const breadcrumb = document.getElementById("breadcrumbRealtorName");
+  const breadcrumb = document.getElementById("breadcrumbLoanOfficerName");
   if (breadcrumb) {
     breadcrumb.innerText = fullName;
   }
 
   // SECTION: Update image wrapper with profile photo and tag
-  const wrapper = document.getElementById("realtorImageWrapper");
+  const wrapper = document.getElementById("loanOfficerImageWrapper");
   const iconURL = user.iconURL?.trim() || "images/lazy.svg";
 
   wrapper.classList.toggle("bg-dark", !user.iconURL?.trim());
@@ -126,7 +124,7 @@ async function renderUser(user) {
   `;
 
   // SECTION: Set bio if available
-  const bioContainer = document.getElementById("realtorBio");
+  const bioContainer = document.getElementById("loanOfficerBio");
   if (bioContainer && user["bio"]?.trim()) {
     bioContainer.innerHTML = user["bio"];
   }
@@ -208,114 +206,114 @@ async function renderUser(user) {
   }
 
   // SECTION: Update Realtor Listings
-  const listings = await getListings();
-  const listingsContainer = document.getElementById("isotop-gallery-wrapper");
-  // console.log("Listings loaded:", listings.length);
+  // const listings = await getListings();
+  // const listingsContainer = document.getElementById("isotop-gallery-wrapper");
+  // // console.log("Listings loaded:", listings.length);
 
-  // Filter listings for the specific agent
-  const userListings = listings.filter((listing) => {
-    const agentName = listing.ListAgentFullName?.toLowerCase().trim();
-    const agentFirstName = listing.ListAgentFirstName?.toLowerCase().trim();
-    const agentLastName = listing.ListAgentLastName?.toLowerCase().trim();
+  // // Filter listings for the specific agent
+  // const userListings = listings.filter((listing) => {
+  //   const agentName = listing.ListAgentFullName?.toLowerCase().trim();
+  //   const agentFirstName = listing.ListAgentFirstName?.toLowerCase().trim();
+  //   const agentLastName = listing.ListAgentLastName?.toLowerCase().trim();
 
-    const userName = fullName.toLowerCase().trim();
-    const userFirstName = user.firstName?.toLowerCase().trim();
-    const userLastName = user.lastName?.toLowerCase().trim();
+  //   const userName = fullName.toLowerCase().trim();
+  //   const userFirstName = user.firstName?.toLowerCase().trim();
+  //   const userLastName = user.lastName?.toLowerCase().trim();
 
-    return (
-      agentName === userName ||
-      (agentFirstName === userFirstName && agentLastName === userLastName) ||
-      (agentName.includes(userFirstName) && agentName.includes(userLastName)) ||
-      (userName.includes(agentFirstName) && userName.includes(agentLastName))
-    );
-  });
+  //   return (
+  //     agentName === userName ||
+  //     (agentFirstName === userFirstName && agentLastName === userLastName) ||
+  //     (agentName.includes(userFirstName) && agentName.includes(userLastName)) ||
+  //     (userName.includes(agentFirstName) && userName.includes(agentLastName))
+  //   );
+  // });
 
   // console.log("Filtered user listings:", userListings.length);
 
-  // Clear previous content
-  listingsContainer.innerHTML = `<div class="grid-sizer"></div>`;
-  if (!userListings?.length) {
-    document.getElementById("listingsContainer").classList.add("d-none");
-  }
-  // Render each listing
-  for (const listing of userListings) {
-    const listingItem = document.createElement("div");
-    listingItem.className = "isotop-item";
+  // // Clear previous content
+  // listingsContainer.innerHTML = `<div class="grid-sizer"></div>`;
+  // if (!userListings?.length) {
+  //   document.getElementById("listingsContainer").classList.add("d-none");
+  // }
+  // // Render each listing
+  // for (const listing of userListings) {
+  //   const listingItem = document.createElement("div");
+  //   listingItem.className = "isotop-item";
 
-    // Add status class
-    switch (listing.MlsStatus) {
-      case "Active":
-        listingItem.classList.add("open");
-        break;
-      case "Pending":
-        listingItem.classList.add("pending");
-        break;
-      case "Closed":
-        listingItem.classList.add("closed");
-        break;
-    }
+  //   // Add status class
+  //   switch (listing.MlsStatus) {
+  //     case "Active":
+  //       listingItem.classList.add("open");
+  //       break;
+  //     case "Pending":
+  //       listingItem.classList.add("pending");
+  //       break;
+  //     case "Closed":
+  //       listingItem.classList.add("closed");
+  //       break;
+  //   }
 
-    // Build address
-    const address = [
-      listing.UnparsedAddress,
-      listing.City,
-      listing.PostalCode,
-      listing.StateOrProvince,
-    ]
-      .filter(Boolean)
-      .join(", ");
+  //   // Build address
+  //   const address = [
+  //     listing.UnparsedAddress,
+  //     listing.City,
+  //     listing.PostalCode,
+  //     listing.StateOrProvince,
+  //   ]
+  //     .filter(Boolean)
+  //     .join(", ");
 
-    // Images
-    const images = Array.isArray(listing.imageUrls) ? listing.imageUrls : [];
-    const mainImage = images[0] || "images/listing/img_70.jpg";
+  //   // Images
+  //   const images = Array.isArray(listing.imageUrls) ? listing.imageUrls : [];
+  //   const mainImage = images[0] || "images/listing/img_70.jpg";
 
-    // Fancybox group name to avoid cross-mixing galleries
-    const fancyGroup = `gallery-${listing.ListingKey}`;
+  //   // Fancybox group name to avoid cross-mixing galleries
+  //   const fancyGroup = `gallery-${listing.ListingKey}`;
 
-    const sliderAnchors = images
-      .map(
-        (url) => `
-      <a href="${url}" class="d-block" data-fancybox="${fancyGroup}" data-caption="${address}"></a>`
-      )
-      .join("");
+  //   const sliderAnchors = images
+  //     .map(
+  //       (url) => `
+  //     <a href="${url}" class="d-block" data-fancybox="${fancyGroup}" data-caption="${address}"></a>`
+  //     )
+  //     .join("");
 
-    // Build listing card HTML
-    listingItem.innerHTML = `
-    <div class="listing-card-one shadow-none style-two mb-50">
-      <div class="img-gallery">
-        <div class="position-relative overflow-hidden">
-          <div class="tag bg-white text-dark fw-500">
-            ${listing.MlsStatus || "N/A"}
-          </div>
-          <img src="${mainImage}" class="w-100" alt="${address}" loading="lazy"/>
+  //   // Build listing card HTML
+  //   listingItem.innerHTML = `
+  //   <div class="listing-card-one shadow-none style-two mb-50">
+  //     <div class="img-gallery">
+  //       <div class="position-relative overflow-hidden">
+  //         <div class="tag bg-white text-dark fw-500">
+  //           ${listing.MlsStatus || "N/A"}
+  //         </div>
+  //         <img src="${mainImage}" class="w-100" alt="${address}" loading="lazy"/>
 
-          <div class="img-slider-btn">
-            ${images.length} <i class="fa-regular fa-image"></i>
-            ${sliderAnchors}
-          </div>
-        </div>
-      </div>
-      <!-- /.img-gallery -->
+  //         <div class="img-slider-btn">
+  //           ${images.length} <i class="fa-regular fa-image"></i>
+  //           ${sliderAnchors}
+  //         </div>
+  //       </div>
+  //     </div>
+  //     <!-- /.img-gallery -->
 
-      <div class="property-info d-flex justify-content-between align-items-end pt-30">
-        <div class ="pe-1">
-          <strong class="price fw-500 color-dark">
-            $${Number(listing.ListPrice || 0).toLocaleString()}
-          </strong>
-          <div class="address pt-5 m0">${address}</div>
-        </div>
-        <a href="listing_details.html?listingKey=${
-          listing.ListingKey
-        }" class="btn-four mb-5">
-          <i class="bi bi-arrow-up-right"></i>
-        </a>
-      </div>
-      <!-- /.property-info -->
-    </div>
-  `;
+  //     <div class="property-info d-flex justify-content-between align-items-end pt-30">
+  //       <div class ="pe-1">
+  //         <strong class="price fw-500 color-dark">
+  //           $${Number(listing.ListPrice || 0).toLocaleString()}
+  //         </strong>
+  //         <div class="address pt-5 m0">${address}</div>
+  //       </div>
+  //       <a href="listing_details.html?listingKey=${
+  //         listing.ListingKey
+  //       }" class="btn-four mb-5">
+  //         <i class="bi bi-arrow-up-right"></i>
+  //       </a>
+  //     </div>
+  //     <!-- /.property-info -->
+  //   </div>
+  // `;
 
-    listingsContainer.appendChild(listingItem);
-  }
+  //   listingsContainer.appendChild(listingItem);
+  // }
 }
 
 // SECTION: Initialize the page

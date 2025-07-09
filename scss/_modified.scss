@@ -18,7 +18,7 @@
 }
 #navbarNav > ul > li > a:hover {
   font-size: larger;
-  color: $color-one;
+  color: $color-one !important;
 }
 
 // .theme-main-menu.menu-overlay {
@@ -247,13 +247,14 @@ header.theme-main-menu.fixed .right-widget ul li a:hover {
   min-height: 100vh !important;
 }
 
-.hero-banner-eight {
+.hero-banner-eight,
+.hero-banner-three {
   &::before {
     background: linear-gradient(
       180deg,
-      rgba(0, 18, 25, 0.81) 0%,
+      rgba(0, 18, 25, 0.699) 0%,
       rgba(1, 35, 48, 0.61) 49.49%,
-      rgba(0, 6, 8, 0) 100%
+      rgba(0, 6, 8, 0.224) 100%
     ) !important;
   }
 }
@@ -347,4 +348,57 @@ h6:hover {
 
 .theme-main-menu .gap-one {
   transition: padding 0.4s ease-out;
+}
+
+#form-step-indicator .nav-link {
+  pointer-events: none;
+  opacity: 0.6;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 50px;
+  background: #f0f0f0;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: $color-two;
+}
+
+#mortgage-tablist .nav-link {
+  opacity: 0.6;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  color: $color-two;
+  transition: all 0.3s ease;
+  margin: 0 6px;
+  color: $color-two;
+}
+
+#form-step-indicator .nav-link.active,
+#mortgage-tablist .nav-link.active {
+  background: $color-one;
+  color: #fff;
+  opacity: 1;
+}
+
+option:hover {
+  background: $color-one !important;
+  color: #fff;
+}
+
+.tab-pane {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  height: 0;
+  overflow: hidden;
+}
+.tab-pane.show.active {
+  display: block;
+  opacity: 1;
+  height: auto;
+}
+
+.ptr:hover {
+  cursor: pointer;
 }

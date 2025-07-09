@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Search Engine Keywords -->
+    <meta
+      name="keywords"
+      content="Real estate, Property sale, Property buy, Realtor, Equity Smart"
+    />
+    <meta
+      name="description"
+      content="Equity Smart Real brings realtors a comprehensive and highly personalized approach to viewing and managing lsitings."
+    />
+    <meta property="og:site_name" content="Equity Smart Real Estate" />
+    <meta property="og:url" content="https://www.equitysmartres.com" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Equity Smart | Expert Realtors & IDX Listings"
+    />
+    <meta name="og:image" content="images/es/ESHL-RES-LOGO.png" />
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- For Window Tab Color -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#0D1A1C" />
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#0D1A1C" />
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0D1A1C" />
+    <title>Equity Smart Real Estate</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="56x56"
+      href="images/es/small/RE_ICON.png"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/bootstrap.min.css"
+      media="all"
+    />
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <!-- responsive style sheet -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/responsive.css"
+      media="all"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/modified.css"
+      media="all"
+    />
+    <script src="/js/display-listings-home.js" type="module"></script>
+    <script src="/js/production-routing.js" type="module"></script>
+
+    <!-- Fix Internet Explorer ______________________________________-->
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="vendor/html5shiv.js"></script>
+      <script src="vendor/respond.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="main-page-wrapper">
+      <!-- ===================================================
+			Loading Transition
+		==================================================== -->
+      <div id="preloader">
+        <div id="ctn-preloader" class="ctn-preloader">
+          <div class="icon">
+            <img
+              loading="lazy"
+              src="images/es/ESHL-RES-LOGO.png"
+              alt=""
+              class="m-auto d-block"
+            />
+            <img
+              loading="lazy"
+              src="images/gifs/Circles-menu-3.gif"
+              alt=""
+              class="m-auto d-block"
+              width="64"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+		=============================================
+			Theme Main Menu
+		============================================== 
+		-->
+      <header
+        class="theme-main-menu menu-overlay menu-style-seven white-vr sticky-menu"
+      >
+        <div class="inner-content gap-one">
+          <div class="top-header position-relative">
+            <div class="d-flex align-items-center justify-content-between">
+              <!-- ES NAV LOGO -->
+              <div class="logo order-lg-0">
+                <a href="/" class="d-flex align-items-center logo-link">
+                  <img
+                    loading="lazy"
+                    src="images/es/ESHL-RES-LOGO-WHITE.png"
+                    alt="Logo"
+                    height="50"
+                    class="logo-img"
+                  />
+                </a>
+              </div>
+              <!-- CONTACT US BUTTON -->
+              <div class="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
+                <ul class="d-none d-lg-flex align-items-center style-none">
+                  <li>
+                    <a href="contact.html" class="btn-one white-vr"
+                      ><i class="fa-regular fa-comment"></i>
+                      <span>Contact Us</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <!-- NAVBAR -->
+              <nav class="navbar navbar-expand-lg p0 order-lg-2">
+                <button
+                  class="navbar-toggler d-block d-lg-none"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNav"
+                  aria-controls="navbarNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span></span>
+                </button>
+                <div class="collapse navbar-collapse px-4" id="navbarNav">
+                  <ul class="navbar-nav align-items-lg-center">
+                    <!-- MOBILE ES LOGO -->
+                    <li class="d-block d-lg-none">
+                      <div class="logo">
+                        <a href="/" class="d-block"
+                          ><img
+                            loading="lazy"
+                            src="images/es/ESHL-RES-LOGO-WHITE.png"
+                            alt=""
+                        /></a>
+                      </div>
+                    </li>
+                    <!-- HOME LINK -->
+                    <li
+                      class="nav-item active-menu me-5"
+                      style="white-space: nowrap"
+                    >
+                      <a class="nav-link" href="./">Home</a>
+                    </li>
+                    <!-- LO LINK -->
+                    <li class="nav-item me-5">
+                      <a class="nav-link" href="loan_officers.html"
+                        >Loan Officers</a
+                      >
+                    </li>
+                    <!-- LISTINGS DROPDOWN -->
+                    <li class="nav-item me-5">
+                      <a class="nav-link" href="listings.html">Listings</a>
+                    </li>
+                    <!-- ABOUT LINK -->
+                    <li class="nav-item me-5">
+                      <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <!-- CONTACT US BUTTON -->
+                    <li class="d-md-none ps-2 pe-2 mt-20">
+                      <a href="contact.html" class="btn-two w-100"
+                        ><span>Contact Us</span>
+                        <i class="fa-regular fa-comment"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <!--/.top-header-->
+        </div>
+        <!-- /.inner-content -->
+      </header>
+      <!-- /.theme-main-menu -->
+
+      <!-- 
+		=============================================
+			Hero Banner
+		============================================== 
+		-->
+      <div
+        class="hero-banner-eight z-1 pt-250 xl-pt-200 pb-250 xl-pb-150 lg-pb-100 position-relative"
+      >
+        <div class="video-overlay w-100 h-100"></div>
+        <video autoplay muted loop id="bannerVideo">
+          <source src="images/es/small/santaClarita1080.mp4" type="video/mp4" />
+        </video>
+
+        <div class="container position-relative h-100" id="bannerContent">
+          <div class="row h-100">
+            <div class="col-12 m-auto">
+              <h1
+                class="hero-heading text-white text-center wow fadeInUp text-wrap"
+              >
+                Agents you <span style="color: #2cc7ff">trust</span>.
+                <br />Results you <span style="color: #2cc7ff">love</span>.
+              </h1>
+              <!-- <div class="text-center">
+                <p
+                  class="fs-1 text-white text-center pt-35 wow fadeInUp"
+                  data-wow-delay="0.1s"
+                  id="banner-p"
+                >
+                  See our Featured Listings
+                </p>
+              </div> -->
+            </div>
+          </div>
+          <!-- /.tab-content -->
+        </div>
+        <!-- /.search-wrapper-four -->
+      </div>
+      <!-- /.hero-banner-eight -->
+
+      <!--
+		=====================================================
+			BLock Feature One
+		=====================================================
+		-->
+      <div class="block-feature-one mt-150 xl-mt-120">
+        <div class="container container-large">
+          <div
+            class="title-one text-center mb-60 xl-mb-30 lg-mb-20 wow fadeInUp"
+          >
+            <h3>Find your Perfect Match</h3>
+            <p class="fs-24">
+              Your trusted real estate partners for any transaction.
+            </p>
+          </div>
+          <!-- /.title-one -->
+
+          <div class="row gx-xl-5">
+            <div class="col-md-4">
+              <div class="card-style-twelve text-center wow fadeInUp mt-20">
+                <a href="listings.html">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center m-auto tran3s rounded-circle"
+                  >
+                    <i class="fa-thin fa-house fa-2x" style="color: white"></i>
+                  </div>
+                </a>
+                <h6 class="fs-20 text-uppercase fw-bold">See our Listings</h6>
+                <p class="fs-22 ps-xxl-4 pe-xxl-4">
+                  Browse top homes picked for you.
+                </p>
+              </div>
+              <!-- /.card-style-twelve -->
+            </div>
+            <div class="col-md-4">
+              <div
+                class="card-style-twelve text-center wow fadeInUp mt-20"
+                data-wow-delay="0.1s"
+              >
+                <a href="lo.html">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center m-auto tran3s rounded-circle"
+                  >
+                    <i class="fa-thin fa-user fa-2x" style="color: white"></i>
+                  </div>
+                </a>
+                <h6 class="fs-20 text-uppercase fw-bold">Find an Agent</h6>
+                <p class="fs-24 ps-xxl-4 pe-xxl-4">
+                  Connect with the right expert.
+                </p>
+              </div>
+              <!-- /.card-style-twelve -->
+            </div>
+            <div class="col-md-4">
+              <div
+                class="card-style-twelve text-center wow fadeInUp mt-20"
+                data-wow-delay="0.2s"
+              >
+                <a href="contact.html">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center m-auto tran3s rounded-circle"
+                  >
+                    <i class="fa-thin fa-phone fa-2x" style="color: white"></i>
+                  </div>
+                </a>
+                <h6 class="fs-20 text-uppercase fw-bold">Contact Us</h6>
+                <p class="fs-24 ps-xxl-4 pe-xxl-4">
+                  We’re here when you’re ready.
+                </p>
+              </div>
+              <!-- /.card-style-twelve -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.block-feature-one -->
+
+      <!-- 
+		=============================================
+			Property Listing One
+		============================================== 
+		-->
+      <section id="listings">
+        <div class="property-listing-one mt-170 xl-mt-120" fragment="listings">
+          <div class="container container-large">
+            <div class="position-relative">
+              <div class="title-one text-center mb-25 lg-mb-10 wow fadeInUp">
+                <h3>Featured Listings</h3>
+                <p class="fs-22 mt-xs">Explore featured properties for sale.</p>
+              </div>
+              <!-- /.title-one -->
+
+              <div class="row gx-xxl-5" id="listingContainer">
+                <h4
+                  class="align-items-center text-center justify-content-center"
+                >
+                  Loading Listings...
+                </h4>
+                <img
+                  src="images/lazyBlue.svg"
+                  alt=""
+                  class="lazy-img mb-20 mt-3"
+                  style="object-fit: contain"
+                  height="300"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--
+		=====================================================
+			Fancy Banner Nine
+		=====================================================
+		-->
+      <div class="fancy-banner-nine mt-110 lg-mt-80">
+        <div class="container container-large">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+              <div class="d-flex align-items-center md-mb-30">
+                <img
+                  loading="lazy"
+                  src="https://www.myeshl.com/wp-content/uploads/2021/09/Pablo_roundHD.png"
+                  alt="Hugna Russel"
+                  class="rounded-circle avatar"
+                  style="width: 80px; height: 80px; object-fit: cover"
+                />
+                <div class="ps-3 text">
+                  <h6 class="fs-22">Pablo Martinez</h6>
+                  <span class="fs-20">Founder & CEO of ESHL</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-7 col-lg-8">
+              <blockquote>
+                " Whether you're buying your first home or selling your fifth,
+                our mission is simple—deliver expert guidance, real results, and
+                an experience you’ll actually enjoy. "
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.fancy-banner-nine -->
+
+      <!--
+		=====================================================
+			BLock Feature Fourteen
+		=====================================================
+		-->
+      <div
+        class="block-feature-fourteen pt-120 xl-pt-100 pb-140 xl-pb-100 mt-170 xl-mt-120"
+      >
+        <div class="container container-large">
+          <div class="title-one text-center wow fadeInUp">
+            <h3 class="text-white">Why Choose Us</h3>
+            <p class="fs-24 mt-xs text-white">
+              More than agents—advocates for your next chapter.
+            </p>
+          </div>
+          <!-- /.title-one -->
+
+          <div class="card-bg-wrapper wow fadeInUp mt-70 lg-mt-50">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card-style-eight mt-45 wow fadeInUp">
+                  <div class="d-flex align-items-start pe-xxl-5">
+                    <img
+                      loading="lazy"
+                      src="images/lazy.svg"
+                      data-src="images/es/svg/icon_40.svg"
+                      alt=""
+                      class="lazy-img icon"
+                    />
+                    <div class="text">
+                      <h5 class="text-white">Local Experts, Real Results</h5>
+                      <p>
+                        We know the neighborhoods, the trends, and how to get
+                        you the best deal—whether you're buying or selling.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-style-eight -->
+              </div>
+              <div class="col-lg-4">
+                <div class="card-style-eight mt-45 wow fadeInUp">
+                  <div class="d-flex align-items-start pe-xxl-2 ps-xxl-2">
+                    <img
+                      loading="lazy"
+                      src="images/lazy.svg"
+                      data-src="images/es/svg/icon_41.svg"
+                      alt=""
+                      class="lazy-img icon"
+                    />
+                    <div class="text">
+                      <h5 class="text-white">Personalized Service</h5>
+                      <p>
+                        You're never just a transaction. We tailor every step to
+                        your unique goals, timeline, and budget.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-style-eight -->
+              </div>
+              <div class="col-lg-4">
+                <div class="card-style-eight mt-45 wow fadeInUp">
+                  <div class="d-flex align-items-start ps-xxl-5">
+                    <img
+                      loading="lazy"
+                      src="images/lazy.svg"
+                      data-src="images/es/svg/icon_42.svg"
+                      alt=""
+                      class="lazy-img icon"
+                    />
+                    <div class="text">
+                      <h5 class="text-white">Trusted. Proven. Recommended.</h5>
+                      <p>
+                        With a track record of happy clients and successful
+                        closings, we’re the team people refer again and again.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-style-eight -->
+              </div>
+            </div>
+          </div>
+          <!-- /.card-bg-wrapper -->
+        </div>
+      </div>
+      <!-- /.block-feature-fourteen -->
+
+      <!-- 
+		=============================================
+			Category Section Two
+		============================================== 
+		-->
+      <div class="category-section-two mt-170 xl-mt-120">
+        <div class="container container-large">
+          <div class="position-relative">
+            <div
+              class="title-one text-center text-lg-start mb-60 xl-mb-40 lg-mb-20 wow fadeInUp"
+            >
+              <h3>Popular Counties</h3>
+            </div>
+            <!-- /.title-one -->
+
+            <div
+              class="wrapper flex-wrap d-flex justify-content-center justify-content-md-between align-items-center"
+            >
+              <div
+                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
+                style="background-image: url(images/es/small/LA.jpg)"
+                data-wow-delay="0.1s"
+              >
+                <a
+                  href="listings.html?county=Los+Angeles"
+                  class="title stretched-link"
+                  ><h4 class="text-white tran3s">Los Angeles</h4></a
+                >
+              </div>
+              <!-- /.card-style-seven -->
+              <div
+                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
+                style="background-image: url(images/es/small/Pasadena.jpg)"
+              >
+                <a
+                  href="listings.html?county=Orange"
+                  class="title stretched-link"
+                  ><h4 class="text-white tran3s">Orange County</h4></a
+                >
+              </div>
+              <!-- /.card-style-seven -->
+              <div
+                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
+                style="background-image: url(images/es/small/Whittier.jpg)"
+                data-wow-delay="0.2s"
+              >
+                <a
+                  href="listings.html?county=San+Bernardino"
+                  class="title stretched-link"
+                  ><h4 class="text-white tran3s">San Bernardino</h4></a
+                >
+              </div>
+              <!-- /.card-style-seven -->
+              <div
+                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
+                style="background-image: url(images/es/small/Downey.jpg)"
+                data-wow-delay="0.3s"
+              >
+                <a
+                  href="listings.html?county=Riverside"
+                  class="title stretched-link"
+                  ><h4 class="text-white tran3s">Riverside</h4></a
+                >
+              </div>
+              <!-- /.card-style-seven -->
+              <div
+                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
+                style="background-image: url(images/es/small/ventura.jpg)"
+                data-wow-delay="0.3s"
+              >
+                <a
+                  href="listings.html?county=Ventura"
+                  class="title stretched-link"
+                  ><h4 class="text-white tran3s">Ventura</h4></a
+                >
+              </div>
+              <!-- /.card-style-seven -->
+            </div>
+            <div class="section-btn text-center md-mt-60">
+              <a href="listings.html" class="btn-eleven"
+                ><span>See All Listings</span>
+                <i class="bi bi-chevron-right"></i
+              ></a>
+            </div>
+            <!-- /.section-btn -->
+          </div>
+        </div>
+      </div>
+      <!-- /.category-section-two -->
+
+      <!--
+		=====================================================
+			Agent Section One
+		=====================================================
+-->
+      <div class="agent-section-one position-relative z-1 mt-150 xl-mt-120">
+        <div class="container">
+          <div class="position-relative">
+            <div class="title-one mb-85 lg-mb-50 wow fadeInLeft">
+              <h3>
+                Our
+                <span
+                  >Team<img
+                    src="images/lazy.svg"
+                    data-src="images/es/svg/title_shape_05.svg"
+                    alt=""
+                    class="lazy-img"
+                    loading="lazy"
+                /></span>
+              </h3>
+              <p class="fs-22 mt-xs">
+                Get to know <strong>Equity Smart</strong>
+              </p>
+            </div>
+            <!-- /.title-one -->
+
+            <div class="wrapper position-relative z-1" id="team-container">
+              <div class="agent-slider-one">
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2021/09/Pablo_roundHD.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Pablo Martinez</h6>
+                      <p>CEO & Founder</p>
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2025/04/Serafin-Rodarte-2025-updated.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Serafin Rodarte</h6>
+                      <p>VP of Operations</p>
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2021/09/Steve_roundHD.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Steve Kim</h6>
+                      <p>VP of Sales</p>
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2024/04/robert_daddis-min.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Bobby Daddis</h6>
+                      <p>Marketing Director</p>
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2021/08/Abigail_round.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Abigail Somera</h6>
+                      <p>Content Marketing Manager</p>
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+                <!-- ADDING MORE -->
+
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2021/09/Leo_RoundHD.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Leo Gallegos</h6>
+                      <p>IT Support & Back-end Developer</p>
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2024/08/Denise-c-1-min.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Denise Castillo Hernandez</h6>
+                      <a href="agent_details.html" class="stretched-link"
+                        >Support Specialist</a
+                      >
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+                <div class="item">
+                  <div class="agent-card-one position-relative">
+                    <div class="img border-20">
+                      <img
+                        src="https://www.myeshl.com/wp-content/uploads/2021/09/carmen_round.png"
+                        alt=""
+                        class="w-100 tran5s"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <h6>Carmen Casey</h6>
+                      <a href="agent_details.html" class="stretched-link"
+                        >Accounting & Finance Manager</a
+                      >
+                    </div>
+                  </div>
+                  <!-- /.agent-card-one -->
+                </div>
+              </div>
+            </div>
+            <!-- /.wrapper -->
+
+            <div class="section-btn text-center md-mt-60">
+              <a
+                class="btn-one fw-normal"
+                id="allLoanOfficers"
+                href="loan_officers.html"
+                >Meet Our Loan Officers</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.agent-section-one -->
+
+      <!--
+		=====================================================
+			Feedback Section Six
+		=====================================================
+		-->
+
+      <!--
+		=====================================================
+			Fancy Banner Five
+		=====================================================
+		-->
+      <div
+        class="fancy-banner-five position-relative z-1 pt-90 lg-pt-70 pb-110 lg-pb-70 mt-170 xl-mt-120"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 m-auto text-center">
+              <div class="title-one mb-40 lg-mb-20">
+                <h2 class="font-garamond fs-xl text-white">
+                  We're at the ready.
+                </h2>
+              </div>
+              <a href="contact.html" class="btn-nine text-uppercase"
+                ><span>CONTACT US</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- <img loading="lazy" src="images/lazy.svg" data-src="images/shape/shape_30.svg" alt="" class="lazy-img shapes shape_01"> -->
+      </div>
+      <!-- /.fancy-banner-five -->
+
+      <!--
+		=====================================================
+			Footer Three
+		=====================================================
+		-->
+      <div class="footer-three">
+        <div class="container container-large">
+          <div class="bg-wrapper position-relative z-1">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 mb-40 lg-mb-60">
+                <div class="footer-intro pe-xxl-5 pe-xl-3">
+                  <div class="logo mb-15">
+                    <a href="/">
+                      <img
+                        loading="lazy"
+                        src="images/es/ESHL-RES-LOGO.png"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                  <!-- logo -->
+                  <p class="mb-45 lg-mb-30">
+                    1499 Huntington Dr Suite 500, South Pasadena, CA 91030, USA
+                    <a
+                      href="https://www.google.com/search?sca_esv=6d0ad94c53cfdd66&rlz=1C1OZZY_en-GBUS1161US1161&tbm=lcl&q=Equity+Smart+Home+Loans&rflfq=1&num=20&stick=H4sIAAAAAAAAAB2QS0rEUBRE6YHivBuFjLKE-_8sQHDgQHAFQSIK3Ua724HbcQWuy1VYMYM8eO9W1al7dTlssyrTNNo7grVIadixFxWrsKbj1STZhq00NbdSWpZGZXBC70oKrdD6SZE59EXtJUnOHozRgn7HylRpbVzszRTcPmw52CU9VFMR1iCAaxgmOpilxTNEA5eMVO60cueCh6ymngUNGdSeZKQJ1HCtImhNhA1HArW0G4yKI2XNq16hSAL1uBwebIqyqApHMV4pIktCHFAsmKzAW6K1cnr_7w_h1KFGoatRwtRMO9UavFIIyoYePTSpDT_VCv6HQikTXLVhHYXdCK9QJmogYyaVRAWln83md3P9MC_v-3mc9qdlPM3T8ellfF6O3xc3tx-fr-ev8fEwHc_j3XKYx_tlejv9AfU2NpfjAQAA&ved=2ahUKEwjhzbi3tJKOAxWzEkQIHWqDJgQQjHJ6BAgpEAM&rldimm=7887743695966138030"
+                      target="_blank"
+                    >
+                      <i class="fa-regular fa-location-dot"></i>
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-4 mb-30 text-center text-xl-start">
+                <div class="footer-nav">
+                  <h5 class="footer-title">Links</h5>
+                  <ul class="footer-nav-link style-none">
+                    <li><a href="/">Home</a></li>
+                    <li>
+                      <a href="https://www.myeshl.com/real-estate-services/"
+                        >Portal</a
+                      >
+                    </li>
+                    <li>
+                      <a href="about.html">About</a>
+                    </li>
+                    <li>
+                      <a href="contact.html">Contact Us</a>
+                    </li>
+                    <li>
+                      <a href="https://www.myeshl.com/" target="_blank"
+                        >Home Loans</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-30 text-center text-xl-start"
+              >
+                <div class="footer-nav">
+                  <h5 class="footer-title">IDX Listings</h5>
+                  <ul class="footer-nav-link style-none">
+                    <li><a href="listings.html">All</a></li>
+                    <li>
+                      <a href="listings.html?county=Los+Angeles">Los Angeles</a>
+                    </li>
+                    <li>
+                      <a href="listings.html?county=Orange">Orange County</a>
+                    </li>
+                    <li>
+                      <a href="listings.html?county=San+Bernardino"
+                        >San Bernardino</a
+                      >
+                    </li>
+                    <li>
+                      <a href="listings.html?county=Riverside">Riverside</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-30 text-center text-xl-start"
+              >
+                <div class="footer-nav">
+                  <h5 class="footer-title">Legal</h5>
+                  <ul class="footer-nav-link style-none">
+                    <li><a href="/terms.html">Terms & conditions</a></li>
+                    <li><a href="privacy.html">Privacy policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.bg-wrapper -->
+          <div class="bottom-footer">
+            <div
+              class="d-md-flex justify-content-center justify-content-md-between align-items-center text-center text-md-start"
+            >
+              <p class="mb-15 text-center text-lg-start fs-16 order-md-first">
+                © 2025 Equity Smart Real Estate. All Rights Reserved. CA DRE
+                #01906808 | Licensed in California, Arizona, Nevada Equity Smart
+                Real Estate is an Equal Housing Opportunity brokerage. All
+                information deemed reliable but not guaranteed. Subject to
+                change without notice.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.footer-three -->
+
+      <button class="scroll-top">
+        <i class="bi bi-arrow-up-short"></i>
+      </button>
+
+      <!-- Optional JavaScript _____________________________  -->
+
+      <!-- jQuery first, then Bootstrap JS -->
+      <!-- jQuery -->
+      <script src="vendor/jquery.min.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- WOW js -->
+      <script src="vendor/wow/wow.min.js"></script>
+      <!-- Slick Slider -->
+      <script src="vendor/slick/slick.min.js"></script>
+      <!-- Fancybox -->
+      <script src="vendor/fancybox/fancybox.umd.js"></script>
+      <!-- Lazy -->
+      <script src="vendor/jquery.lazy.min.js"></script>
+      <!-- js Counter -->
+      <script src="vendor/jquery.counterup.min.js"></script>
+      <script src="vendor/jquery.waypoints.min.js"></script>
+      <!-- Nice Select -->
+      <script src="vendor/nice-select/jquery.nice-select.min.js"></script>
+      <!-- validator js -->
+      <script src="vendor/validator.js"></script>
+
+      <!-- Theme js -->
+      <script src="js/theme.js"></script>
+    </div>
+    <!-- /.main-page-wrapper -->
+  </body>
+</html>

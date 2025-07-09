@@ -5,38 +5,32 @@
     <!-- Search Engine Keywords -->
     <meta
       name="keywords"
-      content="Real estate, Property sale, Property buy, Realtor, Equity Smart"
+      content="Home Loans, Mortgage, Refinance, Loan Officer, Equity Smart"
     />
     <meta
       name="description"
-      content="Equity Smart Real brings realtors a comprehensive and highly personalized approach to viewing and managing lsitings."
+      content="Equity Smart Home Loans brings you personalized, trusted guidance for mortgage solutions, refinancing, and first-time homebuyer support."
     />
-    <meta property="og:site_name" content="Equity Smart Real Estate" />
-    <meta property="og:url" content="https://www.equitysmartres.com" />
+    <meta property="og:site_name" content="Equity Smart Home Loans" />
+    <meta property="og:url" content="https://www.equitysmartloans.com" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Equity Smart | Expert Realtors & IDX Listings"
+      content="Equity Smart | Trusted Home Loan Experts"
     />
-    <meta name="og:image" content="images/es/ESHL-RES-LOGO.png" />
-    <!-- For IE -->
+    <meta name="og:image" content="images/es/ESHL-HOMELOANS-LOGO.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- For Resposive Device -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- For Window Tab Color -->
-    <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#0D1A1C" />
-    <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#0D1A1C" />
-    <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#0D1A1C" />
-    <title>Equity Smart Real Estate</title>
+    <title>Equity Smart Home Loans</title>
     <!-- Favicon -->
     <link
       rel="icon"
       type="image/png"
       sizes="56x56"
-      href="images/es/small/RE_ICON.png"
+      href="images/es/RE_ICON.png"
     />
     <!-- Bootstrap CSS -->
     <link
@@ -55,14 +49,8 @@
       media="all"
     />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="css/modified.css"
-      media="all"
-    />
-    <script src="/js/display-listings-home.js" type="module"></script>
     <script src="/js/production-routing.js" type="module"></script>
+    <script src="/js/change-logo-on-scroll.js" type="module"></script>
 
     <!-- Fix Internet Explorer ______________________________________-->
     <!--[if lt IE 9]>
@@ -82,7 +70,7 @@
           <div class="icon">
             <img
               loading="lazy"
-              src="images/es/ESHL-RES-LOGO.png"
+              src="images/es/ESHL-LOGO.png"
               alt=""
               class="m-auto d-block"
             />
@@ -103,7 +91,7 @@
 		============================================== 
 		-->
       <header
-        class="theme-main-menu menu-overlay menu-style-seven white-vr sticky-menu"
+        class="theme-main-menu menu-overlay menu-style-seven white-vr sticky-menu black-text-header contact-header"
       >
         <div class="inner-content gap-one">
           <div class="top-header position-relative">
@@ -113,9 +101,9 @@
                 <a href="/" class="d-flex align-items-center logo-link">
                   <img
                     loading="lazy"
-                    src="images/es/ESHL-RES-LOGO-WHITE.png"
+                    src="images/es/ESHL-LOGO.png"
                     alt="Logo"
-                    height="50"
+                    style="height: 50px"
                     class="logo-img"
                   />
                 </a>
@@ -124,7 +112,7 @@
               <div class="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
                 <ul class="d-none d-lg-flex align-items-center style-none">
                   <li>
-                    <a href="contact.html" class="btn-one white-vr"
+                    <a href="contact.html" class="btn-one black-vr"
                       ><i class="fa-regular fa-comment"></i>
                       <span>Contact Us</span></a
                     >
@@ -152,28 +140,30 @@
                         <a href="/" class="d-block"
                           ><img
                             loading="lazy"
-                            src="images/es/ESHL-RES-LOGO-WHITE.png"
+                            src="images/es/ESHL-LOGO-WHITE.png"
                             alt=""
                         /></a>
                       </div>
                     </li>
                     <!-- HOME LINK -->
+                    <li class="nav-item me-5">
+                      <a class="nav-link" href="./">Home</a>
+                    </li>
+                    <!-- LOAN OFFICERS LINK -->
+                    <li class="nav-item me-5">
+                      <a class="nav-link" href="loan_officers.html"
+                        >Loan Officers</a
+                      >
+                    </li>
+                    <!-- PRE QUAL LINK -->
+                    <li class="nav-item me-5">
+                      <a class="nav-link" href="preq.html">Pre-Qualification</a>
+                    </li>
+                    <!-- ABOUT LINK -->
                     <li
                       class="nav-item active-menu me-5"
                       style="white-space: nowrap"
                     >
-                      <a class="nav-link" href="./">Home</a>
-                    </li>
-                    <!-- REALTORS LINK -->
-                    <li class="nav-item me-5">
-                      <a class="nav-link" href="realtors.html">REALTORS&reg;</a>
-                    </li>
-                    <!-- LISTINGS DROPDOWN -->
-                    <li class="nav-item me-5">
-                      <a class="nav-link" href="listings.html">Listings</a>
-                    </li>
-                    <!-- ABOUT LINK -->
-                    <li class="nav-item me-5">
                       <a class="nav-link" href="about.html">About</a>
                     </li>
                     <!-- CONTACT US BUTTON -->
@@ -200,355 +190,204 @@
 		============================================== 
 		-->
       <div
-        class="hero-banner-eight z-1 pt-250 xl-pt-200 pb-250 xl-pb-150 lg-pb-100 position-relative"
+        class="hero-banner-three position-relative z-1 pt-130 lg-pt-100 pb-170 xl-pb-130 lg-pb-100"
       >
-        <div class="video-overlay w-100 h-100"></div>
-        <video autoplay muted loop id="bannerVideo">
+        <!-- Background Video -->
+        <div class="video-overlay"></div>
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          id="bannerVideo"
+          class="position-absolute top-0 start-0 object-fit-cover z-0"
+        >
           <source src="images/es/small/santaClarita1080.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
 
-        <div class="container position-relative h-100" id="bannerContent">
-          <div class="row h-100">
-            <div class="col-12 m-auto">
+        <!-- Content -->
+        <div
+          class="container position-relative z-2 h-100 d-flex align-items-center justify-content-center"
+        >
+          <div class="row w-100">
+            <div class="col-lg-10 m-auto text-center">
               <h1
-                class="hero-heading text-white text-center wow fadeInUp text-wrap"
+                class="hero-heading text-white font-garamond fw-500 wow fadeInUp"
               >
-                Agents you <span style="color: #2cc7ff">trust</span>.
-                <br />Results you <span style="color: #2cc7ff">love</span>.
+                <span>
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/es/svg/shape_34.svg"
+                    alt=""
+                    class="lazy-img"
+                  />
+                  Loans You Can Trust,
+                </span>
+                <br />
+                Homes You Can Love.
               </h1>
-              <!-- <div class="text-center">
-                <p
-                  class="fs-1 text-white text-center pt-35 wow fadeInUp"
-                  data-wow-delay="0.1s"
-                  id="banner-p"
-                >
-                  See our Featured Listings
-                </p>
-              </div> -->
-            </div>
-          </div>
-          <!-- /.tab-content -->
-        </div>
-        <!-- /.search-wrapper-four -->
-      </div>
-      <!-- /.hero-banner-eight -->
-
-      <!--
-		=====================================================
-			BLock Feature One
-		=====================================================
-		-->
-      <div class="block-feature-one mt-150 xl-mt-120">
-        <div class="container container-large">
-          <div
-            class="title-one text-center mb-60 xl-mb-30 lg-mb-20 wow fadeInUp"
-          >
-            <h3>Find your Perfect Match</h3>
-            <p class="fs-24">
-              Your trusted real estate partners for any transaction.
-            </p>
-          </div>
-          <!-- /.title-one -->
-
-          <div class="row gx-xl-5">
-            <div class="col-md-4">
-              <div class="card-style-twelve text-center wow fadeInUp mt-20">
-                <a href="listings.html">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center m-auto tran3s rounded-circle"
-                  >
-                    <i class="fa-thin fa-house fa-2x" style="color: white"></i>
-                  </div>
-                </a>
-                <h6 class="fs-20 text-uppercase fw-bold">See our Listings</h6>
-                <p class="fs-22 ps-xxl-4 pe-xxl-4">
-                  Browse top homes picked for you.
-                </p>
-              </div>
-              <!-- /.card-style-twelve -->
-            </div>
-            <div class="col-md-4">
-              <div
-                class="card-style-twelve text-center wow fadeInUp mt-20"
+              <p
+                class="fs-24 text-white pt-35 md-pt-20 pb-55 lg-pb-40 wow fadeInUp"
                 data-wow-delay="0.1s"
+                id="banner-p"
               >
-                <a href="realtors.html">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center m-auto tran3s rounded-circle"
-                  >
-                    <i class="fa-thin fa-user fa-2x" style="color: white"></i>
-                  </div>
-                </a>
-                <h6 class="fs-20 text-uppercase fw-bold">Find an Agent</h6>
-                <p class="fs-24 ps-xxl-4 pe-xxl-4">
-                  Connect with the right expert.
-                </p>
-              </div>
-              <!-- /.card-style-twelve -->
-            </div>
-            <div class="col-md-4">
-              <div
-                class="card-style-twelve text-center wow fadeInUp mt-20"
-                data-wow-delay="0.2s"
-              >
-                <a href="contact.html">
-                  <div
-                    class="icon d-flex align-items-center justify-content-center m-auto tran3s rounded-circle"
-                  >
-                    <i class="fa-thin fa-phone fa-2x" style="color: white"></i>
-                  </div>
-                </a>
-                <h6 class="fs-20 text-uppercase fw-bold">Contact Us</h6>
-                <p class="fs-24 ps-xxl-4 pe-xxl-4">
-                  We’re here when you’re ready.
-                </p>
-              </div>
-              <!-- /.card-style-twelve -->
+                Helping families secure financing with expert guidance.
+              </p>
             </div>
           </div>
         </div>
+
+        <!-- Optional shape overlays -->
+        <img
+          src="images/lazy.svg"
+          data-src="images/es/svg/shape_35.svg"
+          alt=""
+          class="lazy-img shapes shape_01"
+        />
+        <img
+          src="images/lazy.svg"
+          data-src="images/es/svg/shape_36.svg"
+          alt=""
+          class="lazy-img shapes shape_02"
+        />
       </div>
-      <!-- /.block-feature-one -->
+
+      <!-- /.hero-banner-three -->
 
       <!-- 
 		=============================================
-			Property Listing One
+			Category Section One
 		============================================== 
 		-->
-      <section id="listings">
-        <div class="property-listing-one mt-170 xl-mt-120" fragment="listings">
-          <div class="container container-large">
-            <div class="position-relative">
-              <div class="title-one text-center mb-25 lg-mb-10 wow fadeInUp">
-                <h3>Featured Listings</h3>
-                <p class="fs-22 mt-xs">Explore featured properties for sale.</p>
-              </div>
-              <!-- /.title-one -->
-
-              <div class="row gx-xxl-5" id="listingContainer">
-                <h4
-                  class="align-items-center text-center justify-content-center"
-                >
-                  Loading Listings...
-                </h4>
-                <img
-                  src="images/lazyBlue.svg"
-                  alt=""
-                  class="lazy-img mb-20 mt-3"
-                  style="object-fit: contain"
-                  height="300"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--
-		=====================================================
-			Fancy Banner Nine
-		=====================================================
-		-->
-      <div class="fancy-banner-nine mt-110 lg-mt-80">
+      <div class="category-section-one mt-65">
         <div class="container container-large">
-          <div class="row align-items-center">
-            <div class="col-lg-4">
-              <div class="d-flex align-items-center md-mb-30">
-                <img
-                  loading="lazy"
-                  src="https://www.myeshl.com/wp-content/uploads/2021/09/Pablo_roundHD.png"
-                  alt="Hugna Russel"
-                  class="rounded-circle avatar"
-                  style="width: 80px; height: 80px; object-fit: cover"
-                />
-                <div class="ps-3 text">
-                  <h6 class="fs-22">Pablo Martinez</h6>
-                  <span class="fs-20">Founder & CEO of ESHL</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-xxl-7 col-lg-8">
-              <blockquote>
-                " Whether you're buying your first home or selling your fifth,
-                our mission is simple—deliver expert guidance, real results, and
-                an experience you’ll actually enjoy. "
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.fancy-banner-nine -->
-
-      <!--
-		=====================================================
-			BLock Feature Fourteen
-		=====================================================
-		-->
-      <div
-        class="block-feature-fourteen pt-120 xl-pt-100 pb-140 xl-pb-100 mt-170 xl-mt-120"
-      >
-        <div class="container container-large">
-          <div class="title-one text-center wow fadeInUp">
-            <h3 class="text-white">Why Choose Us</h3>
-            <p class="fs-24 mt-xs text-white">
-              More than agents—advocates for your next chapter.
-            </p>
-          </div>
-          <!-- /.title-one -->
-
-          <div class="card-bg-wrapper wow fadeInUp mt-70 lg-mt-50">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="card-style-eight mt-45 wow fadeInUp">
-                  <div class="d-flex align-items-start pe-xxl-5">
+          <div class="position-relative border-bottom pb-65 xl-pb-40 z-1">
+            <h4 class="mb-50 xl-mb-30 text-center text-md-start">
+              Popular Categories.
+            </h4>
+            <div class="wrapper">
+              <ul
+                class="d-flex flex-wrap justify-content-center justify-content-xxl-between style-none"
+              >
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
                     <img
-                      loading="lazy"
                       src="images/lazy.svg"
-                      data-src="images/es/svg/icon_40.svg"
+                      data-src="images/icon/icon_15.svg"
                       alt=""
-                      class="lazy-img icon"
+                      class="lazy-img invert"
                     />
-                    <div class="text">
-                      <h5 class="text-white">Local Experts, Real Results</h5>
-                      <p>
-                        We know the neighborhoods, the trends, and how to get
-                        you the best deal—whether you're buying or selling.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-style-eight -->
-              </div>
-              <div class="col-lg-4">
-                <div class="card-style-eight mt-45 wow fadeInUp">
-                  <div class="d-flex align-items-start pe-xxl-2 ps-xxl-2">
+                    <span>Shopping Mall</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
                     <img
-                      loading="lazy"
                       src="images/lazy.svg"
-                      data-src="images/es/svg/icon_41.svg"
+                      data-src="images/icon/icon_16.svg"
                       alt=""
-                      class="lazy-img icon"
+                      class="lazy-img invert"
                     />
-                    <div class="text">
-                      <h5 class="text-white">Personalized Service</h5>
-                      <p>
-                        You're never just a transaction. We tailor every step to
-                        your unique goals, timeline, and budget.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-style-eight -->
-              </div>
-              <div class="col-lg-4">
-                <div class="card-style-eight mt-45 wow fadeInUp">
-                  <div class="d-flex align-items-start ps-xxl-5">
+                    <span>Apartments</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
                     <img
-                      loading="lazy"
                       src="images/lazy.svg"
-                      data-src="images/es/svg/icon_42.svg"
+                      data-src="images/icon/icon_17.svg"
                       alt=""
-                      class="lazy-img icon"
+                      class="lazy-img invert"
                     />
-                    <div class="text">
-                      <h5 class="text-white">Trusted. Proven. Recommended.</h5>
-                      <p>
-                        With a track record of happy clients and successful
-                        closings, we’re the team people refer again and again.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-style-eight -->
-              </div>
+                    <span>Villa</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
+                    <img
+                      src="images/lazy.svg"
+                      data-src="images/icon/icon_18.svg"
+                      alt=""
+                      class="lazy-img invert"
+                    />
+                    <span>Industry</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
+                    <img
+                      src="images/lazy.svg"
+                      data-src="images/icon/icon_19.svg"
+                      alt=""
+                      class="lazy-img invert"
+                    />
+                    <span>Office</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
+                    <img
+                      src="images/lazy.svg"
+                      data-src="images/icon/icon_20.svg"
+                      alt=""
+                      class="lazy-img invert"
+                    />
+                    <span>Medical</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
+                    <img
+                      src="images/lazy.svg"
+                      data-src="images/icon/icon_21.svg"
+                      alt=""
+                      class="lazy-img invert"
+                    />
+                    <span>House</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="listing_01.html"
+                    class="d-flex align-items-center fw-500 tran3s"
+                  >
+                    <img
+                      src="images/lazy.svg"
+                      data-src="images/icon/icon_22.svg"
+                      alt=""
+                      class="lazy-img invert"
+                    />
+                    <span>Loft</span>
+                  </a>
+                </li>
+              </ul>
             </div>
-          </div>
-          <!-- /.card-bg-wrapper -->
-        </div>
-      </div>
-      <!-- /.block-feature-fourteen -->
-
-      <!-- 
-		=============================================
-			Category Section Two
-		============================================== 
-		-->
-      <div class="category-section-two mt-170 xl-mt-120">
-        <div class="container container-large">
-          <div class="position-relative">
-            <div
-              class="title-one text-center text-lg-start mb-60 xl-mb-40 lg-mb-20 wow fadeInUp"
-            >
-              <h3>Popular Counties</h3>
-            </div>
-            <!-- /.title-one -->
-
-            <div
-              class="wrapper flex-wrap d-flex justify-content-center justify-content-md-between align-items-center"
-            >
-              <div
-                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
-                style="background-image: url(images/es/small/LA.jpg)"
-                data-wow-delay="0.1s"
-              >
-                <a
-                  href="listings.html?county=Los+Angeles"
-                  class="title stretched-link"
-                  ><h4 class="text-white tran3s">Los Angeles</h4></a
-                >
-              </div>
-              <!-- /.card-style-seven -->
-              <div
-                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
-                style="background-image: url(images/es/small/Pasadena.jpg)"
-              >
-                <a
-                  href="listings.html?county=Orange"
-                  class="title stretched-link"
-                  ><h4 class="text-white tran3s">Orange County</h4></a
-                >
-              </div>
-              <!-- /.card-style-seven -->
-              <div
-                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
-                style="background-image: url(images/es/small/Whittier.jpg)"
-                data-wow-delay="0.2s"
-              >
-                <a
-                  href="listings.html?county=San+Bernardino"
-                  class="title stretched-link"
-                  ><h4 class="text-white tran3s">San Bernardino</h4></a
-                >
-              </div>
-              <!-- /.card-style-seven -->
-              <div
-                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
-                style="background-image: url(images/es/small/Downey.jpg)"
-                data-wow-delay="0.3s"
-              >
-                <a
-                  href="listings.html?county=Riverside"
-                  class="title stretched-link"
-                  ><h4 class="text-white tran3s">Riverside</h4></a
-                >
-              </div>
-              <!-- /.card-style-seven -->
-              <div
-                class="card-style-seven position-relative z-1 rounded-circle overflow-hidden d-flex align-items-center justify-content-center wow fadeInUp"
-                style="background-image: url(images/es/small/ventura.jpg)"
-                data-wow-delay="0.3s"
-              >
-                <a
-                  href="listings.html?county=Ventura"
-                  class="title stretched-link"
-                  ><h4 class="text-white tran3s">Ventura</h4></a
-                >
-              </div>
-              <!-- /.card-style-seven -->
-            </div>
-            <div class="section-btn text-center md-mt-60">
-              <a href="listings.html" class="btn-eleven"
-                ><span>See All Listings</span>
+            <!-- /.wrapper -->
+            <div class="section-btn text-center sm-mt-40">
+              <a href="listing_08.html" class="btn-eleven"
+                ><span>See all categories</span>
                 <i class="bi bi-chevron-right"></i
               ></a>
             </div>
@@ -556,246 +395,791 @@
           </div>
         </div>
       </div>
-      <!-- /.category-section-two -->
+      <!-- /.category-section-one -->
 
       <!--
 		=====================================================
-			Agent Section One
+			BLock Feature Seven
 		=====================================================
--->
-      <div class="agent-section-one position-relative z-1 mt-150 xl-mt-120">
-        <div class="container">
+		-->
+      <div class="block-feature-seven position-relative z-1 mt-120 xl-mt-100">
+        <div class="container container-large">
           <div class="position-relative">
-            <div class="title-one mb-85 lg-mb-50 wow fadeInLeft">
-              <h3>
-                Our
-                <span
-                  >Team<img
-                    src="images/lazy.svg"
-                    data-src="images/es/svg/title_shape_05.svg"
-                    alt=""
-                    class="lazy-img"
-                    loading="lazy"
-                /></span>
-              </h3>
-              <p class="fs-22 mt-xs">
-                Get to know <strong>Equity Smart</strong>
-              </p>
-            </div>
-            <!-- /.title-one -->
-
-            <div class="wrapper position-relative z-1" id="team-container">
-              <div class="agent-slider-one">
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2021/09/Pablo_roundHD.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Pablo Martinez</h6>
-                      <p>CEO & Founder</p>
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2025/04/Serafin-Rodarte-2025-updated.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Serafin Rodarte</h6>
-                      <p>VP of Operations</p>
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2021/09/Steve_roundHD.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Steve Kim</h6>
-                      <p>VP of Sales</p>
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2024/04/robert_daddis-min.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Bobby Daddis</h6>
-                      <p>Marketing Director</p>
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2021/08/Abigail_round.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Abigail Somera</h6>
-                      <p>Content Marketing Manager</p>
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
-                <!-- ADDING MORE -->
-
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2021/09/Leo_RoundHD.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Leo Gallegos</h6>
-                      <p>IT Support & Back-end Developer</p>
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2024/08/Denise-c-1-min.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Denise Castillo Hernandez</h6>
-                      <a href="agent_details.html" class="stretched-link"
-                        >Support Specialist</a
-                      >
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
-                <div class="item">
-                  <div class="agent-card-one position-relative">
-                    <div class="img border-20">
-                      <img
-                        src="https://www.myeshl.com/wp-content/uploads/2021/09/carmen_round.png"
-                        alt=""
-                        class="w-100 tran5s"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="text-center">
-                      <h6>Carmen Casey</h6>
-                      <a href="agent_details.html" class="stretched-link"
-                        >Accounting & Finance Manager</a
-                      >
-                    </div>
-                  </div>
-                  <!-- /.agent-card-one -->
-                </div>
+            <div class="text-center mb-30 wow fadeInUp">
+              <div class="title-one mb-30 lg-mb-20">
+                <h2 class="font-garamond star-shape">
+                  How our clients get <em>benefited</em> by us
+                  <span class="star-shape"
+                    ><img
+                      src="images/lazy.svg"
+                      data-src="images/shape/shape_37.svg"
+                      alt=""
+                      class="lazy-img"
+                  /></span>
+                </h2>
+                <p class="fs-24 mt-xs">
+                  “Outstanding service, bought my dream home quickly!”
+                </p>
               </div>
+              <!-- /.title-one -->
+              <ul class="rating style-none d-flex justify-content-center">
+                <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                <li>
+                  <span class="color-dark fw-500">4.7</span> (18k Reviews)
+                </li>
+              </ul>
             </div>
-            <!-- /.wrapper -->
 
-            <div class="section-btn text-center md-mt-60">
-              <a class="btn-one fw-normal" id="allRealtors" href="realtors.html"
-                >Meet Our REALTORS&reg;</a
+            <div class="row justify-content-center gx-xxl-5">
+              <div class="col-lg-4 col-md-6 mt-30 d-flex wow fadeInUp">
+                <div
+                  class="card-style-five text-center d-inline-flex flex-column align-items-center tran3s h-100 w-100"
+                >
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/icon/icon_23.svg"
+                    alt=""
+                    class="lazy-img icon"
+                  />
+                  <h5 class="mt-35 mb-20">Buy a home</h5>
+                  <p class="fs-22 mb-50">
+                    Explore homy’s 2 million+ homes and uncover your ideal
+                    living space.
+                  </p>
+                  <a href="listing_10.html" class="btn-twelve mt-auto"
+                    >Find Home</a
+                  >
+                </div>
+                <!-- /.card-style-five -->
+              </div>
+              <div
+                class="col-lg-4 col-md-6 mt-30 d-flex wow fadeInUp"
+                data-wow-delay="0.1s"
               >
+                <div
+                  class="card-style-five text-center d-inline-flex flex-column align-items-center tran3s h-100 w-100"
+                >
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/icon/icon_24.svg"
+                    alt=""
+                    class="lazy-img icon"
+                  />
+                  <h5 class="mt-35 mb-20">Rent a home</h5>
+                  <p class="fs-22 mb-50">
+                    Discover a rental you'll love on homy, thanks to 35+ filters
+                    and tailored keywords.
+                  </p>
+                  <a href="listing_10.html" class="btn-twelve mt-auto"
+                    >Rent Home</a
+                  >
+                </div>
+                <!-- /.card-style-five -->
+              </div>
+              <div
+                class="col-lg-4 col-md-6 mt-30 d-flex wow fadeInUp"
+                data-wow-delay="0.2s"
+              >
+                <div
+                  class="card-style-five text-center d-inline-flex flex-column align-items-center tran3s h-100 w-100"
+                >
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/icon/icon_25.svg"
+                    alt=""
+                    class="lazy-img icon"
+                  />
+                  <h5 class="mt-35 mb-20">Sell property</h5>
+                  <p class="fs-22 mb-50">
+                    List, sell, thrive – with our top-notch real estate agency.
+                    It’s super easy & fun.
+                  </p>
+                  <a href="listing_10.html" class="btn-twelve mt-auto"
+                    >Sell Property</a
+                  >
+                </div>
+                <!-- /.card-style-five -->
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- /.agent-section-one -->
+      <!-- /.block-feature-seven -->
 
       <!--
 		=====================================================
-			Feedback Section Six
-		=====================================================
-		-->
-
-      <!--
-		=====================================================
-			Fancy Banner Five
+			BLock Feature Eight
 		=====================================================
 		-->
       <div
-        class="fancy-banner-five position-relative z-1 pt-90 lg-pt-70 pb-110 lg-pb-70 mt-170 xl-mt-120"
+        class="block-feature-eight position-relative z-1 mt-170 xl-mt-140 lg-mt-120"
       >
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-8 m-auto text-center">
-              <div class="title-one mb-40 lg-mb-20">
-                <h2 class="font-garamond fs-xl text-white">
-                  We're at the ready.
-                </h2>
+        <div class="container container-large">
+          <div class="position-relative">
+            <div class="row align-items-xl-end">
+              <div class="col-xl-7 col-lg-6">
+                <div class="pe-xl-5 me-xxl-3 wow fadeInLeft">
+                  <div class="title-one pe-xl-5">
+                    <h2 class="font-garamond">
+                      Explore & Find your <em>Dream</em> home
+                      <span class="star-shape"
+                        ><img
+                          src="images/lazy.svg"
+                          data-src="images/shape/shape_37.svg"
+                          alt=""
+                          class="lazy-img"
+                      /></span>
+                    </h2>
+                  </div>
+                  <!-- /.title-one -->
+
+                  <div class="row gx-xl-4 align-items-end">
+                    <div class="col-7">
+                      <div class="media-block position-relative z-1">
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/media/img_29.jpg"
+                          alt=""
+                          class="lazy-img main-img w-100"
+                        />
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/assets/screen_03.jpg"
+                          alt=""
+                          class="lazy-img shapes screen_01"
+                        />
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/shape/shape_40.svg"
+                          alt=""
+                          class="lazy-img shapes shape_01"
+                        />
+                      </div>
+                      <!-- /.media-block -->
+                    </div>
+                    <div class="col-5">
+                      <div class="media-block position-relative z-1">
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/media/img_30.jpg"
+                          alt=""
+                          class="lazy-img main-img w-100"
+                        />
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/assets/screen_04.png"
+                          alt=""
+                          class="lazy-img shapes screen_02"
+                        />
+                      </div>
+                      <!-- /.media-block -->
+                    </div>
+                  </div>
+                </div>
               </div>
-              <a href="contact.html" class="btn-nine text-uppercase"
-                ><span>CONTACT US</span></a
+              <div class="col-xl-5 col-lg-6">
+                <div class="block-two ps-xxl-5 md-mt-100">
+                  <div class="bg-wrapper wow fadeInRight">
+                    <p class="fs-24 fst-italic pe-xl-5">
+                      “Your premier partner in real estate. Transforming
+                      properties into dreams. Let us guide you home with
+                      expertise.”
+                    </p>
+                    <div
+                      class="counter-wrapper pb-40 mt-45 lg-mt-20 mb-60 lg-mb-20"
+                    >
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="counter-block-one mt-20">
+                            <div class="main-count fw-500 color-dark">
+                              $<span class="counter">7</span>bil+
+                            </div>
+                            <span>Project Handover</span>
+                          </div>
+                          <!-- /.counter-block-one -->
+                        </div>
+                        <div class="col-6">
+                          <div class="counter-block-one mt-20">
+                            <div class="main-count fw-500 color-dark">
+                              <span class="counter">1.9</span>mil+
+                            </div>
+                            <span>Happy Customers</span>
+                          </div>
+                          <!-- /.counter-block-one -->
+                        </div>
+                      </div>
+                    </div>
+                    <ul class="list-style-one fs-22 color-dark style-none">
+                      <li>Loan &amp; low Interest facility</li>
+                      <li>100k+ Property Listing added & updated</li>
+                      <li>Expert agent consultation</li>
+                    </ul>
+                    <div class="mt-70 lg-mt-50">
+                      <a href="about_us_02.html" class="btn-five md"
+                        ><span>Learn More</span>
+                        <i class="bi bi-arrow-up-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                  <!-- /.bg-wrapper -->
+                </div>
+              </div>
+            </div>
+            <div class="row gx-lg-5 align-items-center mt-120 lg-mt-50">
+              <div class="col-lg-3">
+                <div class="card-style-three border-20 mt-40 wow fadeInUp">
+                  <div class="bg-wrapper text-center">
+                    <h3>07+</h3>
+                    <p>Years Experience <br />with proud.</p>
+                  </div>
+                </div>
+                <!-- /.card-style-three -->
+              </div>
+              <div class="col-lg-9 ps-xl-5">
+                <div class="row gx-xl-5">
+                  <div class="col-md-4">
+                    <div class="card-style-four mt-40 wow fadeInUp">
+                      <div
+                        class="icon style-two rounded-circle d-flex align-items-center justify-content-center position-relative"
+                      >
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/icon/icon_26.svg"
+                          alt=""
+                          class="lazy-img"
+                        />
+                      </div>
+                      <h5 class="mt-35 mb-15">Property Insurance</h5>
+                      <p>Elit esse cillum dolo fugiat nulla tur nos ullamo.</p>
+                    </div>
+                    <!-- /.card-style-four -->
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card-style-four mt-40 wow fadeInUp">
+                      <div
+                        class="icon style-two rounded-circle d-flex align-items-center justify-content-center position-relative"
+                      >
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/icon/icon_27.svg"
+                          alt=""
+                          class="lazy-img"
+                        />
+                      </div>
+                      <h5 class="mt-35 mb-15">Easy Payments</h5>
+                      <p>
+                        quis nostrud exerct ullamo sucirity finibus ne derived.
+                      </p>
+                    </div>
+                    <!-- /.card-style-four -->
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card-style-four mt-40 wow fadeInUp">
+                      <div
+                        class="icon style-two rounded-circle d-flex align-items-center justify-content-center position-relative"
+                      >
+                        <img
+                          src="images/lazy.svg"
+                          data-src="images/icon/icon_28.svg"
+                          alt=""
+                          class="lazy-img"
+                        />
+                      </div>
+                      <h5 class="mt-35 mb-15">Quick Process</h5>
+                      <p>
+                        Duis aute irure dolor reprehe de Cicero's voluptat
+                        velit.
+                      </p>
+                    </div>
+                    <!-- /.card-style-four -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.block-feature-eight-->
+
+      <!--
+		=====================================================
+			Fancy Banner Six
+		=====================================================
+		-->
+      <div class="fancy-banner-six wow fadeInUp mt-160 xl-mt-140 lg-mt-100">
+        <div class="container container-large">
+          <div
+            class="bg-wrapper position-relative z-1 pt-85 md-pt-50 pb-140 md-pb-100 ps-4 pe-4"
+          >
+            <div class="row">
+              <div class="col-xl-7 col-lg-8 m-auto">
+                <div class="title-one text-center pe-xxl-2 ps-xxl-2">
+                  <h2 class="font-garamond text-white">
+                    Where you are, You will find us every
+                    <em>where <span>easily</span></em>
+                    <span class="star-shape"
+                      ><img
+                        src="images/lazy.svg"
+                        data-src="images/shape/shape_37.svg"
+                        alt=""
+                        class="lazy-img"
+                    /></span>
+                  </h2>
+                </div>
+                <!-- /.title-one -->
+              </div>
+            </div>
+            <div
+              class="map-wrapper position-relative me-auto ms-auto mt-100 xl-mt-50 mb-50"
+            >
+              <img
+                src="images/lazy.svg"
+                data-src="images/assets/map_01.svg"
+                alt=""
+                class="lazy-img w-100"
+              />
+              <div class="location-pin">
+                <div class="dot-marker rounded-circle"></div>
+                <div class="map-info tran3s d-flex">
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/logo/flag_01.png"
+                    alt=""
+                    class="lazy-img flag"
+                  />
+                  <div class="info">
+                    <h6>United States</h6>
+                    <span>32 link road, Mega Mall. California, USA</span>
+                  </div>
+                  <!-- /.info -->
+                </div>
+              </div>
+              <!-- /.location-pin -->
+              <div class="location-pin">
+                <div class="dot-marker rounded-circle"></div>
+                <div class="map-info tran3s d-flex">
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/logo/flag_02.png"
+                    alt=""
+                    class="lazy-img flag"
+                  />
+                  <div class="info">
+                    <h6>Brazil</h6>
+                    <span>32 link road, Mega Mall. California, USA</span>
+                  </div>
+                  <!-- /.info -->
+                </div>
+              </div>
+              <!-- /.location-pin -->
+              <div class="location-pin">
+                <div class="dot-marker rounded-circle"></div>
+                <div class="map-info tran3s d-flex">
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/logo/flag_03.png"
+                    alt=""
+                    class="lazy-img flag"
+                  />
+                  <div class="info">
+                    <h6>Russia</h6>
+                    <span>32 link road, Mega Mall. California, USA</span>
+                  </div>
+                  <!-- /.info -->
+                </div>
+              </div>
+              <!-- /.location-pin -->
+              <div class="location-pin">
+                <div class="dot-marker rounded-circle"></div>
+                <div class="map-info tran3s d-flex">
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/logo/flag_04.png"
+                    alt=""
+                    class="lazy-img flag"
+                  />
+                  <div class="info">
+                    <h6>Congo</h6>
+                    <span>32 link road, Mega Mall. California, USA</span>
+                  </div>
+                  <!-- /.info -->
+                </div>
+              </div>
+              <!-- /.location-pin -->
+              <div class="location-pin">
+                <div class="dot-marker rounded-circle"></div>
+                <div class="map-info tran3s d-flex">
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/logo/flag_05.png"
+                    alt=""
+                    class="lazy-img flag"
+                  />
+                  <div class="info">
+                    <h6>India</h6>
+                    <span>32 link road, Mega Mall. California, USA</span>
+                  </div>
+                  <!-- /.info -->
+                </div>
+              </div>
+              <!-- /.location-pin -->
+              <div class="location-pin">
+                <div class="dot-marker rounded-circle"></div>
+                <div class="map-info tran3s d-flex">
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/logo/flag_06.png"
+                    alt=""
+                    class="lazy-img flag"
+                  />
+                  <div class="info">
+                    <h6>Australia</h6>
+                    <span>32 link road, Mega Mall. California, USA</span>
+                  </div>
+                  <!-- /.info -->
+                </div>
+              </div>
+              <!-- /.location-pin -->
+            </div>
+
+            <div class="country-list d-flex flex-wrap">
+              <div class="list-block">
+                <div class="title">Asia Pacific</div>
+                <ul class="style-none d-flex flex-wrap">
+                  <li>Australia</li>
+                  <li>Dubai</li>
+                  <li>India</li>
+                  <li>Singapore</li>
+                  <li>Hong Kong</li>
+                </ul>
+              </div>
+              <!-- /.list-block -->
+              <div class="list-block">
+                <div class="title">South America</div>
+                <ul class="style-none">
+                  <li>United States</li>
+                  <li>Canada</li>
+                  <li>Argentina</li>
+                </ul>
+              </div>
+              <!-- /.list-block -->
+              <div class="list-block">
+                <div class="title">European</div>
+                <ul class="style-none d-flex flex-wrap">
+                  <li>Germany</li>
+                  <li>France</li>
+                  <li>Italy</li>
+                  <li>Netherlands</li>
+                  <li>Switzerland</li>
+                  <li>Spain</li>
+                </ul>
+              </div>
+              <!-- /.list-block -->
+              <div class="list-block">
+                <div class="title">Africa</div>
+                <ul class="style-none">
+                  <li>Morocco</li>
+                  <li>South Africa</li>
+                </ul>
+              </div>
+              <!-- /.list-block -->
+            </div>
+            <!-- /.country-list -->
+            <div class="text-slide-wrapper">
+              <div class="marquee">
+                <p>Dubai . America . Canada .</p>
+                <p>Dubai . America . Canada .</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.fancy-banner-six -->
+
+      <!--
+		=====================================================
+			Feedback Section Four
+		=====================================================
+		-->
+      <div
+        class="feedback-section-four position-relative overflow-hidden z-1 pt-150 lg-pt-120 pb-110 lg-pb-80"
+      >
+        <div class="container container-large">
+          <div class="position-relative z-1">
+            <div class="row">
+              <div class="col-xl-6 col-lg-8">
+                <div class="title-one pe-xxl-5 mb-75 xl-mb-50 wow fadeInUp">
+                  <h2 class="font-garamond">
+                    Don’t Trust Us, Trust <em>our clients</em>
+                    <span class="star-shape"
+                      ><img
+                        src="images/lazy.svg"
+                        data-src="images/shape/shape_37.svg"
+                        alt=""
+                        class="lazy-img"
+                    /></span>
+                  </h2>
+                  <p class="fs-20 m0">
+                    Client satisfaction speaks louder than our words. Hear from
+                    them.
+                  </p>
+                </div>
+                <!-- /.title-one -->
+              </div>
+            </div>
+
+            <div class="feedback-slider-two">
+              <div class="item">
+                <div class="feedback-block-four">
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="images/media/img_01.jpg"
+                      alt=""
+                      class="rounded-circle avatar"
+                    />
+                    <div class="ps-3">
+                      <h6 class="fs-20 m0">Rashed Kabir</h6>
+                      <span class="fs-16">Milan, Itlay</span>
+                    </div>
+                  </div>
+                  <blockquote>
+                    "Efficient and friendly service, guided us perfectly.
+                    Satisfied with our new home. Thank you!"
+                  </blockquote>
+                  <ul class="rating style-none d-flex">
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                  </ul>
+                  <img src="images/icon/icon_29.svg" alt="" class="icon" />
+                </div>
+                <!-- /.feedback-block-four -->
+              </div>
+              <div class="item">
+                <div class="feedback-block-four">
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="images/media/img_02.jpg"
+                      alt=""
+                      class="rounded-circle avatar"
+                    />
+                    <div class="ps-3">
+                      <h6 class="fs-20 m0">Jannat Ferdu.</h6>
+                      <span class="fs-16">London, Uk</span>
+                    </div>
+                  </div>
+                  <blockquote>
+                    "Found our dream home. Great Business with them. Thank you
+                    for excellent service."
+                  </blockquote>
+                  <ul class="rating style-none d-flex">
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                  </ul>
+                  <img src="images/icon/icon_29.svg" alt="" class="icon" />
+                </div>
+                <!-- /.feedback-block-four -->
+              </div>
+              <div class="item">
+                <div class="feedback-block-four">
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="images/media/img_03.jpg"
+                      alt=""
+                      class="rounded-circle avatar"
+                    />
+                    <div class="ps-3">
+                      <h6 class="fs-20 m0">Jubayer Hasan</h6>
+                      <span class="fs-16">Miami, USA</span>
+                    </div>
+                  </div>
+                  <blockquote>
+                    "Efficient and friendly service, guided us perfectly.
+                    Satisfied with our new home. Thank you!"
+                  </blockquote>
+                  <ul class="rating style-none d-flex">
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                  </ul>
+                  <img src="images/icon/icon_29.svg" alt="" class="icon" />
+                </div>
+                <!-- /.feedback-block-four -->
+              </div>
+              <div class="item">
+                <div class="feedback-block-four">
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="images/media/img_02.jpg"
+                      alt=""
+                      class="rounded-circle avatar"
+                    />
+                    <div class="ps-3">
+                      <h6 class="fs-20 m0">Jannat Ferdu.</h6>
+                      <span class="fs-16">London, Uk</span>
+                    </div>
+                  </div>
+                  <blockquote>
+                    "Found our dream home. Great Business with them. Thank you
+                    for excellent service."
+                  </blockquote>
+                  <ul class="rating style-none d-flex">
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                  </ul>
+                  <img src="images/icon/icon_29.svg" alt="" class="icon" />
+                </div>
+                <!-- /.feedback-block-four -->
+              </div>
+            </div>
+            <ul
+              class="slider-arrows slick-arrow-two d-flex justify-content-center style-none md-mt-30"
+            >
+              <li class="prev_c slick-arrow">
+                <i class="bi bi-arrow-left"></i>
+              </li>
+              <li class="next_c slick-arrow">
+                <i class="bi bi-arrow-right"></i>
+              </li>
+            </ul>
+            <div class="section-btn text-center md-mt-30">
+              <a href="#" class="btn-eleven fst-italic"
+                ><span>See all Feedback</span></a
               >
             </div>
           </div>
         </div>
-        <!-- <img loading="lazy" src="images/lazy.svg" data-src="images/shape/shape_30.svg" alt="" class="lazy-img shapes shape_01"> -->
+        <img
+          src="images/lazy.svg"
+          data-src="images/shape/shape_42.svg"
+          alt=""
+          class="lazy-img shapes shape_01 wow fadeInDown"
+          data-wow-delay="0.2s"
+        />
+        <img
+          src="images/lazy.svg"
+          data-src="images/shape/shape_43.svg"
+          alt=""
+          class="lazy-img shapes shape_02 wow fadeInUp"
+        />
       </div>
-      <!-- /.fancy-banner-five -->
+      <!-- /.feedback-section-four -->
 
       <!--
 		=====================================================
-			Footer Three
+			Partner Section One
 		=====================================================
 		-->
-      <div class="footer-three">
+      <div class="partner-section-one mt-45">
+        <div class="container">
+          <h6 class="text-center fs-20 mb-50 lg-mb-30">
+            100+ Company trusted by us.
+          </h6>
+        </div>
+        <div class="bg-wrapper bg-white">
+          <div class="container">
+            <div class="partner-logo-one">
+              <div class="item">
+                <img src="images/logo/p_logo_07.png" alt="" />
+              </div>
+              <div class="item">
+                <img src="images/logo/p_logo_08.png" alt="" />
+              </div>
+              <div class="item">
+                <img src="images/logo/p_logo_09.png" alt="" />
+              </div>
+              <div class="item">
+                <img src="images/logo/p_logo_10.png" alt="" />
+              </div>
+              <div class="item">
+                <img src="images/logo/p_logo_11.png" alt="" />
+              </div>
+              <div class="item">
+                <img src="images/logo/p_logo_12.png" alt="" />
+              </div>
+              <div class="item">
+                <img src="images/logo/p_logo_09.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--
+		=====================================================
+			Fancy Banner Seven
+		=====================================================
+		-->
+      <div class="fancy-banner-seven mt-110 xl-mt-80 mb-130 xl-mb-100 lg-mb-80">
+        <div class="container container-large">
+          <div
+            class="bg-wrapper position-relative z-1 pt-85 lg-pt-70 pb-100 xl-pb-80 lg-pb-70"
+          >
+            <div class="row">
+              <div class="col-xl-7 col-lg-8 col-md-10 m-auto text-center">
+                <h2 class="font-garamond text-white">
+                  Find the right home for your family
+                </h2>
+                <p class="fs-24 text-white mt-30 mb-45 lg-mb-30">
+                  We’ve more than 745,000 apartments, place & plot.
+                </p>
+                <a href="about_us_01.html" class="btn-two"
+                  ><span>Get Started</span></a
+                >
+              </div>
+            </div>
+            <img
+              src="images/lazy.svg"
+              data-src="images/shape/shape_44.svg"
+              alt=""
+              class="lazy-img shapes shape_01 wow fadeInLeft"
+              data-wow-delay="0.2s"
+            />
+            <img
+              src="images/lazy.svg"
+              data-src="images/shape/shape_45.svg"
+              alt=""
+              class="lazy-img shapes shape_02 wow fadeInRight"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- /.fancy-banner-seven -->
+
+      <!--
+		=====================================================
+			Footer Two
+		=====================================================
+		-->
+      <div class="footer-two">
         <div class="container container-large">
           <div class="bg-wrapper position-relative z-1">
-            <div class="row">
-              <div class="col-xl-4 col-lg-4 mb-40 lg-mb-60">
-                <div class="footer-intro pe-xxl-5 pe-xl-3">
+            <div class="row justify-content-between">
+              <div class="col-xl-3">
+                <div
+                  class="footer-intro position-relative z-1 pt-70 pb-150 lg-pb-20"
+                >
                   <div class="logo mb-15">
-                    <a href="/">
-                      <img
-                        loading="lazy"
-                        src="images/es/ESHL-RES-LOGO.png"
-                        alt=""
-                      />
+                    <a href="index.html">
+                      <img src="images/es/ESHL-LOGO.png" alt="" />
                     </a>
                   </div>
                   <!-- logo -->
-                  <p class="mb-45 lg-mb-30">
+                  <p class="mb-45 lg-mb-30 pe-2 pe-lg-5">
                     1499 Huntington Dr Suite 500, South Pasadena, CA 91030, USA
                     <a
                       href="https://www.google.com/search?sca_esv=6d0ad94c53cfdd66&rlz=1C1OZZY_en-GBUS1161US1161&tbm=lcl&q=Equity+Smart+Home+Loans&rflfq=1&num=20&stick=H4sIAAAAAAAAAB2QS0rEUBRE6YHivBuFjLKE-_8sQHDgQHAFQSIK3Ua724HbcQWuy1VYMYM8eO9W1al7dTlssyrTNNo7grVIadixFxWrsKbj1STZhq00NbdSWpZGZXBC70oKrdD6SZE59EXtJUnOHozRgn7HylRpbVzszRTcPmw52CU9VFMR1iCAaxgmOpilxTNEA5eMVO60cueCh6ymngUNGdSeZKQJ1HCtImhNhA1HArW0G4yKI2XNq16hSAL1uBwebIqyqApHMV4pIktCHFAsmKzAW6K1cnr_7w_h1KFGoatRwtRMO9UavFIIyoYePTSpDT_VCv6HQikTXLVhHYXdCK9QJmogYyaVRAWln83md3P9MC_v-3mc9qdlPM3T8ellfF6O3xc3tx-fr-ev8fEwHc_j3XKYx_tlejv9AfU2NpfjAQAA&ved=2ahUKEwjhzbi3tJKOAxWzEkQIHWqDJgQQjHJ6BAgpEAM&rldimm=7887743695966138030"
@@ -804,65 +1188,84 @@
                       <i class="fa-regular fa-location-dot"></i>
                     </a>
                   </p>
-                </div>
-              </div>
-              <div class="col-lg-2 col-md-4 mb-30 text-center text-xl-start">
-                <div class="footer-nav">
-                  <h5 class="footer-title">Links</h5>
-                  <ul class="footer-nav-link style-none">
-                    <li><a href="/">Home</a></li>
-                    <li>
-                      <a href="https://www.myeshl.com/real-estate-services/"
-                        >Portal</a
-                      >
+                  <ul class="style-none contact-info">
+                    <li class="d-flex align-items-center">
+                      <img src="images/icon/icon_30.svg" alt="" width="20" />
+                      <a href="#">homyreal@demo.com</a>
                     </li>
-                    <li>
-                      <a href="about.html">About</a>
-                    </li>
-                    <li>
-                      <a href="contact.html">Contact Us</a>
-                    </li>
-                    <li>
-                      <a href="https://www.myeshl.com/" target="_blank"
-                        >Home Loans</a
-                      >
+                    <li class="d-flex align-items-center">
+                      <img src="images/icon/icon_31.svg" alt="" width="20" />
+                      <a href="#">+757 699-4478</a>
                     </li>
                   </ul>
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/es/svg/shape_46.svg"
+                    alt=""
+                    class="lazy-img shapes shape_01 d-none d-xl-block"
+                  />
                 </div>
               </div>
-              <div
-                class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-30 text-center text-xl-start"
-              >
-                <div class="footer-nav">
-                  <h5 class="footer-title">IDX Listings</h5>
-                  <ul class="footer-nav-link style-none">
-                    <li><a href="listings.html">All</a></li>
-                    <li>
-                      <a href="listings.html?county=Los+Angeles">Los Angeles</a>
-                    </li>
-                    <li>
-                      <a href="listings.html?county=Orange">Orange County</a>
-                    </li>
-                    <li>
-                      <a href="listings.html?county=San+Bernardino"
-                        >San Bernardino</a
-                      >
-                    </li>
-                    <li>
-                      <a href="listings.html?county=Riverside">Riverside</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div
-                class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-30 text-center text-xl-start"
-              >
-                <div class="footer-nav">
-                  <h5 class="footer-title">Legal</h5>
-                  <ul class="footer-nav-link style-none">
-                    <li><a href="/terms.html">Terms & conditions</a></li>
-                    <li><a href="privacy.html">Privacy policy</a></li>
-                  </ul>
+              <div class="col-xl-9">
+                <div class="ms-xxl-5 ps-xl-5 mt-200 lg-mt-20">
+                  <div class="row justify-content-between">
+                    <div class="col-lg-3 col-md-4">
+                      <div class="footer-nav pt-30">
+                        <h5 class="footer-title">Links</h5>
+                        <ul class="footer-nav-link style-none">
+                          <li><a href="index.html">Home</a></li>
+                          <li>
+                            <a href="dashboard/membership.html" target="_blank"
+                              >Membership</a
+                            >
+                          </li>
+                          <li><a href="about_us_01.html">About Company</a></li>
+                          <li><a href="blog_01.html">Blog</a></li>
+                          <li><a href="blog_02.html">Explore Careers</a></li>
+                          <li><a href="pricing_02.html">Pricing</a></li>
+                          <li>
+                            <a
+                              href="dashboard/dashboard-index.html"
+                              target="_blank"
+                              >Dashboard</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-4">
+                      <div class="footer-nav pt-30">
+                        <h5 class="footer-title">Legal</h5>
+                        <ul class="footer-nav-link style-none">
+                          <li><a href="faq.html">Terms & conditions</a></li>
+                          <li><a href="faq.html">Cookie</a></li>
+                          <li><a href="faq.html">Privacy policy</a></li>
+                          <li><a href="faq.html">Faq’s</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4">
+                      <div class="footer-nav pt-30">
+                        <h5 class="footer-title">New Listing</h5>
+                        <ul class="footer-nav-link style-none">
+                          <li><a href="listing_01.html">​Buy Apartments</a></li>
+                          <li><a href="listing_02.html">Buy Condos</a></li>
+                          <li><a href="listing_03.html">Rent Houses</a></li>
+                          <li><a href="listing_04.html">Rent Industrial</a></li>
+                          <li><a href="listing_05.html">Buy Villas</a></li>
+                          <li><a href="listing_06.html">Rent Office</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-xxl-3 col-lg-2 d-none d-lg-block">
+                      <img
+                        src="images/lazy.svg"
+                        data-src="images/shape/shape_47.svg"
+                        alt=""
+                        class="lazy-img mt-50"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -870,9 +1273,16 @@
           <!-- /.bg-wrapper -->
           <div class="bottom-footer">
             <div
-              class="d-md-flex justify-content-center justify-content-md-between align-items-center text-center text-md-start"
+              class="d-md-flex justify-content-center justify-content-md-between align-items-center"
             >
-              <p class="mb-15 text-center text-lg-start fs-16 order-md-first">
+              <ul
+                class="style-none bottom-nav d-flex flex-wrap justify-content-center"
+              >
+                <li><a href="faq.html">Privacy &amp; Terms</a></li>
+                <li><a href="faq.html">Cookies</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+              <p class="mb-15 text-center text-lg-start order-md-first">
                 © 2025 Equity Smart Real Estate. All Rights Reserved. CA DRE
                 #01906808 | Licensed in California, Arizona, Nevada Equity Smart
                 Real Estate is an Equal Housing Opportunity brokerage. All
@@ -883,7 +1293,7 @@
           </div>
         </div>
       </div>
-      <!-- /.footer-three -->
+      <!-- /.footer-two -->
 
       <button class="scroll-top">
         <i class="bi bi-arrow-up-short"></i>

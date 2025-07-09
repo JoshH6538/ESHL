@@ -1,65 +1,65 @@
-import { allRealtors } from "./retool-api.js";
+import { allLOs } from "./retool-api.js";
 import { getBranches, arrayToMap } from "./branch-data.js";
 import { getUserData } from "./user-data.js";
 
-let allRealtorsData = []; // now an array
+let allLOsData = []; // now an array
 let branchMap = new Map(); // Initialize branchMap
-// Load realtors from localStorage as a JSON array
-async function loadRealtors() {
+// Load loan officers from localStorage as a JSON array
+async function loadLoanOfficers() {
   const raw = localStorage.getItem("userCache");
 
   if (raw) {
     try {
-      allRealtorsData = JSON.parse(raw); // no Object.values needed
+      allLOsData = JSON.parse(raw); // no Object.values needed
     } catch {
       console.error("userCache is corrupted");
       return;
     }
   } else {
-    console.warn("No realtor data in localStorage");
+    console.warn("No officer data in localStorage");
     return;
   }
-  // Sort the realtors by last name
-  allRealtorsData.sort((a, b) => {
+  // Sort the loan officers by last name
+  allLOsData.sort((a, b) => {
     const lastNameA = (a.lastName ?? "").toLowerCase();
     const lastNameB = (b.lastName ?? "").toLowerCase();
     return lastNameA.localeCompare(lastNameB);
   });
-  renderRealtors(allRealtorsData);
-  updateResultsCount(allRealtorsData.length);
+  renderLoanOfficers(allLOsData);
+  updateResultsCount(allLOsData.length);
 }
 
 // Render the cards
-function renderRealtors(realtorArray) {
+function renderLoanOfficers(loanOfficerArray) {
   let branches = {};
   const raw = localStorage.getItem("branchCache");
   if (raw) {
     branches = JSON.parse(raw);
   }
   branchMap = arrayToMap(branches, "branchId"); // Ensure branches is a map
-  // console.log("Rendering Realtors:", realtorArray);
+  // console.log("Rendering Loan Officers:", loanOfficerArray);
   // console.log("Using Branches:", branchMap);
 
-  const container = document.getElementById("realtorContainer");
+  const container = document.getElementById("loanOfficerContainer");
   container.innerHTML = "";
 
-  if (realtorArray.length === 0) {
-    console.warn("[Render] No realtors found");
+  if (loanOfficerArray.length === 0) {
+    console.warn("[Render] No loan officers found");
     container.innerHTML = `
       <div class="text-center py-5">
-        <p class="fs-4 text-muted">No realtors found matching your criteria.</p>
+        <p class="fs-4 text-muted">No loan officers found matching your criteria.</p>
       </div>
     `;
     return;
   }
 
-  for (const realtor of realtorArray) {
+  for (const loanOfficer of loanOfficerArray) {
     const iconURL =
-      realtor.iconURL && realtor.iconURL.trim() !== ""
-        ? realtor.iconURL
+      loanOfficer.iconURL && loanOfficer.iconURL.trim() !== ""
+        ? loanOfficer.iconURL
         : "https://equitysmartloans.com/wp-content/uploads/2022/05/placeHolder.jpeg";
 
-    const branch = branchMap.get(realtor.branchId);
+    const branch = branchMap.get(loanOfficer.branchId);
     const branchName = branch?.name ?? "Unknown Branch";
     const col = document.createElement("div");
     col.className = "col-xl-3 col-md-4 col-sm-6";
@@ -77,8 +77,10 @@ function renderRealtors(realtorArray) {
         </div>
         <div class="text-center pt-30">
           <h6 class="name">
-            <a href="realtor_details.html?userId=${realtor.userId}">
-              ${realtor.firstName ?? "First"} ${realtor.lastName ?? "Last"}
+            <a href="loan_officer-details.html?userId=${loanOfficer.userId}">
+              ${loanOfficer.firstName ?? "First"} ${
+      loanOfficer.lastName ?? "Last"
+    }
             </a>
           </h6>
         </div>
@@ -119,7 +121,7 @@ function renderRealtors(realtorArray) {
 }
 //  SECTION: Filter Submit
 document
-  .getElementById("realtorFitlerForm")
+  .getElementById("loanOfficerFilterForm")
   .addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -138,19 +140,12 @@ document
     ).map((cb) => cb.value);
 
     // === Start with full list ===
-    let filtered = allRealtorsData.slice();
-
-    // === Title filter ===
-    // if (title !== "(none)") {
-    //   filtered = filtered.filter((realtor) => {
-    //     return title != "" && realtor.title.includes(title);
-    //   });
-    // }
+    let filtered = allLOsData.slice();
 
     // === Zipcode filter ===
     if (zipcode !== "(none)") {
-      filtered = filtered.filter((realtor) => {
-        const match = (realtor.zipcode ?? "").startsWith(zipcode);
+      filtered = filtered.filter((loanOfficer) => {
+        const match = (loanOfficer.zipcode ?? "").startsWith(zipcode);
         return match;
       });
     }
@@ -159,8 +154,8 @@ document
     if (selectedBranchIds.length > 0) {
       const selectedBranchSet = new Set(selectedBranchIds); // fast lookup
 
-      filtered = filtered.filter((realtor) => {
-        const branchId = realtor.branchId;
+      filtered = filtered.filter((loanOfficer) => {
+        const branchId = loanOfficer.branchId;
 
         const match = selectedBranchSet.has(branchId);
 
@@ -170,12 +165,12 @@ document
 
     // === Summary ===
     // console.log(
-    //   `[Filter] Final result count: ${filtered.length} of ${allRealtorsData.length}`
+    //   `[Filter] Final result count: ${filtered.length} of ${allLOsData.length}`
     // );
 
     // === Sort & Render ===
     const currentSort = document.getElementById("sortSelect").value;
-    const sortedFiltered = sortRealtors(filtered, currentSort);
+    const sortedFiltered = sortLoanOfficers(filtered, currentSort);
 
     // Close modal
     const modal = bootstrap.Modal.getInstance(
@@ -199,7 +194,7 @@ document
       // console.log("[UI] Hiding Clear Filters button");
     }
 
-    renderRealtors(sortedFiltered);
+    renderLoanOfficers(sortedFiltered);
     updateResultsCount(sortedFiltered.length);
   });
 
@@ -213,7 +208,7 @@ function areFiltersActive({ title, zipcode, selectedBranchIds }) {
 document.getElementById("clearFiltersBtn").addEventListener("click", () => {
   // console.log("[Action] Clear Filters clicked.");
 
-  const form = document.getElementById("realtorFitlerForm");
+  const form = document.getElementById("loanOfficerFilterForm");
 
   // Reset all form inputs
   form.reset();
@@ -231,9 +226,9 @@ document.getElementById("clearFiltersBtn").addEventListener("click", () => {
   // Hide the button again
   document.getElementById("clearFiltersBtn").classList.add("d-none");
 
-  // Re-render all realtors
-  renderRealtors(allRealtorsData);
-  updateResultsCount(allRealtorsData.length);
+  // Re-render all loan officers
+  renderLoanOfficers(allLOsData);
+  updateResultsCount(allLOsData.length);
 
   // console.log("[Filter] Cleared filters and restored full list.");
 });
@@ -244,7 +239,7 @@ document
   .addEventListener("click", function (e) {
     e.preventDefault(); // prevent jumping to top
 
-    const form = document.getElementById("realtorFitlerForm");
+    const form = document.getElementById("loanOfficerFilterForm");
 
     // 1. Reset all form inputs
     form.reset();
@@ -270,57 +265,59 @@ function updateResultsCount(count) {
 }
 
 // Search form handler
-document.getElementById("realtorSearchForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const query = document
-    .getElementById("searchInput")
-    .value.trim()
-    .toLowerCase();
+document
+  .getElementById("loanOfficerSearchForm")
+  .addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = document
+      .getElementById("searchInput")
+      .value.trim()
+      .toLowerCase();
 
-  const filtered = allRealtorsData.filter((realtor) => {
-    const name = `${realtor.firstName ?? ""} ${
-      realtor.lastName ?? ""
-    }`.toLowerCase();
-    const dre = (realtor.dre ?? "").toLowerCase();
-    const branchName = (
-      branchMap.get(realtor.branchId)?.name ?? ""
-    ).toLowerCase();
+    const filtered = allLOsData.filter((loanOfficer) => {
+      const name = `${loanOfficer.firstName ?? ""} ${
+        loanOfficer.lastName ?? ""
+      }`.toLowerCase();
+      const dre = (loanOfficer.dre ?? "").toLowerCase();
+      const branchName = (
+        branchMap.get(loanOfficer.branchId)?.name ?? ""
+      ).toLowerCase();
 
-    const zipcode = (realtor.zipcode ?? "").toLowerCase();
-    const zipcode2 = (realtor.zipcode2 ?? "").toLowerCase();
-    const branchZipcode = (
-      branchMap.get(realtor.branchId)?.address?.zipcode ?? ""
-    ).toLowerCase();
-    const branchCity = (
-      branchMap.get(realtor.branchId)?.address?.city ?? ""
-    ).toLowerCase();
+      const zipcode = (loanOfficer.zipcode ?? "").toLowerCase();
+      const zipcode2 = (loanOfficer.zipcode2 ?? "").toLowerCase();
+      const branchZipcode = (
+        branchMap.get(loanOfficer.branchId)?.address?.zipcode ?? ""
+      ).toLowerCase();
+      const branchCity = (
+        branchMap.get(loanOfficer.branchId)?.address?.city ?? ""
+      ).toLowerCase();
 
-    return (
-      name.includes(query) ||
-      dre.includes(query) ||
-      branchName.includes(query) ||
-      zipcode.includes(query) ||
-      zipcode2.includes(query) ||
-      branchZipcode.includes(query) ||
-      branchCity.includes(query)
-    );
+      return (
+        name.includes(query) ||
+        dre.includes(query) ||
+        branchName.includes(query) ||
+        zipcode.includes(query) ||
+        zipcode2.includes(query) ||
+        branchZipcode.includes(query) ||
+        branchCity.includes(query)
+      );
+    });
+
+    const currentSort = document.getElementById("sortSelect").value;
+    const sortedFiltered = sortLoanOfficers(filtered, currentSort);
+
+    if (sortedFiltered.length === 0) {
+      document.getElementById("loanOfficerContainer").innerHTML =
+        "<p>No loan officers found.</p>";
+    } else {
+      renderLoanOfficers(sortedFiltered);
+    }
+
+    updateResultsCount(sortedFiltered.length);
   });
 
-  const currentSort = document.getElementById("sortSelect").value;
-  const sortedFiltered = sortRealtors(filtered, currentSort);
-
-  if (sortedFiltered.length === 0) {
-    document.getElementById("realtorContainer").innerHTML =
-      "<p>No realtors found.</p>";
-  } else {
-    renderRealtors(sortedFiltered);
-  }
-
-  updateResultsCount(sortedFiltered.length);
-});
-
 // Sort function
-function sortRealtors(data, sortBy) {
+function sortLoanOfficers(data, sortBy) {
   const [key, order] = sortBy.split("-");
 
   return data.slice().sort((a, b) => {
@@ -335,8 +332,8 @@ function sortRealtors(data, sortBy) {
 
 // Sort dropdown listener
 document.getElementById("sortSelect").addEventListener("change", (e) => {
-  const sorted = sortRealtors(allRealtorsData, e.target.value);
-  renderRealtors(sorted);
+  const sorted = sortLoanOfficers(allLOsData, e.target.value);
+  renderLoanOfficers(sorted);
   updateResultsCount(sorted.length);
 });
 
@@ -344,5 +341,5 @@ document.getElementById("sortSelect").addEventListener("change", (e) => {
 window.addEventListener("DOMContentLoaded", async () => {
   await getUserData(); // If this populates userCache
   await getBranches(); // Loads branchCache
-  await loadRealtors(); // Reads from userCache and renders
+  await loadLoanOfficers(); // Reads from userCache and renders
 });

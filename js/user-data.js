@@ -1,4 +1,4 @@
-import { allRealtors } from "./retool-api.js";
+import { allLOs } from "./retool-api.js";
 
 const USER_CACHE_KEY = "userCache";
 const USER_CACHE_EXPIRY_KEY = "userCacheExpiry";
@@ -22,7 +22,7 @@ export async function getUserData() {
   }
 
   // console.log("Fetching users...");
-  const users = await allRealtors();
+  const users = await allLOs();
   if (!users || users.length === 0) {
     console.warn("No users found or API call failed.");
     return [];

@@ -1,3 +1,5 @@
+import ZAPIER_URL from "/js/credentials.js";
+
 const debug = false;
 
 const BASE_URL = debug
@@ -26,29 +28,29 @@ async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
   return []; // fallback if all retries fail
 }
 
-export async function findRealtorById(id) {
-  // console.log("Fetching realtor by ID:", id);
-  return await fetchWithRetry(BASE_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      type: "findRealtor",
-      userId: id,
-    }),
-  });
-}
+// export async function findRealtorById(id) {
+//   // console.log("Fetching realtor by ID:", id);
+//   return await fetchWithRetry(BASE_URL, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       type: "findRealtor",
+//       userId: id,
+//     }),
+//   });
+// }
 
-export async function allRealtors() {
-  return await fetchWithRetry(BASE_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ type: "allRealtors" }),
-  });
-}
+// export async function allRealtors() {
+//   return await fetchWithRetry(BASE_URL, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ type: "allRealtors" }),
+//   });
+// }
 
 export async function allBranches() {
   console.log("allBranches called");
@@ -61,15 +63,33 @@ export async function allBranches() {
   });
 }
 
-export async function allListings() {
-  // console.log("allListings called");
-  var url = BASE_URL + "/listings";
-  // console.log("Fetching listings from:", url);
-  return await fetchWithRetry(url, {
+// export async function allListings() {
+//   // console.log("allListings called");
+//   var url = BASE_URL + "/listings";
+//   // console.log("Fetching listings from:", url);
+//   return await fetchWithRetry(url, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({}),
+//   });
+// }
+
+export async function allLOs() {
+  return await fetchWithRetry(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({}),
+    body: JSON.stringify({ type: "allLOs" }),
   });
+}
+
+export async function zapier(bodyData) {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(bodyData),
+  };
+  return await fetch(ZAPIER_URL, options);
 }
