@@ -1,4 +1,4 @@
-import { allBranches } from "./retool-api.js";
+import { allBranches } from "./api.js";
 
 const BRANCH_CACHE_KEY = "branchCache";
 const BRANCH_CACHE_EXPIRY_KEY = "branchCacheExpiry";
