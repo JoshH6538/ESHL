@@ -318,18 +318,18 @@ header.theme-main-menu.fixed .right-widget ul li a:hover {
   color: $color-one;
   transform: translateX(20px) scale(1.05);
 }
-.footer-three .footer-nav-link a {
+.footer-nav-link a {
   display: inline-block;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 @media screen and (max-width: 991px) {
-  .footer-three .footer-nav-link a:hover {
+  .footer-nav-link a:hover {
     color: $color-one;
     transform: scale(1.1);
   }
 }
 @media screen and (min-width: 992px) {
-  .footer-three .footer-nav-link a:hover {
+  .footer-nav-link a:hover {
     color: $color-one;
     transform: translateX(20px) scale(1.05);
   }
