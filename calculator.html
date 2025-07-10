@@ -221,11 +221,28 @@
           <div class="row">
             <div class="col-lg-10 m-auto">
               <div class="title-one text-center mb-40 lg-mb-30 wow fadeInUp">
-                <h3>Mortgage Calculator</h3>
+                <h3>
+                  Figure Out Just What You
+                  <span
+                    >Need
+                    <img
+                      src="images/es/svg/title_shape_05.svg"
+                      alt=""
+                      class="lazy-img"
+                      loading="lazy"
+                      style=""
+                  /></span>
+                </h3>
                 <p class="fs-24">
-                  Use our mortgage calculator to estimate your monthly payments.
-                  Enter your purchase price, down payment, interest rate, and
-                  loan term to get started.
+                  Estimate your monthly mortgage payments with our easy-to-use
+                  calculator. Simply input your purchase price, down payment,
+                  interest rate, and loan term to get an estimate.
+                </p>
+                <p class="fs-16 fst-italic">
+                  This mortgage calculator is for informational purposes only.
+                  It is designed to estimate monthly payments based on the
+                  information you provide. By using this calculator, you
+                  acknowledge and agree to this disclaimer.
                 </p>
               </div>
             </div>
@@ -383,14 +400,14 @@
                     <div class="col-md-10">
                       <div class="input-group-meta form-group">
                         <label
-                          for="interestRange"
+                          for="conv_interest_range"
                           style="color: rgba(0, 0, 0, 0)"
                           >Interest Rate (%)</label
                         >
                         <input
                           type="range"
                           class="form-range"
-                          id="interestRange"
+                          id="conv_interest_range"
                           min="0"
                           max="25"
                           value="5"
@@ -401,11 +418,11 @@
 
                     <div class="col-md-2">
                       <div class="input-group-meta form-group">
-                        <label for="conv_pmi">PMI (%)</label>
+                        <label for="conv_pmi_rate">PMI (%)</label>
                         <input
                           type="text"
                           class="form-control"
-                          id="conv_pmi"
+                          id="conv_pmi_rate"
                           placeholder="0"
                           value="0"
                           required
@@ -414,13 +431,15 @@
                     </div>
                     <div class="col-md-10">
                       <div class="input-group-meta form-group">
-                        <label for="pmiRange" style="color: rgba(0, 0, 0, 0)"
+                        <label
+                          for="conv_pmi_range"
+                          style="color: rgba(0, 0, 0, 0)"
                           >PMI (%)</label
                         >
                         <input
                           type="range"
                           class="form-range"
-                          id="pmiRange"
+                          id="conv_pmi_range"
                           min="0"
                           max="2.5"
                           value="0"
@@ -443,40 +462,710 @@
                     </div>
                   </div>
                 </form>
+                <!-- RESULTS SECTION -->
+                <section id="conv_result_section"></section>
+                <div class="col-12 mt-100 text-center d-none" id="conv_results">
+                  <h3>Monthly Payment</h3>
+                  <h2 class="text-success display-5 mb-20">
+                    $<span id="conv_result_total">0.00</span>
+                  </h2>
+                  <p>
+                    Principal & Interest
+                    <strong>$<span id="conv_result_pi">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Taxes
+                    <strong>$<span id="conv_result_tax">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly HOA
+                    <strong>$<span id="conv_result_hoa">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Insurance
+                    <strong
+                      >$<span id="conv_result_insurance">0.00</span></strong
+                    >
+                  </p>
+                  <p>
+                    Monthly PMI
+                    <strong>$<span id="conv_result_pmi">0.00</span></strong>
+                  </p>
+                </div>
+              </div>
+              <!-- FHA Tab -->
+              <div class="tab-pane fadeInUp" id="fha" role="tabpanel">
+                <form id="fha-form">
+                  <div
+                    class="form-style-one row g-4 controls justify-content-center px-5"
+                  >
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="fha_price">Purchase Price</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fha_price"
+                          placeholder="$250,000"
+                          value="$250,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="fha_term">Mortgage Term</label>
+                        <select class="form-select py-3" id="fha_term">
+                          <option value="30">30 Years</option>
+                          <option value="25">25 Years</option>
+                          <option value="20">20 Years</option>
+                          <option value="15">15 Years</option>
+                          <option value="10">10 Years</option>
+                          <option value="5">5 Years</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="fha_down">Down Payment ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fha_down"
+                          placeholder="$50,000"
+                          value="$50,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="fha_tax">Annual Taxes ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fha_tax"
+                          placeholder="$3,000"
+                          value="$3,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="fha_insurance">Annual Insurance ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fha_insurance"
+                          placeholder="$1,200"
+                          value="$1,200"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="fha_hoa">Monthly HOA ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fha_hoa"
+                          placeholder="$0"
+                          value="$0"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="input-group-meta form-group">
+                        <label for="fha_rate">Interest Rate (%)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fha_rate"
+                          placeholder="5"
+                          value="5"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="input-group-meta form-group">
+                        <label
+                          for="fha_interest_range"
+                          style="color: rgba(0, 0, 0, 0)"
+                          >Interest Rate (%)</label
+                        >
+                        <input
+                          type="range"
+                          class="form-range"
+                          id="fha_interest_range"
+                          min="0"
+                          max="25"
+                          value="5"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="col-12 d-flex justify-content-center gap-4 mt-40"
+                    >
+                      <button
+                        class="btn-twelve sm"
+                        type="submit"
+                        id="fha_calculate"
+                      >
+                        Calculate
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <!-- RESULTS SECTION -->
+                <section id="fha_result_section"></section>
+                <div class="col-12 mt-100 text-center d-none" id="fha_results">
+                  <h3>Monthly Payment</h3>
+                  <h2 class="text-success display-5 mb-20">
+                    $<span id="fha_result_total">0.00</span>
+                  </h2>
+                  <p>
+                    Principal & Interest
+                    <strong>$<span id="fha_result_pi">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Taxes
+                    <strong>$<span id="fha_result_tax">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly HOA
+                    <strong>$<span id="fha_result_hoa">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Insurance
+                    <strong
+                      >$<span id="fha_result_insurance">0.00</span></strong
+                    >
+                  </p>
+                  <p>
+                    Monthly MIP
+                    <strong
+                      >$<span id="fha_result_monthly_mip">0.00</span></strong
+                    >
+                  </p>
+                  <p>
+                    Upfront MIP
+                    <strong
+                      >$<span id="fha_result_upfront_mip">0.00</span></strong
+                    >
+                  </p>
+                </div>
+              </div>
+              <!-- VA Tab -->
+              <div class="tab-pane fadeInUp" id="va" role="tabpanel">
+                <form id="va-form">
+                  <div
+                    class="form-style-one row g-4 controls justify-content-center px-5"
+                  >
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="va_first_time">First Time VA Loan?</label>
+                        <select class="form-select" id="va_first_time">
+                          <option value="yes" selected>Yes</option>
+                          <option value="no">No</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="va_price">Purchase Price</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="va_price"
+                          placeholder="$250,000"
+                          value="$250,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="va_term">Mortgage Term</label>
+                        <select class="form-select py-3" id="va_term">
+                          <option value="30">30 Years</option>
+                          <option value="25">25 Years</option>
+                          <option value="20">20 Years</option>
+                          <option value="15">15 Years</option>
+                          <option value="10">10 Years</option>
+                          <option value="5">5 Years</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="va_down">Down Payment ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="va_down"
+                          placeholder="$0"
+                          value="$0"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="va_tax">Annual Taxes ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="va_tax"
+                          placeholder="$2,500"
+                          value="$2,500"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="va_insurance">Annual Insurance ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="va_insurance"
+                          placeholder="$600"
+                          value="$600"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="input-group-meta form-group">
+                        <label for="va_hoa">Monthly HOA ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="va_hoa"
+                          placeholder="$50"
+                          value="$50"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="input-group-meta form-group">
+                        <label for="va_rate">Interest Rate (%)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="va_rate"
+                          placeholder="5"
+                          value="5"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-8">
+                      <div class="input-group-meta form-group">
+                        <label
+                          for="va_interest_range"
+                          style="color: rgba(0, 0, 0, 0)"
+                          >Interest Rate (%)</label
+                        >
+                        <input
+                          type="range"
+                          class="form-range"
+                          id="va_interest_range"
+                          min="0"
+                          max="25"
+                          value="5"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="col-12 d-flex justify-content-center gap-4 mt-40"
+                    >
+                      <button
+                        class="btn-twelve sm"
+                        type="submit"
+                        id="va_calculate"
+                      >
+                        Calculate
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- RESULTS SECTION -->
+                <section id="va_result_section"></section>
+                <div class="col-12 mt-100 text-center d-none" id="va_results">
+                  <h3>Monthly VA Payment</h3>
+                  <h2 class="text-success display-5 mb-20">
+                    $<span id="va_result_total">0.00</span>
+                  </h2>
+                  <p>
+                    Principal & Interest
+                    <strong>$<span id="va_result_pi">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Taxes
+                    <strong>$<span id="va_result_tax">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly HOA
+                    <strong>$<span id="va_result_hoa">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Insurance
+                    <strong>$<span id="va_result_insurance">0.00</span></strong>
+                  </p>
+                  <p>
+                    VA Funding Fee
+                    <strong
+                      >$<span id="va_result_funding_fee">0.00</span></strong
+                    >
+                  </p>
+                  <p>
+                    Amount Financed
+                    <strong>$<span id="va_result_financed">0.00</span></strong>
+                  </p>
+                </div>
+              </div>
+              <!-- Affordability Tab -->
+              <div class="tab-pane fadeInUp" id="affordability" role="tabpanel">
+                <form id="affordability-form">
+                  <div
+                    class="form-style-one row g-4 controls justify-content-center px-5"
+                  >
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="af_price">Purchase Price</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="af_price"
+                          placeholder="$250,000"
+                          value="$250,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="af_term">Mortgage Term</label>
+                        <select class="form-select py-3" id="af_term">
+                          <option value="30">30 Years</option>
+                          <option value="25">25 Years</option>
+                          <option value="20">20 Years</option>
+                          <option value="15">15 Years</option>
+                          <option value="10">10 Years</option>
+                          <option value="5">5 Years</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="af_down">Down Payment ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="af_down"
+                          placeholder="$50,000"
+                          value="$50,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="af_tax">Annual Taxes ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="af_tax"
+                          placeholder="$3,000"
+                          value="$3,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="af_insurance">Annual Insurance ($)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="af_insurance"
+                          placeholder="$1,200"
+                          value="$1,200"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="input-group-meta form-group">
+                        <label for="af_income">Annual Income</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="af_income"
+                          placeholder="$100,000"
+                          value="$100,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="input-group-meta form-group">
+                        <label for="af_debts">Monthly Debts</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="af_debts"
+                          placeholder="$2,000"
+                          value="$2,000"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="input-group-meta form-group">
+                        <label for="af_rate">Interest Rate (%)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="af_rate"
+                          placeholder="5"
+                          value="5"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="input-group-meta form-group">
+                        <label
+                          for="af_interest_range"
+                          style="color: rgba(0, 0, 0, 0)"
+                          >Interest Rate (%)</label
+                        >
+                        <input
+                          type="range"
+                          class="form-range"
+                          id="af_interest_range"
+                          min="0"
+                          max="25"
+                          value="5"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="col-12 d-flex justify-content-center gap-4 mt-40"
+                    >
+                      <button
+                        class="btn-twelve sm"
+                        type="submit"
+                        id="af_calculate"
+                      >
+                        Calculate
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <!-- RESULTS SECTION -->
+                <section id="af_result_section"></section>
+                <div class="col-12 mt-100 text-center d-none" id="af_results">
+                  <h3>Monthly Payment</h3>
+                  <h2 class="text-success display-5 mb-20">
+                    $<span id="af_result_total">0.00</span>
+                  </h2>
+                  <p>
+                    Principal & Interest
+                    <strong>$<span id="af_result_pi">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Taxes
+                    <strong>$<span id="af_result_tax">0.00</span></strong>
+                  </p>
+                  <p>
+                    Monthly Insurance
+                    <strong>$<span id="af_result_insurance">0.00</span></strong>
+                  </p>
+                  <h1>Maximum House Price</h1>
+                  <h1 class="text-success display-5 mb-20">
+                    $<span id="af_result_afford">0.00</span>
+                  </h1>
+                </div>
+              </div>
+              <!-- Refinance Tab -->
+              <div class="tab-pane fadeInUp" id="refinance" role="tabpanel">
+                <form id="refinance-form">
+                  <div
+                    class="form-style-one row g-4 controls justify-content-center px-5"
+                  >
+                    <div class="col-md-4">
+                      <label for="ref_current_amount"
+                        >Current Loan Amount</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_current_amount"
+                        value="$300,000"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="ref_current_rate"
+                        >Current Interest Rate (%)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_current_rate"
+                        value="5"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="ref_current_term"
+                        >Current Term (months)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_current_term"
+                        value="360"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="ref_origination_year">Origination Year</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_origination_year"
+                        value="2015"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="ref_new_amount">New Loan Amount</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_new_amount"
+                        value="$250,000"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="ref_new_rate">New Interest Rate (%)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_new_rate"
+                        value="4"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="ref_new_term">New Term (months)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_new_term"
+                        value="360"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="ref_fees">Refinance Fees ($)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ref_fees"
+                        value="$1,000"
+                        required
+                      />
+                    </div>
+
+                    <div
+                      class="col-12 d-flex justify-content-center gap-4 mt-40"
+                    >
+                      <button
+                        class="btn-twelve sm"
+                        type="submit"
+                        id="ref_calculate"
+                      >
+                        Calculate
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- Results -->
+                <section id="ref_result_section"></section>
+                <div class="col-12 mt-100 text-center d-none" id="ref_results">
+                  <h3>Refinancing could save you</h3>
+                  <h2 class="text-success display-5 mb-20">
+                    $<span id="ref_result_monthly_savings">0.00</span>/month
+                  </h2>
+                  <p>
+                    New monthly payment:
+                    <strong
+                      >$<span id="ref_result_new_payment">0.00</span></strong
+                    >
+                  </p>
+                  <p>
+                    Refinance fees:
+                    <strong>$<span id="ref_result_fees">0.00</span></strong>
+                  </p>
+                  <p>
+                    Lifetime savings:
+                    <strong
+                      >$<span id="ref_result_lifetime_savings"
+                        >0.00</span
+                      ></strong
+                    >
+                  </p>
+                </div>
               </div>
 
               <!-- Other tabs like FHA, VA, Affordability, Refinance would go here similarly -->
-            </div>
-            <!-- RESULTS SECTION -->
-            <section id="result_section"></section>
-            <div
-              class="col-12 mt-100 text-center d-none"
-              id="conv_result_section"
-            >
-              <h3>Monthly Payment</h3>
-              <h2 class="text-success display-5 mb-20">
-                $<span id="conv_result_total">0.00</span>
-              </h2>
-              <p>
-                Principal & Interest
-                <strong>$<span id="conv_result_pi">0.00</span></strong>
-              </p>
-              <p>
-                Monthly Taxes
-                <strong>$<span id="conv_result_tax">0.00</span></strong>
-              </p>
-              <p>
-                Monthly HOA
-                <strong>$<span id="conv_result_hoa">0.00</span></strong>
-              </p>
-              <p>
-                Monthly Insurance
-                <strong>$<span id="conv_result_insurance">0.00</span></strong>
-              </p>
-              <p>
-                Monthly PMI
-                <strong>$<span id="conv_result_pmi">0.00</span></strong>
-              </p>
             </div>
           </div>
         </div>

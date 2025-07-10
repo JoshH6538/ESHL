@@ -402,3 +402,23 @@ option:hover {
 .ptr:hover {
   cursor: pointer;
 }
+
+.form-range::-webkit-slider-thumb {
+  background: $color-one;
+}
+
+.form-range::-moz-range-thumb {
+  background: $color-one;
+}
+
+.form-range::-ms-thumb {
+  background: $color-one;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  background: #677f897f;
+}
+
+.form-range {
+  border: none !important;
+}

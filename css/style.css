@@ -16882,4 +16882,24 @@ option:hover {
   cursor: pointer;
 }
 
+.form-range::-webkit-slider-thumb {
+  background: #007dab;
+}
+
+.form-range::-moz-range-thumb {
+  background: #007dab;
+}
+
+.form-range::-ms-thumb {
+  background: #007dab;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  background: rgba(103, 127, 137, 0.4980392157);
+}
+
+.form-range {
+  border: none !important;
+}
+
 /*# sourceMappingURL=style.css.map */
