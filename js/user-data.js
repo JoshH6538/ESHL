@@ -1,4 +1,4 @@
-import { allLOs } from "./retool-api.js";
+import { allLOs } from "./api.js";
 
 const USER_CACHE_KEY = "userCache";
 const USER_CACHE_EXPIRY_KEY = "userCacheExpiry";

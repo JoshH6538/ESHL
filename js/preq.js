@@ -1,4 +1,4 @@
-import { zapier } from "./retool-api.js";
+import { zapier } from "./api.js";
 
 function camelize(str) {
   return str.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
@@ -97,6 +97,7 @@ About Client
 
     // Test Zapier integration
     const zapierData = {
+      action: "notifyZapier",
       email: data.get("email"),
       firstname: data.get("first_name"),
       lastname: data.get("last_name"),

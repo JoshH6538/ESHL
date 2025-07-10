@@ -1,4 +1,4 @@
-import { allListings } from "./retool-api.js";
+import { allListings } from "./api.js";
 
 const LISTING_CACHE_KEY = "listingCache";
 const LISTING_CACHE_EXPIRY_KEY = "listingCacheExpiry";

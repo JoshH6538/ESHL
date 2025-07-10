@@ -1,4 +1,4 @@
-import { allLOs } from "./retool-api.js";
+import { allLOs } from "./api.js";
 import { getBranches, arrayToMap } from "./branch-data.js";
 import { getUserData } from "./user-data.js";
 
