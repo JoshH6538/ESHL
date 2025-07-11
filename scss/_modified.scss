@@ -422,3 +422,216 @@ option:hover {
 .form-range {
   border: none !important;
 }
+
+// MAP -----------------------------------
+
+.curved-map {
+  transform: perspective(800px) rotateX(15deg) scaleY(0.95);
+  transform-origin: center;
+  filter: drop-shadow(0 20px 15px rgba(1, 46, 82, 0.651));
+  mask-image: radial-gradient(
+    circle at 40% 30%,
+    rgba(0, 0, 0, 1) 70%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at 40% 30%,
+    rgba(0, 0, 0, 1) 70%,
+    transparent 100%
+  );
+  overflow: visible !important;
+}
+
+.curved-map img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-info,
+.map-info::before {
+  background-color: #0f3848 !important;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.575);
+  overflow: visible !important;
+}
+
+.map-info::before {
+  box-shadow: none !important;
+}
+.location-pin {
+  position: absolute !important;
+  transform: translate(
+    -50%,
+    -100%
+  ) !important; /* optional: align center-bottom */
+  z-index: 1;
+}
+
+.location-pin:hover,
+.location-pin:focus {
+  position: absolute;
+  z-index: 2;
+}
+
+.info > h5 {
+  color: white;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
+
+.info a {
+  color: rgb(111, 195, 255) !important;
+  font-size: 20px !important;
+  text-shadow: 2px 4px 4px rgb(0, 0, 0);
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.info span {
+  color: rgb(207, 207, 207) !important;
+  font-weight: 500;
+  font-size: 16px !important;
+  cursor: default;
+}
+
+.info .active-id:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: rgb(132, 204, 254) !important;
+}
+
+.spinner::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url(../images/es/svg/shape_79.svg) no-repeat center;
+  background-size: cover;
+  margin-left: 5px;
+  vertical-align: 2px;
+  animation: rotated 2s infinite linear;
+}
+
+.marquee {
+  padding-bottom: 3vw !important;
+}
+
+.map-wrapper {
+  aspect-ratio: 16 / 9 !important;
+  padding-top: 10% !important;
+  position: relative !important;
+  overflow: visible !important;
+  min-height: 80vmin;
+}
+
+.map-background {
+  background-image: url("/images/es/svg/us.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+/* === Default desktop positions === */
+.pin-california {
+  left: 20% !important;
+  top: 52% !important;
+}
+.pin-oregon {
+  left: 22% !important;
+  top: 34% !important;
+}
+.pin-washington {
+  left: 24% !important;
+  top: 26% !important;
+}
+.pin-arizona {
+  left: 32% !important;
+  top: 65% !important;
+}
+.pin-newmexico {
+  left: 42% !important;
+  top: 65% !important;
+}
+.pin-colorado {
+  left: 43% !important;
+  top: 50% !important;
+}
+.pin-texas {
+  left: 53% !important;
+  top: 78% !important;
+}
+.pin-tennessee {
+  left: 74% !important;
+  top: 56% !important;
+}
+.pin-florida {
+  left: 86% !important;
+  top: 75% !important;
+}
+
+/* === Mid screen overrides === */
+@media (min-width: 991) and (max-width: 1199px) {
+  .pin-california {
+    top: 51% !important;
+  }
+  .pin-oregon {
+    top: 38% !important;
+  }
+  .pin-washington {
+    top: 31% !important;
+  }
+  .pin-arizona {
+    top: 58% !important;
+  }
+  .pin-newmexico {
+    top: 58% !important;
+  }
+  .pin-colorado {
+    top: 50% !important;
+  }
+  .pin-texas {
+    top: 65% !important;
+  }
+  .pin-tennessee {
+    top: 55% !important;
+  }
+  .pin-florida {
+    top: 69% !important;
+  }
+}
+
+/* === Mobile overrides === */
+@media (max-width: 990px) {
+  .pin-california {
+    top: 53% !important;
+  }
+  .pin-oregon {
+    top: 42% !important;
+  }
+  .pin-washington {
+    top: 36% !important;
+  }
+  .pin-arizona {
+    top: 58% !important;
+  }
+  .pin-newmexico {
+    top: 58% !important;
+  }
+  .pin-colorado {
+    top: 52% !important;
+  }
+  .pin-texas {
+    top: 65% !important;
+  }
+  .pin-tennessee {
+    top: 56% !important;
+  }
+  .pin-florida {
+    top: 68% !important;
+  }
+}
+.map-wrapper-outer {
+  position: relative;
+  overflow: visible;
+  z-index: 0;
+}
