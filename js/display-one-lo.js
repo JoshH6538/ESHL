@@ -1,5 +1,6 @@
 import { getBranches, arrayToMap } from "./branch-data.js";
-import { getUserData } from "./user-data.js";
+import { getUserData, getUserReviews } from "./user-data.js";
+import { addReview, verifyRecaptcha } from "./api.js";
 
 // Grab the userId from the URL query parameters
 const userId = new URLSearchParams(window.location.search).get("userId");
@@ -32,7 +33,13 @@ async function loadUserCached(userId) {
     return;
   }
   // console.log("User found in cache:", user);
+  // SECTION: Fetch user reviews
+  const reviews = await getUserReviews(userId);
 
+  console.log("User reviews fetched:", reviews);
+  if (reviews && reviews.length > 0) {
+    user.reviews = reviews;
+  }
   renderUser(user);
 }
 // SECTION: Populate page with user data
@@ -63,7 +70,7 @@ async function renderUser(user) {
 
   // SECTION: Build basic info field display
   const fields = [
-    { label: "DRE #", value: user["dre"] },
+    { label: "NMLS #", value: user["nmls"] },
     { label: "Branch", value: branchName },
     { label: "Phone", value: user["primaryPhone"] },
     { label: "Email", value: user["primaryEmail"] },
@@ -205,115 +212,77 @@ async function renderUser(user) {
     contactForm.appendChild(callButton);
   }
 
-  // SECTION: Update Realtor Listings
-  // const listings = await getListings();
-  // const listingsContainer = document.getElementById("isotop-gallery-wrapper");
-  // // console.log("Listings loaded:", listings.length);
+  // SECTION: User Reviews
+  const commentsSection = document.getElementById("commentsSection");
+  const commentsContainer = document.getElementById("commentsContainer");
+  commentsContainer.innerHTML = ""; // Clear previous comments
+  const commentsHeader = document.createElement("h3");
+  commentsHeader.className = "blog-inner-title pb-35";
+  commentsHeader.textContent = `${user.reviews.length} Reviews`;
+  commentsContainer.appendChild(commentsHeader);
+  user.reviews.forEach((review) => {
+    const comment = document.createElement("div");
+    comment.className = "comment position-relative d-flex mb-30";
+    comment.innerHTML = `
+      <div class="comment-text">
+        <h5 class="mb-10">${review.reviewer}</h5>
+        <span class="date">${new Date(
+          review.dateSubmitted
+        ).toLocaleDateString()}</span>
+        <p>${review.rating}</p>
+        <p>${review.message}</p>
+      </div>
+    `;
+    commentsContainer.appendChild(comment);
+  });
 
-  // // Filter listings for the specific agent
-  // const userListings = listings.filter((listing) => {
-  //   const agentName = listing.ListAgentFullName?.toLowerCase().trim();
-  //   const agentFirstName = listing.ListAgentFirstName?.toLowerCase().trim();
-  //   const agentLastName = listing.ListAgentLastName?.toLowerCase().trim();
+  // SECTION: Add review form
+  const reviewForm = document.getElementById("reviewForm");
+  reviewForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  //   const userName = fullName.toLowerCase().trim();
-  //   const userFirstName = user.firstName?.toLowerCase().trim();
-  //   const userLastName = user.lastName?.toLowerCase().trim();
+    const form = e.target;
+    const formData = new FormData(form);
+    const reviewer = formData.get("reviewer").trim();
+    const rating = parseInt(formData.get("rating"), 10);
+    const message = formData.get("message").trim();
 
-  //   return (
-  //     agentName === userName ||
-  //     (agentFirstName === userFirstName && agentLastName === userLastName) ||
-  //     (agentName.includes(userFirstName) && agentName.includes(userLastName)) ||
-  //     (userName.includes(agentFirstName) && userName.includes(agentLastName))
-  //   );
-  // });
+    try {
+      const token = await grecaptcha.execute(
+        "6LdMGNspAAAAAI7hAtxj18KrkVYCp-kQq1CPiymO",
+        {
+          action: "submit_review",
+        }
+      );
 
-  // console.log("Filtered user listings:", userListings.length);
+      const response = await fetch(
+        "https://v3tnqbn900.execute-api.us-east-1.amazonaws.com/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            recaptchaToken: token,
+            action: "verifyRecaptcha",
+          }),
+        }
+      );
 
-  // // Clear previous content
-  // listingsContainer.innerHTML = `<div class="grid-sizer"></div>`;
-  // if (!userListings?.length) {
-  //   document.getElementById("listingsContainer").classList.add("d-none");
-  // }
-  // // Render each listing
-  // for (const listing of userListings) {
-  //   const listingItem = document.createElement("div");
-  //   listingItem.className = "isotop-item";
+      const result = await response.json();
 
-  //   // Add status class
-  //   switch (listing.MlsStatus) {
-  //     case "Active":
-  //       listingItem.classList.add("open");
-  //       break;
-  //     case "Pending":
-  //       listingItem.classList.add("pending");
-  //       break;
-  //     case "Closed":
-  //       listingItem.classList.add("closed");
-  //       break;
-  //   }
-
-  //   // Build address
-  //   const address = [
-  //     listing.UnparsedAddress,
-  //     listing.City,
-  //     listing.PostalCode,
-  //     listing.StateOrProvince,
-  //   ]
-  //     .filter(Boolean)
-  //     .join(", ");
-
-  //   // Images
-  //   const images = Array.isArray(listing.imageUrls) ? listing.imageUrls : [];
-  //   const mainImage = images[0] || "images/listing/img_70.jpg";
-
-  //   // Fancybox group name to avoid cross-mixing galleries
-  //   const fancyGroup = `gallery-${listing.ListingKey}`;
-
-  //   const sliderAnchors = images
-  //     .map(
-  //       (url) => `
-  //     <a href="${url}" class="d-block" data-fancybox="${fancyGroup}" data-caption="${address}"></a>`
-  //     )
-  //     .join("");
-
-  //   // Build listing card HTML
-  //   listingItem.innerHTML = `
-  //   <div class="listing-card-one shadow-none style-two mb-50">
-  //     <div class="img-gallery">
-  //       <div class="position-relative overflow-hidden">
-  //         <div class="tag bg-white text-dark fw-500">
-  //           ${listing.MlsStatus || "N/A"}
-  //         </div>
-  //         <img src="${mainImage}" class="w-100" alt="${address}" loading="lazy"/>
-
-  //         <div class="img-slider-btn">
-  //           ${images.length} <i class="fa-regular fa-image"></i>
-  //           ${sliderAnchors}
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <!-- /.img-gallery -->
-
-  //     <div class="property-info d-flex justify-content-between align-items-end pt-30">
-  //       <div class ="pe-1">
-  //         <strong class="price fw-500 color-dark">
-  //           $${Number(listing.ListPrice || 0).toLocaleString()}
-  //         </strong>
-  //         <div class="address pt-5 m0">${address}</div>
-  //       </div>
-  //       <a href="listing_details.html?listingKey=${
-  //         listing.ListingKey
-  //       }" class="btn-four mb-5">
-  //         <i class="bi bi-arrow-up-right"></i>
-  //       </a>
-  //     </div>
-  //     <!-- /.property-info -->
-  //   </div>
-  // `;
-
-  //   listingsContainer.appendChild(listingItem);
-  // }
+      if (result.error) {
+        alert("reCAPTCHA failed or API error");
+      } else {
+        await addReview(userId, reviewer, rating, message);
+        reviewForm.innerHTML = `
+            <p class="text-success">Thank you for your review!</p>
+            <p class="text-muted">Your feedback is valuable to us.</p>
+          `;
+      }
+    } catch (err) {
+      console.error("Submit error:", err);
+      alert("Something went wrong.");
+    }
+  });
 }
 
 // SECTION: Initialize the page

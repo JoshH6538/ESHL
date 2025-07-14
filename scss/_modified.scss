@@ -521,117 +521,140 @@ option:hover {
   position: relative !important;
   overflow: visible !important;
   min-height: 80vmin;
+  padding-top: 0% !important;
+  margin-top: 0 !important;
 }
 
 .map-background {
   background-image: url("/images/es/svg/us.svg");
   background-size: contain;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   width: 100%;
   aspect-ratio: 16 / 9;
 }
 /* === Default desktop positions === */
-.pin-california {
-  left: 20% !important;
-  top: 52% !important;
-}
-.pin-oregon {
-  left: 22% !important;
-  top: 34% !important;
-}
-.pin-washington {
-  left: 24% !important;
-  top: 26% !important;
-}
-.pin-arizona {
-  left: 32% !important;
-  top: 65% !important;
-}
-.pin-newmexico {
-  left: 42% !important;
-  top: 65% !important;
-}
-.pin-colorado {
-  left: 43% !important;
-  top: 50% !important;
-}
-.pin-texas {
-  left: 53% !important;
-  top: 78% !important;
-}
-.pin-tennessee {
-  left: 74% !important;
-  top: 56% !important;
-}
-.pin-florida {
-  left: 86% !important;
-  top: 75% !important;
-}
+// .pin-california {
+//   left: 20% !important;
+//   top: 52% !important;
+// }
+// .pin-oregon {
+//   left: 22% !important;
+//   top: 34% !important;
+// }
+// .pin-washington {
+//   left: 24% !important;
+//   top: 26% !important;
+// }
+// .pin-arizona {
+//   left: 32% !important;
+//   top: 65% !important;
+// }
+// .pin-newmexico {
+//   left: 42% !important;
+//   top: 65% !important;
+// }
+// .pin-colorado {
+//   left: 43% !important;
+//   top: 50% !important;
+// }
+// .pin-texas {
+//   left: 53% !important;
+//   top: 78% !important;
+// }
+// .pin-tennessee {
+//   left: 74% !important;
+//   top: 56% !important;
+// }
+// .pin-florida {
+//   left: 86% !important;
+//   top: 75% !important;
+// }
 
 /* === Mid screen overrides === */
-@media (min-width: 991) and (max-width: 1199px) {
-  .pin-california {
-    top: 51% !important;
-  }
-  .pin-oregon {
-    top: 38% !important;
-  }
-  .pin-washington {
-    top: 31% !important;
-  }
-  .pin-arizona {
-    top: 58% !important;
-  }
-  .pin-newmexico {
-    top: 58% !important;
-  }
-  .pin-colorado {
-    top: 50% !important;
-  }
-  .pin-texas {
-    top: 65% !important;
-  }
-  .pin-tennessee {
-    top: 55% !important;
-  }
-  .pin-florida {
-    top: 69% !important;
-  }
-}
+// @media (min-width: 991) and (max-width: 1199px) {
+//   .pin-california {
+//     top: 51% !important;
+//   }
+//   .pin-oregon {
+//     top: 38% !important;
+//   }
+//   .pin-washington {
+//     top: 31% !important;
+//   }
+//   .pin-arizona {
+//     top: 58% !important;
+//   }
+//   .pin-newmexico {
+//     top: 58% !important;
+//   }
+//   .pin-colorado {
+//     top: 50% !important;
+//   }
+//   .pin-texas {
+//     top: 65% !important;
+//   }
+//   .pin-tennessee {
+//     top: 55% !important;
+//   }
+//   .pin-florida {
+//     top: 69% !important;
+//   }
+// }
 
 /* === Mobile overrides === */
-@media (max-width: 990px) {
-  .pin-california {
-    top: 53% !important;
-  }
-  .pin-oregon {
-    top: 42% !important;
-  }
-  .pin-washington {
-    top: 36% !important;
-  }
-  .pin-arizona {
-    top: 58% !important;
-  }
-  .pin-newmexico {
-    top: 58% !important;
-  }
-  .pin-colorado {
-    top: 52% !important;
-  }
-  .pin-texas {
-    top: 65% !important;
-  }
-  .pin-tennessee {
-    top: 56% !important;
-  }
-  .pin-florida {
-    top: 68% !important;
-  }
-}
+// @media (max-width: 990px) {
+//   .pin-california {
+//     top: 53% !important;
+//   }
+//   .pin-oregon {
+//     top: 42% !important;
+//   }
+//   .pin-washington {
+//     top: 36% !important;
+//   }
+//   .pin-arizona {
+//     top: 58% !important;
+//   }
+//   .pin-newmexico {
+//     top: 58% !important;
+//   }
+//   .pin-colorado {
+//     top: 52% !important;
+//   }
+//   .pin-texas {
+//     top: 65% !important;
+//   }
+//   .pin-tennessee {
+//     top: 56% !important;
+//   }
+//   .pin-florida {
+//     top: 68% !important;
+//   }
+// }
 .map-wrapper-outer {
   position: relative;
   overflow: visible;
   z-index: 0;
+}
+
+.star-rating {
+  direction: rtl;
+  font-size: 2rem;
+  unicode-bidi: bidi-override;
+  display: inline-flex;
+}
+.star-rating input[type="radio"] {
+  display: none;
+}
+.star-rating label {
+  color: #ddd;
+  cursor: pointer;
+}
+.star-rating input[type="radio"]:checked ~ label {
+  color: $color-one;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: $color-one;
 }

@@ -48,6 +48,12 @@
       href="css/responsive.css"
       media="all"
     />
+    <script
+      src="https://www.google.com/recaptcha/api.js?render=6LdMGNspAAAAAI7hAtxj18KrkVYCp-kQq1CPiymO"
+      async
+      defer
+    ></script>
+
     <script src="js/display-one-lo.js" type="module"></script>
     <script src="/js/production-routing.js" type="module"></script>
 
@@ -368,6 +374,81 @@
               </div>
             </div> -->
             <!-- /.agent-property-listing -->
+            <!-- /.blog-meta-three -->
+            <div class="blog-comment-area" id="commentsContainer">
+              <h3 class="blog-inner-title pb-35">2 Reviews</h3>
+              <div class="comment position-relative d-flex mb-30">
+                <div class="comment-text">
+                  <div class="name fw-500">Al Hasani</div>
+                  <div class="date">27 Aug, 2023, 4:10pm</div>
+                  <p>
+                    One touch of a red-hot stove is usually all we need to avoid
+                    that kind of lorem discomfort in future. The same true we
+                    experience
+                  </p>
+                  <a href="#" class="reply-btn tran3s">Reply</a>
+                  <!-- /.comment -->
+                </div>
+                <!-- /.comment-text -->
+              </div>
+              <!-- /.comment -->
+              <div class="comment position-relative d-flex mb-30">
+                <div class="comment-text">
+                  <div class="name fw-500">Jubayer Al Hasan</div>
+                  <div class="date">12 June, 2023, 7:30pm</div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur. Enim in aceu velit.
+                    Euismod non posu pellentesque neque. Feugiat cras egestas
+                    facilisis.
+                  </p>
+                  <a href="#" class="reply-btn tran3s">Reply</a>
+                </div>
+                <!-- /.comment-text -->
+              </div>
+              <!-- /.comment -->
+            </div>
+            <!-- /.blog-comment-area -->
+            <div class="blog-comment-form">
+              <h3 class="blog-inner-title">Leave a Review</h3>
+
+              <form
+                id="reviewForm"
+                method="post"
+                action="https://v3tnqbn900.execute-api.us-east-1.amazonaws.com"
+                class="mt-30"
+              >
+                <div class="input-wrapper input-group-meta form-group mb-30">
+                  <label>Name*</label>
+                  <input type="text" name="reviewer" placeholder="Full Name" />
+                </div>
+                <!-- /.input-wrapper -->
+                <div class="input-wrapper mb-40">
+                  <label>Rating*</label>
+                  <div class="star-rating">
+                    <input type="radio" name="rating" id="star5" value="5" />
+                    <label for="star5">&#9733;</label>
+                    <input type="radio" name="rating" id="star4" value="4" />
+                    <label for="star4">&#9733;</label>
+                    <input type="radio" name="rating" id="star3" value="3" />
+                    <label for="star3">&#9733;</label>
+                    <input type="radio" name="rating" id="star2" value="2" />
+                    <label for="star2">&#9733;</label>
+                    <input type="radio" name="rating" id="star1" value="1" />
+                    <label for="star1">&#9733;</label>
+                  </div>
+                </div>
+                <!-- /.input-wrapper -->
+                <div class="input-wrapper mb-30">
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                  ></textarea>
+                </div>
+                <!-- /.input-wrapper -->
+                <button class="btn-five rounded-0">Submit Review</button>
+              </form>
+            </div>
+            <!-- /.blog-comment-form -->
           </div>
         </div>
       </div>
