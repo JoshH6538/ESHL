@@ -53,7 +53,6 @@
       async
       defer
     ></script>
-
     <script src="js/display-one-lo.js" type="module"></script>
     <script src="/js/production-routing.js" type="module"></script>
 
@@ -96,10 +95,9 @@
 		============================================== 
 		-->
       <header
-        class="theme-main-menu menu-overlay menu-style-six sticky-menu"
-        id="header2"
+        class="theme-main-menu menu-overlay menu-style-seven white-vr sticky-menu"
       >
-        <div class="inner-content gap-two">
+        <div class="inner-content gap-one">
           <div class="top-header position-relative">
             <div class="d-flex align-items-center justify-content-between">
               <!-- ES NAV LOGO -->
@@ -109,7 +107,7 @@
                     loading="lazy"
                     src="images/es/ESHL-LOGO-WHITE.png"
                     alt="Logo"
-                    height="50"
+                    style="height: 50px"
                     class="logo-img"
                   />
                 </a>
@@ -164,16 +162,23 @@
                         >Loan Officers</a
                       >
                     </li>
-                    <!-- LISTINGS DROPDOWN -->
-                    <li class="nav-item me-5">
-                      <a class="nav-link" href="listings.html">Listings</a>
+                    <!-- PRE QUAL LINK -->
+                    <li class="nav-item me-5" style="white-space: nowrap">
+                      <a class="nav-link" href="preq.html">Pre-Qualification</a>
+                    </li>
+                    <!-- Calculator LINK -->
+                    <li class="nav-item me-5" style="white-space: nowrap">
+                      <a class="nav-link" href="calculator.html">Calculator</a>
                     </li>
                     <!-- ABOUT LINK -->
-                    <li class="nav-item me-5">
+                    <li class="nav-item me-5" style="white-space: nowrap">
                       <a class="nav-link" href="about.html">About</a>
                     </li>
                     <!-- CONTACT US BUTTON -->
-                    <li class="d-md-none ps-2 pe-2 mt-20">
+                    <li
+                      class="d-md-none ps-2 pe-2 mt-20"
+                      style="white-space: nowrap"
+                    >
                       <a href="contact.html" class="btn-two w-100"
                         ><span>Contact Us</span>
                         <i class="fa-regular fa-comment"></i
@@ -419,13 +424,24 @@
               >
                 <div class="input-wrapper input-group-meta form-group mb-30">
                   <label>Name*</label>
-                  <input type="text" name="reviewer" placeholder="Full Name" />
+                  <input
+                    type="text"
+                    name="reviewer"
+                    placeholder="Full Name"
+                    required
+                  />
                 </div>
                 <!-- /.input-wrapper -->
                 <div class="input-wrapper mb-40">
                   <label>Rating*</label>
-                  <div class="star-rating">
-                    <input type="radio" name="rating" id="star5" value="5" />
+                  <fieldset class="star-rating">
+                    <input
+                      type="radio"
+                      name="rating"
+                      id="star5"
+                      value="5"
+                      required
+                    />
                     <label for="star5">&#9733;</label>
                     <input type="radio" name="rating" id="star4" value="4" />
                     <label for="star4">&#9733;</label>
@@ -435,7 +451,7 @@
                     <label for="star2">&#9733;</label>
                     <input type="radio" name="rating" id="star1" value="1" />
                     <label for="star1">&#9733;</label>
-                  </div>
+                  </fieldset>
                 </div>
                 <!-- /.input-wrapper -->
                 <div class="input-wrapper mb-30">
@@ -445,7 +461,14 @@
                   ></textarea>
                 </div>
                 <!-- /.input-wrapper -->
-                <button class="btn-five rounded-0">Submit Review</button>
+                <div
+                  class="input-wrapper mb-30 d-flex"
+                  id="reviewFormSubmission"
+                >
+                  <button class="btn-five rounded-0" id="submitReviewBtn">
+                    Submit Review
+                  </button>
+                </div>
               </form>
             </div>
             <!-- /.blog-comment-form -->
@@ -456,26 +479,22 @@
 
       <!--
 		=====================================================
-			Footer Three
+			Footer Two
 		=====================================================
 		-->
-      <div class="footer-three">
+      <div class="footer-two">
         <div class="container container-large">
           <div class="bg-wrapper position-relative z-1">
-            <div class="row">
-              <div class="col-xl-4 col-lg-4 mb-40 lg-mb-60">
-                <div class="footer-intro pe-xxl-5 pe-xl-3">
+            <div class="row justify-content-between">
+              <div class="col-xl-4 d-flex align-items-center">
+                <div class="footer-intro position-relative z-1 px-5">
                   <div class="logo mb-15">
-                    <a href="/">
-                      <img
-                        loading="lazy"
-                        src="images/es/ESHL-LOGO.png"
-                        alt=""
-                      />
+                    <a href="index.html">
+                      <img src="images/es/ESHL-LOGO.png" alt="" />
                     </a>
                   </div>
                   <!-- logo -->
-                  <p class="mb-45 lg-mb-30">
+                  <p class="mb-45 lg-mb-30 pe-2 pe-lg-5">
                     1499 Huntington Dr Suite 500, South Pasadena, CA 91030, USA
                     <a
                       href="https://www.google.com/search?sca_esv=6d0ad94c53cfdd66&rlz=1C1OZZY_en-GBUS1161US1161&tbm=lcl&q=Equity+Smart+Home+Loans&rflfq=1&num=20&stick=H4sIAAAAAAAAAB2QS0rEUBRE6YHivBuFjLKE-_8sQHDgQHAFQSIK3Ua724HbcQWuy1VYMYM8eO9W1al7dTlssyrTNNo7grVIadixFxWrsKbj1STZhq00NbdSWpZGZXBC70oKrdD6SZE59EXtJUnOHozRgn7HylRpbVzszRTcPmw52CU9VFMR1iCAaxgmOpilxTNEA5eMVO60cueCh6ymngUNGdSeZKQJ1HCtImhNhA1HArW0G4yKI2XNq16hSAL1uBwebIqyqApHMV4pIktCHFAsmKzAW6K1cnr_7w_h1KFGoatRwtRMO9UavFIIyoYePTSpDT_VCv6HQikTXLVhHYXdCK9QJmogYyaVRAWln83md3P9MC_v-3mc9qdlPM3T8ellfF6O3xc3tx-fr-ev8fEwHc_j3XKYx_tlejv9AfU2NpfjAQAA&ved=2ahUKEwjhzbi3tJKOAxWzEkQIHWqDJgQQjHJ6BAgpEAM&rldimm=7887743695966138030"
@@ -484,65 +503,88 @@
                       <i class="fa-regular fa-location-dot"></i>
                     </a>
                   </p>
+
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/es/svg/shape_46.svg"
+                    alt=""
+                    class="lazy-img shapes shape_01 d-none d-xl-block bottom-0"
+                  />
                 </div>
               </div>
-              <div class="col-lg-2 col-md-4 mb-30 text-center text-xl-start">
-                <div class="footer-nav">
-                  <h5 class="footer-title">Links</h5>
-                  <ul class="footer-nav-link style-none">
-                    <li><a href="/">Home</a></li>
-                    <li>
-                      <a href="https://www.myeshl.com/real-estate-services/"
-                        >Portal</a
-                      >
-                    </li>
-                    <li>
-                      <a href="about.html">About</a>
-                    </li>
-                    <li>
-                      <a href="contact.html">Contact Us</a>
-                    </li>
-                    <li>
-                      <a href="https://www.myeshl.com/" target="_blank"
-                        >Home Loans</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div
-                class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-30 text-center text-xl-start"
-              >
-                <div class="footer-nav">
-                  <h5 class="footer-title">IDX Listings</h5>
-                  <ul class="footer-nav-link style-none">
-                    <li><a href="listings.html">All</a></li>
-                    <li>
-                      <a href="listings.html?county=Los+Angeles">Los Angeles</a>
-                    </li>
-                    <li>
-                      <a href="listings.html?county=Orange">Orange County</a>
-                    </li>
-                    <li>
-                      <a href="listings.html?county=San+Bernardino"
-                        >San Bernardino</a
-                      >
-                    </li>
-                    <li>
-                      <a href="listings.html?county=Riverside">Riverside</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div
-                class="col-xl-3 col-lg-3 col-md-4 col-sm-12 mb-30 text-center text-xl-start"
-              >
-                <div class="footer-nav">
-                  <h5 class="footer-title">Legal</h5>
-                  <ul class="footer-nav-link style-none">
-                    <li><a href="/terms.html">Terms & conditions</a></li>
-                    <li><a href="privacy.html">Privacy policy</a></li>
-                  </ul>
+              <div class="col-xl-8">
+                <div class="ms-xxl-5 ps-xl-5 mt-100 lg-mt-20">
+                  <div class="row justify-content-between">
+                    <!-- LINKS -->
+                    <div class="col-lg-3 col-md-4 text-center text-xl-start">
+                      <div class="footer-nav pt-30">
+                        <h5 class="footer-title">Links</h5>
+                        <ul class="footer-nav-link style-none">
+                          <li><a href="/">Home</a></li>
+                          <li>
+                            <a href="loan_officers.html">Loan Officers</a>
+                          </li>
+                          <li>
+                            <a href="preq.html">Pre-Qualification</a>
+                          </li>
+                          <li>
+                            <a href="calculator.html">Calculator</a>
+                          </li>
+                          <li>
+                            <a href="about.html">About</a>
+                          </li>
+                          <li>
+                            <a href="contact.html">Contact Us</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- LEGAL -->
+                    <div
+                      class="col-xxl-3 col-xl-4 col-lg-3 col-md-4 text-center text-xl-start"
+                    >
+                      <div class="footer-nav pt-30">
+                        <h5 class="footer-title">Legal</h5>
+                        <ul class="footer-nav-link style-none">
+                          <li><a href="/terms.html">Terms & conditions</a></li>
+                          <li><a href="privacy.html">Privacy policy</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- COMPANY -->
+                    <div class="col-lg-3 col-md-4 text-center text-xl-start">
+                      <div class="footer-nav pt-30">
+                        <h5 class="footer-title">Company</h5>
+                        <ul class="footer-nav-link style-none">
+                          <li>
+                            <a href="https://www.myeshl.com/" target="_blank"
+                              >ESHL for LOs</a
+                            >
+                          </li>
+                          <li>
+                            <a href="https://www.myeshl.com/portal/"
+                              >LO Portal</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.equitysmartres.com"
+                              target="_blank"
+                              >Real Estate</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-xxl-3 col-lg-2 d-none d-lg-block">
+                      <img
+                        src="images/lazy.svg"
+                        data-src="images/es/svg/shape_47.svg"
+                        alt=""
+                        class="lazy-img mt-50"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -552,18 +594,54 @@
             <div
               class="d-md-flex justify-content-center justify-content-md-between align-items-center"
             >
-              <p class="mb-15 text-center text-lg-start fs-16 order-md-first">
-                © 2025 Equity Smart Home Loans. All Rights Reserved. CA DRE
-                #01906808 | Licensed in California, Arizona, Nevada Equity Smart
-                Home Loans is an Equal Housing Opportunity brokerage. All
-                information deemed reliable but not guaranteed. Subject to
-                change without notice.
-              </p>
+              <div class="row gx-xxl-5 align-items-center">
+                <div
+                  class="col-md-1 d-flex align-items-center justify-content-center justify-content-md-start"
+                >
+                  <img
+                    src="images/lazy.svg"
+                    data-src="images/es/eho.png"
+                    alt=""
+                    style=""
+                    class="lazy-img wow fadeInLeft"
+                  />
+                </div>
+                <div class="col-md-11">
+                  <p class="mb-15 text-center text-lg-start order-md-first">
+                    © 2025 Equity Smart Home Loans. All Rights Reserved. CA NMLS
+                    #856170 | Licensed in California, Arizona, Nevada, New
+                    Mexico, Oregon, Washington, Colorado, Texas, Tennessee,
+                    &amp; Florida. Equity Smart Home Loans is an Equal Housing
+                    Opportunity brokerage. All information deemed reliable but
+                    not guaranteed. Subject to change without notice.
+                  </p>
+                </div>
+                <div class="col-12 text-center mt-20">
+                  <p class="fst-italic" style="font-size: 10px">
+                    TEXAS CONSUMERS ONLY: CONSUMERS WISHING TO FILE A COMPLAINT
+                    AGAINST A COMPANY OR A RESIDENTIAL MORTGAGE LOAN ORIGINATOR
+                    SHOULD COMPLETE AND SEND A COMPLAINT FORM TO THE TEXAS
+                    DEPARTMENT OF SAVINGS AND MORTGAGE LENDING, 2601 NORTH
+                    LAMAR, SUITE 201, AUSTIN, TEXAS 78705. COMPLAINT FORMS AND
+                    INSTRUCTIONS MAY BE OBTAINED FROM THE DEPARTMENT’S WEBSITE
+                    AT WWW.SML.TEXAS.GOV. A TOLL-FREE CONSUMER HOTLINE IS
+                    AVAILABLE AT 1-877-276-5550. THE DEPARTMENT MAINTAINS A
+                    RECOVERY FUND TO MAKE PAYMENTS OF CERTAIN ACTUAL OUT OF
+                    POCKET DAMAGES SUSTAINED BY BORROWERS CAUSED BY ACTS OF
+                    LICENSED RESIDENTIAL MORTGAGE LOAN ORIGINATORS. A WRITTEN
+                    APPLICATION FOR REIMBURSEMENT FROM THE RECOVERY FUND MUST BE
+                    FILED WITH AND INVESTIGATED BY THE DEPARTMENT PRIOR TO THE
+                    PAYMENT OF A CLAIM. FOR MORE INFORMATION ABOUT THE RECOVERY
+                    FUND, PLEASE CONSULT THE DEPARTMENT’S WEBSITE AT
+                    WWW.SML.TEXAS.GOV.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- /.footer-three -->
+      <!-- /.footer-two -->
 
       <button class="scroll-top">
         <i class="bi bi-arrow-up-short"></i>

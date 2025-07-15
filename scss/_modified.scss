@@ -208,9 +208,14 @@ header.theme-main-menu.fixed .right-widget ul li a:hover {
   pointer-events: all;
 }
 
-// Input styles for the city vs zip code search on realtors page
+// Input style for inactive input fields
 .inactive-input {
   background-color: #00000030;
+}
+
+.inactive-input:hover {
+  background-color: #00000030;
+  cursor: default;
 }
 
 // Card styles for popular locations cards (counties)
@@ -645,7 +650,7 @@ option:hover {
   display: inline-flex;
 }
 .star-rating input[type="radio"] {
-  display: none;
+  opacity: 0;
 }
 .star-rating label {
   color: #ddd;

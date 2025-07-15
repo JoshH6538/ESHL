@@ -16699,6 +16699,11 @@ header.theme-main-menu.fixed .right-widget ul li a:hover {
   background-color: rgba(0, 0, 0, 0.1882352941);
 }
 
+.inactive-input:hover {
+  background-color: rgba(0, 0, 0, 0.1882352941);
+  cursor: default;
+}
+
 .card-style-seven {
   flex: 1 1 0;
   max-width: 300px; /* or whatever size fits all on one line */
@@ -17016,7 +17021,7 @@ option:hover {
 }
 
 .star-rating input[type=radio] {
-  display: none;
+  opacity: 0;
 }
 
 .star-rating label {

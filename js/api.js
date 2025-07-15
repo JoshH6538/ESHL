@@ -95,7 +95,7 @@ export async function verifyRecaptcha(token) {
     body: JSON.stringify({
       action: "verifyRecaptcha",
       recaptchaToken: token,
-      type: "verifyRecaptcha",
+      type: "",
     }),
   });
 }

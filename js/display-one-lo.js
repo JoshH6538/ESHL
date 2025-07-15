@@ -116,10 +116,9 @@ async function renderUser(user) {
 
   // SECTION: Update image wrapper with profile photo and tag
   const wrapper = document.getElementById("loanOfficerImageWrapper");
-  const iconURL = user.iconURL?.trim() || "images/lazy.svg";
-
-  wrapper.classList.toggle("bg-dark", !user.iconURL?.trim());
-  wrapper.classList.toggle("bg-white", !!user.iconURL?.trim());
+  const iconURL =
+    user.iconURL?.trim() ||
+    "https://equitysmartloans.com/wp-content/uploads/2022/05/placeHolder.jpeg";
   wrapper.style.backgroundImage = `url(${iconURL})`;
   wrapper.style.backgroundSize = "contain";
   wrapper.style.backgroundPosition = "center";
@@ -240,11 +239,20 @@ async function renderUser(user) {
   const reviewForm = document.getElementById("reviewForm");
   reviewForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const submitButton = document.getElementById("submitReviewBtn");
+
+    submitButton.disabled = true; // Disable button to prevent multiple submissions
+    submitButton.textContent = "Submitting";
+    submitButton.classList.add("inactive-input");
+    const loadingImg = document.createElement("img");
+    loadingImg.src = "images/lazyBlue.svg";
+    document.getElementById("reviewFormSubmission").appendChild(loadingImg);
 
     const form = e.target;
     const formData = new FormData(form);
     const reviewer = formData.get("reviewer").trim();
     const rating = parseInt(formData.get("rating"), 10);
+
     const message = formData.get("message").trim();
 
     try {
@@ -254,7 +262,7 @@ async function renderUser(user) {
           action: "submit_review",
         }
       );
-
+      console.log("reCAPTCHA token received:", token);
       const response = await fetch(
         "https://v3tnqbn900.execute-api.us-east-1.amazonaws.com/",
         {
