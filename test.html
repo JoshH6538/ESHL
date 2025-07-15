@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map Pin Debug View</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #111;
+        height: 100vh;
+      }
+
+      .map-wrapper {
+        width: 1600px;
+        height: 900px;
+        background-image: url("/images/es/svg/us.svg"); /* Update to your image path */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        border: 2px solid white;
+      }
+
+      .location-pin {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="map-wrapper" id="map">
+      <!-- Add pins manually here -->
+      <div
+        class="location-pin pin-california"
+        style="left: 22%; top: 50%"
+      ></div>
+      <div class="location-pin pin-oregon" style="left: 24%; top: 24%"></div>
+      <div
+        class="location-pin pin-washington"
+        style="left: 26%; top: 13%"
+      ></div>
+      <div class="location-pin pin-arizona" style="left: 33%; top: 62%"></div>
+      <div class="location-pin pin-newmexico" style="left: 43%; top: 62%"></div>
+      <div class="location-pin pin-colorado" style="left: 44%; top: 47%"></div>
+      <div class="location-pin pin-texas" style="left: 53%; top: 72%"></div>
+      <div class="location-pin pin-tennessee" style="left: 73%; top: 55%"></div>
+      <div class="location-pin pin-florida" style="left: 84%; top: 80%"></div>
+    </div>
+  </body>
+</html>

@@ -16905,50 +16905,60 @@ option:hover {
   border: none !important;
 }
 
-.curved-map {
+/* ==================== MAP WRAPPER ==================== */
+.map-wrapper-outer {
+  position: relative;
+  overflow: visible;
+  z-index: 0;
+  /* 3D visual effect */
   transform: perspective(800px) rotateX(15deg) scaleY(0.95);
   transform-origin: center;
-  filter: drop-shadow(0 20px 15px rgba(1, 46, 82, 0.651));
+  /* Shadow & masking */
+  filter: drop-shadow(0 20px 15px rgba(1, 46, 82, 0.65));
   mask-image: radial-gradient(circle at 40% 30%, rgb(0, 0, 0) 70%, transparent 100%);
   -webkit-mask-image: radial-gradient(circle at 40% 30%, rgb(0, 0, 0) 70%, transparent 100%);
-  overflow: visible !important;
 }
 
-.curved-map img {
+.map-wrapper {
+  position: relative;
   width: 100%;
-  height: auto;
-  display: block;
+  max-width: 1000px;
+  aspect-ratio: 1000/589;
+  margin: 0 auto;
 }
 
+.map-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==================== LOCATION PINS ==================== */
+.location-pin:hover,
+.location-pin:focus {
+  z-index: 2;
+}
+
+/* ==================== MAP INFO BOX ==================== */
 .map-info,
 .map-info::before {
   background-color: #0f3848 !important;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.575);
-  overflow: visible !important;
+  overflow: visible;
 }
 
 .map-info::before {
   box-shadow: none !important;
 }
 
-.location-pin {
-  position: absolute !important;
-  transform: translate(-50%, -100%) !important; /* optional: align center-bottom */
-  z-index: 1;
-}
-
-.location-pin:hover,
-.location-pin:focus {
-  position: absolute;
-  z-index: 2;
-}
-
-.info > h5 {
+.info > h5,
+.popup-header {
   color: white;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
 
-.info a {
+.info a,
+.popup-a {
   color: rgb(111, 195, 255) !important;
   font-size: 20px !important;
   text-shadow: 2px 4px 4px rgb(0, 0, 0);
@@ -16956,19 +16966,71 @@ option:hover {
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.info span {
+.info span,
+.popup-span {
   color: rgb(207, 207, 207) !important;
   font-weight: 500;
   font-size: 16px !important;
   cursor: default;
 }
 
-.info .active-id:hover {
+.info .active-id:hover,
+.popup-id:hover {
   transform: scale(1.05);
-  transition: transform 0.3s ease, color 0.3s ease;
   color: rgb(132, 204, 254) !important;
 }
 
+@media (max-width: 600px) {
+  .mobile-map-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 75%;
+    max-width: 90vw;
+    padding: 12px;
+    background-color: #0f3848;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+    color: white;
+  }
+  .mobile-map-info h5 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .mobile-map-info img {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+  .mobile-map-info .info a {
+    color: rgb(111, 195, 255);
+    font-size: 16px;
+  }
+  .mobile-map-info .info span {
+    font-size: 14px;
+    color: rgb(207, 207, 207);
+  }
+  /* Hide default map-info inside pins on mobile */
+  .location-pin .map-info {
+    display: none !important;
+  }
+  .mobile-map-info .close-btn {
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+    color: rgb(180, 220, 255);
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+  }
+  .mobile-map-info .close-btn:hover {
+    color: white;
+  }
+}
+/* Spinner icon on NMLS ID */
 .spinner::after {
   content: "";
   display: inline-block;
@@ -16981,38 +17043,22 @@ option:hover {
   animation: rotated 2s infinite linear;
 }
 
+.map-wrapper,
+.map-wrapper-outer,
+.map-info {
+  overflow: visible !important;
+}
+
+.map-wrapper-outer {
+  padding-top: 60px; /* or more depending on popup size */
+}
+
+/* ==================== MISC ==================== */
 .marquee {
   padding-bottom: 3vw !important;
 }
 
-.map-wrapper {
-  aspect-ratio: 16/9 !important;
-  padding-top: 10% !important;
-  position: relative !important;
-  overflow: visible !important;
-  min-height: 80vmin;
-  padding-top: 0% !important;
-  margin-top: 0 !important;
-}
-
-.map-background {
-  background-image: url("/images/es/svg/us.svg");
-  background-size: contain;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-
-/* === Default desktop positions === */
-/* === Mid screen overrides === */
-/* === Mobile overrides === */
-.map-wrapper-outer {
-  position: relative;
-  overflow: visible;
-  z-index: 0;
-}
-
+/* ==================== STAR RATING ==================== */
 .star-rating {
   direction: rtl;
   font-size: 2rem;
@@ -17029,13 +17075,10 @@ option:hover {
   cursor: pointer;
 }
 
-.star-rating input[type=radio]:checked ~ label {
-  color: #007dab;
-}
-
+.star-rating input[type=radio]:checked ~ label,
 .star-rating label:hover,
 .star-rating label:hover ~ label {
-  color: #007dab;
+  color: var(--color-one);
 }
 
 /*# sourceMappingURL=style.css.map */
