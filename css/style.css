@@ -16831,7 +16831,8 @@ h6:hover {
   transition: padding 0.4s ease-out;
 }
 
-#form-step-indicator .nav-link {
+#form-step-indicator .nav-link,
+#mobile-step-indicator .nav-link {
   pointer-events: none;
   opacity: 0.6;
   font-weight: 500;
@@ -16849,6 +16850,7 @@ h6:hover {
   font-weight: 500;
   padding: 10px 24px;
   border-radius: 50px;
+  background: #f0f0f0;
   font-size: 16px;
   color: #012a3a;
   transition: all 0.3s ease;
@@ -16857,12 +16859,29 @@ h6:hover {
 }
 
 #form-step-indicator .nav-link.active,
-#mortgage-tablist .nav-link.active {
+#mortgage-tablist .nav-link.active,
+#mobile-step-indicator .nav-link.active {
   background: #007dab;
   color: #fff;
   opacity: 1;
 }
 
+@media screen and (max-width: 991.98px) {
+  .tab-pane > div > div.col-12 > button {
+    min-width: 0 !important;
+    width: 40% !important;
+    font-size: 10px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    white-space: nowrap;
+  }
+  #submitApplication {
+    font-size: 10px !important;
+  }
+}
 option:hover {
   background: #007dab !important;
   color: #fff;
@@ -17063,6 +17082,18 @@ option:hover {
 /* ==================== MISC ==================== */
 .marquee {
   padding-bottom: 3vw !important;
+}
+
+#mobile-step-indicator .circle {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  margin: 15px 6px;
+  background-color: #999;
+  border-radius: 50%;
+  text-indent: -9999px;
+  overflow: hidden;
+  display: inline-block;
 }
 
 /* ==================== STAR RATING ==================== */

@@ -13,26 +13,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("preq-form");
 
   function showStep(index) {
+    // Switch tab panes
     tabPanes.forEach((pane, i) => {
       pane.classList.toggle("show", i === index);
       pane.classList.toggle("active", i === index);
     });
 
-    indicators.forEach((item, i) => {
-      item.classList.toggle("active", i === index);
+    // Update mobile nav pills ONLY
+    const mobileIndicators = document.querySelectorAll(
+      "#mobile-step-indicator .nav-link"
+    );
+
+    mobileIndicators.forEach((el, i) => {
+      if (i === index) {
+        el.classList.remove("circle");
+        el.classList.add("active");
+        el.textContent = tabPanes[i].dataset.label;
+      } else {
+        el.classList.remove("active");
+        el.classList.add("circle");
+        el.textContent = "•";
+      }
+    });
+
+    // Update Desktop pills
+    const desktopIndicators = document.querySelectorAll(
+      "#form-step-indicator .nav-link"
+    );
+    desktopIndicators.forEach((el, i) => {
+      el.classList.toggle("active", i === index);
     });
   }
-
   // Handle Next/Back buttons
   document
     .querySelectorAll("button[data-bs-target^='#step']")
     .forEach((button) => {
-      button.addEventListener("click", (e) => {
+      button.addEventListener("click", () => {
         const targetId = button.getAttribute("data-bs-target");
+        const direction = button.getAttribute("data-direction");
         const nextIndex = steps.indexOf(targetId);
         const currentPane = button.closest(".tab-pane");
 
         if (nextIndex > -1 && currentPane) {
+          if (direction === "back") {
+            showStep(nextIndex); // Go back with no validation
+            return;
+          }
+
+          // Validate inputs for "next"
           const inputs = currentPane.querySelectorAll(
             "input, select, textarea"
           );

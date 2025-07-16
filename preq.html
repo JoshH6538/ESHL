@@ -238,7 +238,9 @@
           </div>
 
           <div class="multi-step-form-one px-5">
-            <nav class="form-nav-one d-flex justify-content-center mb-500">
+            <nav
+              class="form-nav-one d-none d-md-flex justify-content-center mb-500"
+            >
               <div
                 class="nav nav-pills"
                 role="tablist"
@@ -252,11 +254,33 @@
                 <div class="nav-link">About You</div>
               </div>
             </nav>
+            <!-- MOBILE PILLS -->
+            <nav
+              class="form-nav-one d-md-none d-flex justify-content-center mb-500"
+            >
+              <div
+                class="nav nav-pills"
+                id="mobile-step-indicator"
+                role="tablist"
+              >
+                <div class="nav-link active">Consent</div>
+                <div class="nav-link circle" id="step1">•</div>
+                <div class="nav-link circle" id="step2">•</div>
+                <div class="nav-link circle" id="step3">•</div>
+                <div class="nav-link circle" id="step4">•</div>
+                <div class="nav-link circle" id="step5">•</div>
+              </div>
+            </nav>
 
-            <div class="tab-content mt-50 px-5">
+            <div class="tab-content mt-50 px-0 mb-100">
               <form id="preq-form">
                 <!-- Step 0: Consent -->
-                <div class="tab-pane show active" id="step0" role="tabpanel">
+                <div
+                  class="tab-pane show active"
+                  id="step0"
+                  role="tabpanel"
+                  data-label="Consent"
+                >
                   <div class="text-center">
                     <p class="fs-22 mb-40">
                       By filling out this form, you are opting in to receive
@@ -281,7 +305,12 @@
                   </div>
                 </div>
                 <!-- Step 1: Loan -->
-                <div class="tab-pane" id="step1" role="tabpanel">
+                <div
+                  class="tab-pane"
+                  id="step1"
+                  role="tabpanel"
+                  data-label="Loan"
+                >
                   <div class="form-style-one row g-4 controls">
                     <div class="col-md-6 m-auto">
                       <div class="input-group-meta form-group">
@@ -302,12 +331,13 @@
                       <div class="help-block with-errors"></div>
                     </div>
                     <div
-                      class="col-12 d-flex justify-content-center gap-5 mt-40"
+                      class="col-12 d-flex justify-content-center gap-2 mt-40 px-5"
                     >
                       <button
-                        class="btn-twelve sm"
+                        class="btn-twelve sm w-md-100"
                         type="button"
                         data-bs-target="#step0"
+                        data-direction="back"
                       >
                         Back
                       </button>
@@ -315,6 +345,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step2"
+                        data-direction="next"
                       >
                         Next
                       </button>
@@ -322,7 +353,12 @@
                   </div>
                 </div>
                 <!-- Step 2: Home -->
-                <div class="tab-pane" id="step2" role="tabpanel">
+                <div
+                  class="tab-pane"
+                  id="step2"
+                  role="tabpanel"
+                  data-label="Home"
+                >
                   <div
                     class="form-style-one row g-4 controls d-flex justify-content-center"
                   >
@@ -404,6 +440,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step1"
+                        data-direction="back"
                       >
                         Back
                       </button>
@@ -411,6 +448,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step3"
+                        data-direction="next"
                       >
                         Next
                       </button>
@@ -418,7 +456,12 @@
                   </div>
                 </div>
                 <!-- Step 3: Credit -->
-                <div class="tab-pane" id="step3" role="tabpanel">
+                <div
+                  class="tab-pane"
+                  id="step3"
+                  role="tabpanel"
+                  data-label="Credit"
+                >
                   <div
                     class="form-style-one row g-4 justify-content-center controls"
                   >
@@ -469,6 +512,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step2"
+                        data-direction="back"
                       >
                         Back
                       </button>
@@ -476,6 +520,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step4"
+                        data-direction="next"
                       >
                         Next
                       </button>
@@ -483,7 +528,12 @@
                   </div>
                 </div>
                 <!-- Step 4: Contact -->
-                <div class="tab-pane" id="step4" role="tabpanel">
+                <div
+                  class="tab-pane"
+                  id="step4"
+                  role="tabpanel"
+                  data-label="Contact"
+                >
                   <div
                     class="form-style-one row g-4 controls d-flex justify-content-center"
                   >
@@ -553,6 +603,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step3"
+                        data-direction="back"
                       >
                         Back
                       </button>
@@ -560,6 +611,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step5"
+                        data-direction="next"
                       >
                         Next
                       </button>
@@ -567,7 +619,12 @@
                   </div>
                 </div>
                 <!-- Step 5: About You -->
-                <div class="tab-pane show" id="step5" role="tabpanel">
+                <div
+                  class="tab-pane show"
+                  id="step5"
+                  role="tabpanel"
+                  data-label="About You"
+                >
                   <div
                     class="form-style-one row g-4 controls d-flex justify-content-center"
                   >
@@ -633,6 +690,7 @@
                         class="btn-twelve sm"
                         type="button"
                         data-bs-target="#step4"
+                        data-direction="back"
                       >
                         Back
                       </button>
@@ -640,6 +698,7 @@
                         class="btn-twelve sm"
                         type="submit"
                         value="Submit Application"
+                        id="submitApplication"
                       />
                     </div>
                   </div>

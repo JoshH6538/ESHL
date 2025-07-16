@@ -310,6 +310,7 @@ function calculateRefinance() {
 // Add event listeners
 
 // Initialize WOW.js for animations
+// Handle tab switching for desktop
 document.querySelectorAll('[data-bs-toggle="tab"]').forEach((tab) => {
   tab.addEventListener("shown.bs.tab", function (e) {
     const targetId = e.target.getAttribute("data-bs-target");
@@ -321,6 +322,34 @@ document.querySelectorAll('[data-bs-toggle="tab"]').forEach((tab) => {
       void content.offsetWidth; // force reflow
       content.classList.add("animated", "fadeInUp");
     }
+  });
+});
+
+// Handle tab switching for mobile
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdown = document.getElementById("mobile-tab-dropdown");
+
+  if (dropdown) {
+    dropdown.addEventListener("change", (e) => {
+      const tabTarget = e.target.value;
+      const targetTab = document.querySelector(
+        `.nav-link[data-bs-target="${tabTarget}"]`
+      );
+
+      if (targetTab) {
+        const tab = new bootstrap.Tab(targetTab);
+        tab.show();
+      }
+    });
+  }
+});
+
+// Syncs tab changes between desktop and mobile
+document.querySelectorAll("#mortgage-tablist .nav-link").forEach((tabEl) => {
+  tabEl.addEventListener("shown.bs.tab", (e) => {
+    const activeTarget = e.target.getAttribute("data-bs-target");
+    const dropdown = document.getElementById("mobile-tab-dropdown");
+    if (dropdown) dropdown.value = activeTarget;
   });
 });
 

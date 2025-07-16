@@ -256,7 +256,9 @@
           </div>
 
           <div class="multi-step-form-one p-5">
-            <nav class="form-nav-one d-flex justify-content-center mb-500">
+            <nav
+              class="form-nav-one d-none d-md-flex justify-content-center mb-500"
+            >
               <div class="nav nav-pills" role="tablist" id="mortgage-tablist">
                 <div
                   class="nav-link active ptr"
@@ -295,8 +297,17 @@
                 </div>
               </div>
             </nav>
+            <div class="d-md-none px-3 mb-4" id="mobile-tab-dropdown-container">
+              <select class="form-select rounded-2" id="mobile-tab-dropdown">
+                <option value="#conventional">Conventional</option>
+                <option value="#fha">FHA</option>
+                <option value="#va">VA</option>
+                <option value="#affordability">Affordability</option>
+                <option value="#refinance">Refinance</option>
+              </select>
+            </div>
 
-            <div class="tab-content mt-50 px-5">
+            <div class="tab-content mt-50 px-lg-5">
               <!-- Conventional Tab -->
               <div
                 class="tab-pane show active wow fadeInUp"
