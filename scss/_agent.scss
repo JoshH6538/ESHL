@@ -79,11 +79,14 @@
   }
   &:hover {
     .agent-img {
-      transform: scale3d(1.1, 1.1, 1) rotate(2deg);
-      opacity: 0.8;
+      // transform: scale3d(1.1, 1.1, 1) rotate(2deg);
+      // opacity: 0.8;
+      cursor: pointer;
+      transform: scale(1);
     }
     .name a {
-      text-decoration: underline;
+      transform: scale(1.05);
+      color: $color-one;
     }
   }
 }

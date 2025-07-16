@@ -7766,11 +7766,12 @@ iframe {
   color: #9d9d9d;
 }
 .agent-card-two:hover .agent-img {
-  transform: scale3d(1.1, 1.1, 1) rotate(2deg);
-  opacity: 0.8;
+  cursor: pointer;
+  transform: scale(1);
 }
 .agent-card-two:hover .name a {
-  text-decoration: underline;
+  transform: scale(1.05);
+  color: #007dab;
 }
 
 .pricing-nav-one .nav {
@@ -16827,6 +16828,15 @@ h6:hover {
   cursor: default;
 }
 
+.name a {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.agent-img {
+  transition: transform 0.8s ease;
+  transform: scale(0.95);
+}
+
 .theme-main-menu .gap-one {
   transition: padding 0.4s ease-out;
 }
@@ -17096,6 +17106,12 @@ option:hover {
   display: inline-block;
 }
 
+/* ==================== REVIEWS ==================== */
+@media screen and (max-width: 991.98px) {
+  #reviewerName {
+    width: 50%;
+  }
+}
 /* ==================== STAR RATING ==================== */
 .star-rating {
   direction: rtl;
@@ -17116,7 +17132,7 @@ option:hover {
 .star-rating input[type=radio]:checked ~ label,
 .star-rating label:hover,
 .star-rating label:hover ~ label {
-  color: var(--color-one);
+  color: #007dab;
 }
 
 /*# sourceMappingURL=style.css.map */

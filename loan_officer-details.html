@@ -341,135 +341,98 @@
             </div>
           </div>
           <!-- /.row -->
-          <div class="row">
-            <!-- <div
-              class="agent-property-listing bottom-line-dark pb-20 mb-80 xl-mb-50"
-              id="listingsContainer"
-            >
-              <div
-                class="d-sm-flex justify-content-between align-items-center mb-40 xs-mb-20"
-              >
-                <h4 class="mb-10">Listings</h4>
-                <div class="filter-nav-one xs-mt-40">
-                  <ul
-                    class="style-none d-flex justify-content-center flex-wrap isotop-menu-wrapper"
-                  >
-                    <li class="is-checked" data-filter="*">All</li>
-                    <li data-filter=".open">Active</li>
-                    <li data-filter=".pending">Pending</li>
-                    <li data-filter=".closed">Closed</li>
-                  </ul>
-                </div>
-              </div>
-              <div id="isotop-gallery-wrapper" class="grid-2column">
-                <div class="grid-sizer"></div>
-                <div clas="isotop-item">
-                  <div class="listing-card-one shadow-none style-two mb-50">
-                    <div class="img-gallery">
-                      <div class="position-relative overflow-hidden">
-                        <h4
-                          class="align-items-center text-center justify-content-center"
-                        >
-                          Loading Listings...
-                        </h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- /.agent-property-listing -->
+          <div class="row mt-100">
             <!-- /.blog-meta-three -->
-            <div class="blog-comment-area" id="commentsContainer">
-              <h3 class="blog-inner-title pb-35">2 Reviews</h3>
-              <div class="comment position-relative d-flex mb-30">
-                <div class="comment-text">
-                  <div class="name fw-500">Al Hasani</div>
-                  <div class="date">27 Aug, 2023, 4:10pm</div>
-                  <p>
-                    One touch of a red-hot stove is usually all we need to avoid
-                    that kind of lorem discomfort in future. The same true we
-                    experience
-                  </p>
-                  <a href="#" class="reply-btn tran3s">Reply</a>
-                  <!-- /.comment -->
-                </div>
-                <!-- /.comment-text -->
-              </div>
-              <!-- /.comment -->
-              <div class="comment position-relative d-flex mb-30">
-                <div class="comment-text">
-                  <div class="name fw-500">Jubayer Al Hasan</div>
-                  <div class="date">12 June, 2023, 7:30pm</div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur. Enim in aceu velit.
-                    Euismod non posu pellentesque neque. Feugiat cras egestas
-                    facilisis.
-                  </p>
-                  <a href="#" class="reply-btn tran3s">Reply</a>
-                </div>
-                <!-- /.comment-text -->
-              </div>
-              <!-- /.comment -->
+            <div
+              class="blog-comment-area col-lg-7 align-items-center ps-md-5 px-5"
+              id="commentsContainer"
+            >
+              <h4 class="align-items-center text-center justify-content-center">
+                Loading Reviews...<img
+                  src="images/lazyBlue.svg"
+                  alt=""
+                  class="lazy-img mb-20 w-50 mt-50"
+                  style="object-fit: cover"
+                  loading="lazy"
+                />
+              </h4>
             </div>
             <!-- /.blog-comment-area -->
-            <div class="blog-comment-form">
-              <h3 class="blog-inner-title">Leave a Review</h3>
-
-              <form
-                id="reviewForm"
-                method="post"
-                action="https://v3tnqbn900.execute-api.us-east-1.amazonaws.com"
-                class="mt-30"
+            <div class="theme-sidebar-one dot-bg col-lg-5 p-5" id="commentForm">
+              <div
+                class="blog-comment-form bg-white d-flex justify-content-center align-items-center flex-column p-5"
               >
-                <div class="input-wrapper input-group-meta form-group mb-30">
-                  <label>Name*</label>
-                  <input
-                    type="text"
-                    name="reviewer"
-                    placeholder="Full Name"
-                    required
-                  />
-                </div>
-                <!-- /.input-wrapper -->
-                <div class="input-wrapper mb-40">
-                  <label>Rating*</label>
-                  <fieldset class="star-rating">
-                    <input
-                      type="radio"
-                      name="rating"
-                      id="star5"
-                      value="5"
-                      required
-                    />
-                    <label for="star5">&#9733;</label>
-                    <input type="radio" name="rating" id="star4" value="4" />
-                    <label for="star4">&#9733;</label>
-                    <input type="radio" name="rating" id="star3" value="3" />
-                    <label for="star3">&#9733;</label>
-                    <input type="radio" name="rating" id="star2" value="2" />
-                    <label for="star2">&#9733;</label>
-                    <input type="radio" name="rating" id="star1" value="1" />
-                    <label for="star1">&#9733;</label>
-                  </fieldset>
-                </div>
-                <!-- /.input-wrapper -->
-                <div class="input-wrapper mb-30">
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                  ></textarea>
-                </div>
-                <!-- /.input-wrapper -->
-                <div
-                  class="input-wrapper mb-30 d-flex"
-                  id="reviewFormSubmission"
+                <h2 class="blog-inner-title mt-20">
+                  Leave a
+                  <span
+                    >Review
+                    <img
+                      src="images/es/svg/title_shape_02.svg"
+                      alt=""
+                      class="lazy-img"
+                      loading="lazy"
+                      style=""
+                  /></span>
+                </h2>
+                <form
+                  id="reviewForm"
+                  method="post"
+                  action="https://v3tnqbn900.execute-api.us-east-1.amazonaws.com"
+                  class="mt-30"
                 >
-                  <button class="btn-five rounded-0" id="submitReviewBtn">
-                    Submit Review
-                  </button>
-                </div>
-              </form>
+                  <div class="input-wrapper input-group-meta form-group mb-30">
+                    <label>Name*</label>
+                    <input
+                      type="text"
+                      name="reviewer"
+                      placeholder="Full Name"
+                      class="ms-2 px-2 border border-1 border-black rounded-2"
+                      required
+                      id="reviewerName"
+                    />
+                  </div>
+                  <!-- /.input-wrapper -->
+                  <div class="input-wrapper mb-40 d-flex align-items-center">
+                    <label>Rating*</label>
+                    <fieldset class="star-rating ms-2">
+                      <input
+                        type="radio"
+                        name="rating"
+                        id="star5"
+                        value="5"
+                        required
+                      />
+                      <label for="star5">&#9733;</label>
+                      <input type="radio" name="rating" id="star4" value="4" />
+                      <label for="star4">&#9733;</label>
+                      <input type="radio" name="rating" id="star3" value="3" />
+                      <label for="star3">&#9733;</label>
+                      <input type="radio" name="rating" id="star2" value="2" />
+                      <label for="star2">&#9733;</label>
+                      <input type="radio" name="rating" id="star1" value="1" />
+                      <label for="star1">&#9733;</label>
+                    </fieldset>
+                  </div>
+                  <!-- /.input-wrapper -->
+                  <div class="input-wrapper mb-30 d-flex align-items-center">
+                    <label>Message</label>
+                    <textarea
+                      name="message"
+                      placeholder="Your Message"
+                      class="ms-2 px-2 border border-1 border-black rounded-2"
+                    ></textarea>
+                  </div>
+                  <!-- /.input-wrapper -->
+                  <div
+                    class="input-wrapper mb-30 d-flex"
+                    id="reviewFormSubmission"
+                  >
+                    <button class="btn-five rounded-0" id="submitReviewBtn">
+                      Submit Review
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
             <!-- /.blog-comment-form -->
           </div>

@@ -39,6 +39,8 @@ async function loadUserCached(userId) {
   console.log("User reviews fetched:", reviews);
   if (reviews && reviews.length > 0) {
     user.reviews = reviews;
+  } else {
+    user.reviews = [];
   }
   renderUser(user);
 }
@@ -218,17 +220,28 @@ async function renderUser(user) {
   const commentsHeader = document.createElement("h3");
   commentsHeader.className = "blog-inner-title pb-35";
   commentsHeader.textContent = `${user.reviews.length} Reviews`;
+  const commentForm = document.getElementById("commentForm");
+  if (user.reviews.length === 0) {
+    commentsContainer.classList.add("d-none", "col-0");
+    commentForm.classList.add("col-12");
+    commentForm.classList.remove("col-lg-5");
+  }
   commentsContainer.appendChild(commentsHeader);
+  // SECTION: Render each review
   user.reviews.forEach((review) => {
     const comment = document.createElement("div");
     comment.className = "comment position-relative d-flex mb-30";
+    let starsHtml = "";
+    for (let i = 1; i <= review.rating; i++) {
+      starsHtml += `&#9733;`; // Filled star
+    }
     comment.innerHTML = `
       <div class="comment-text">
         <h5 class="mb-10">${review.reviewer}</h5>
         <span class="date">${new Date(
           review.dateSubmitted
         ).toLocaleDateString()}</span>
-        <p>${review.rating}</p>
+        <p style="color: #007dab; font-size: 1.5em">${starsHtml}</p>
         <p>${review.message}</p>
       </div>
     `;
@@ -239,6 +252,7 @@ async function renderUser(user) {
   const reviewForm = document.getElementById("reviewForm");
   reviewForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const submitButton = document.getElementById("submitReviewBtn");
 
     submitButton.disabled = true; // Disable button to prevent multiple submissions
@@ -246,6 +260,7 @@ async function renderUser(user) {
     submitButton.classList.add("inactive-input");
     const loadingImg = document.createElement("img");
     loadingImg.src = "images/lazyBlue.svg";
+
     document.getElementById("reviewFormSubmission").appendChild(loadingImg);
 
     const form = e.target;
@@ -285,6 +300,13 @@ async function renderUser(user) {
             <p class="text-success">Thank you for your review!</p>
             <p class="text-muted">Your feedback is valuable to us.</p>
           `;
+        // Set cooldown for another review submission through cache
+        const cooldownTime = 60 * 60 * 1000; // 1 hour in milliseconds
+        const cooldownEnd = Date.now() + cooldownTime;
+        localStorage.setItem(
+          "reviewTimeCache",
+          JSON.stringify({ [userId]: cooldownEnd })
+        );
       }
     } catch (err) {
       console.error("Submit error:", err);
@@ -298,4 +320,17 @@ window.addEventListener("DOMContentLoaded", async () => {
   await getUserData(); // If this populates userCache
   await getBranches(); // Loads branchCache
   await loadUserCached(userId); // Reads from userCache and renders
+
+  // Check if user has already submitted a review within the cooldown period
+  const reviewTimeCache = JSON.parse(
+    localStorage.getItem("reviewTimeCache") || "{}"
+  );
+  const cooldownEnd = reviewTimeCache[userId];
+  if (cooldownEnd && Date.now() < cooldownEnd) {
+    reviewForm.innerHTML = `
+        <p class="text-danger">You can only submit one review per hour.</p>
+        <p class="text-muted">Please wait until the cooldown period ends.</p>
+      `;
+    return;
+  }
 });

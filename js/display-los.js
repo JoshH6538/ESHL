@@ -25,6 +25,12 @@ async function loadLoanOfficers() {
     const lastNameB = (b.lastName ?? "").toLowerCase();
     return lastNameA.localeCompare(lastNameB);
   });
+  // Move all no image cards to the end
+  allLOsData.sort((a, b) => {
+    const hasIconA = Boolean(a.iconURL);
+    const hasIconB = Boolean(b.iconURL);
+    return hasIconB - hasIconA; // false (0) goes after true (1)
+  });
   renderLoanOfficers(allLOsData);
   updateResultsCount(allLOsData.length);
 }
@@ -68,12 +74,16 @@ function renderLoanOfficers(loanOfficerArray) {
       <div class="agent-card-two position-relative z-1 mb-50 wow fadeInUp">
         <div class="media position-relative overflow-hidden">
           <div class="tag bg-white position-absolute text-uppercase">${branchName}</div>
-          <img
-            loading="lazy"
-            src="${iconURL}"
-            class="agent-img w-100 tran5s"
-            alt=""
-          >
+          <a href="loan_officer-details.html?userId=${
+            loanOfficer.userId
+          }" class="position-relative d-block">
+            <img
+              loading="lazy"
+              src="${iconURL}"
+              class="agent-img w-100 tran5s"
+              alt=""
+            >
+          </a>
         </div>
         <div class="text-center pt-30">
           <h6 class="name">
