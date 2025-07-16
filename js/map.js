@@ -69,15 +69,19 @@ document.querySelectorAll(".location-pin").forEach((pin) => {
           <a href="${href}" class="spinner active-id popup-id popup-a" target="_blank">${id}</a>
           <span class="ps-1 popup-span">${tag}</span>
         </div>
-        <div class="close-btn mt-3 w-100" style="font-size: 14px; text-align: center; color: #6fc3ff; text-decoration: underline; cursor: pointer;" onclick="closeMobilePopup()">Close</div>
+        <div class="close-btn mt-3 w-100"  onclick="closeMobilePopup()">Close</div>
       </div>
     `;
 
-    popup.style.display = "block";
+    popup.style.opacity = "1";
+    popup.style.transform = "translate(-50%, -50%)";
   });
 });
 
 function closeMobilePopup() {
   const popup = document.getElementById("mobile-popup");
-  if (popup) popup.style.display = "none";
+  if (popup) {
+    popup.style.opacity = "0";
+    popup.style.transform = "translate(-50%, 50%)";
+  }
 }

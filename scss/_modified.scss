@@ -517,11 +517,26 @@ option:hover {
 }
 
 @media (max-width: 600px) {
+  .map-wrapper-outer {
+    /* Shadow & masking */
+    filter: drop-shadow(0 10px 5px rgba(1, 46, 82, 0.65));
+    mask-image: radial-gradient(
+      circle at 40% 30%,
+      rgba(0, 0, 0, 1) 70%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      circle at 40% 30%,
+      rgba(0, 0, 0, 1) 70%,
+      transparent 100%
+    );
+  }
   .mobile-map-info {
+    transition: transform 0.3s ease, opacity 0.1s ease;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 50%);
     z-index: 9999;
     width: 75%;
     max-width: 90vw;
