@@ -14,12 +14,12 @@ async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
       if (!response.ok) throw new Error(`Status ${response.status}`);
       if (!response.ok) console.warn("Response Message: ", response.message);
       const data = await response.json();
-      console.log("Retrieved:", data);
-      if (!Array.isArray(data)) {
-        if (data.value && Array.isArray(data.value)) {
-          return data.value; // handle case where data is wrapped in 'value'
-        } else throw new Error("Expected array");
-      }
+      // console.log("Retrieved:", data);
+      // if (!Array.isArray(data)) {
+      //   if (data.value && Array.isArray(data.value)) {
+      //     return data.value; // handle case where data is wrapped in 'value'
+      //   } else throw new Error("Expected array");
+      // }
       return data;
     } catch (err) {
       console.warn(`Attempt ${attempt} failed:`, err.message);
@@ -77,7 +77,7 @@ export async function addReview(userId, reviewer, rating, message = null) {
     }),
   });
 }
-
+// Zapier integration function
 export async function zapier(bodyData) {
   const options = {
     method: "POST",
@@ -86,8 +86,9 @@ export async function zapier(bodyData) {
   return await fetch(BASE_URL, options);
 }
 
+// Google reCAPTCHA verification function
 export async function verifyRecaptcha(token) {
-  return await fetchWithRetry(BASE_URL, {
+  const response = await fetchWithRetry(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -96,6 +97,23 @@ export async function verifyRecaptcha(token) {
       action: "verifyRecaptcha",
       recaptchaToken: token,
       type: "",
+    }),
+  });
+  return response;
+}
+
+// ChatGPT integration function
+export async function chatAPI(bodyData) {
+  return await fetchWithRetry(BASE_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      action: "chatAPI",
+      role: "homeLoans",
+      message: bodyData.message,
+      history: bodyData.history || [],
     }),
   });
 }

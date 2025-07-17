@@ -1,0 +1,158 @@
+import { getCachedChat, cacheChat } from "./chat-data.js";
+import { verifyRecaptcha } from "./api.js";
+import { chatAPI } from "./api.js";
+
+const chatWidget = document.createElement("div");
+chatWidget.id = "chat-widget";
+chatWidget.innerHTML = `
+  <button id="chat-toggle-btn" class="btn btn-primary position-fixed bottom-0 start-0 m-3 z-3">
+    <i class="bi bi-chat-left"></i>
+  </button>
+
+  <div id="chat-widget-box" class="card position-fixed bottom-0 start-0 m-3 p-3 z-2"">
+    <div class="card-body p-2">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="mb-0 spinner">Chat with our <span class="fst-italic">AI Assistant</span></h6>
+        <button id="chat-close-btn" class="btn"><i class="fa-solid fa-x"></i></button>
+      </div>
+      <div id="chat-content" class="mb-2 px-2" style="max-height: 50vh; overflow-y: auto;"></div>
+      <div class="input-group mb-3">
+        <input type="text" id="chat-input" class="form-control" placeholder="Type a message..." aria-label="Recipient’s username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="send-button">Send</button>
+    </div>
+    </div>
+  </div>
+`;
+
+document.body.insertAdjacentHTML("beforeend", chatWidget.outerHTML);
+
+// Refs
+const toggleBtn = document.getElementById("chat-toggle-btn");
+const chatBox = document.getElementById("chat-widget-box");
+const closeBtn = document.getElementById("chat-close-btn");
+const chatInput = document.getElementById("chat-input");
+const chatContent = document.getElementById("chat-content");
+
+const cached = getCachedChat();
+let chatHistory = Array.isArray(cached.history) ? cached.history : [];
+if (chatHistory.length > 0) {
+  chatHistory.forEach((msg) => {
+    const content =
+      msg.role === "assistant"
+        ? DOMPurify.sanitize(marked.parse(msg.content))
+        : msg.content;
+
+    addMessage(msg.role, content, msg.timestamp);
+  });
+}
+
+// Show/hide
+toggleBtn.addEventListener("click", () => {
+  chatBox.classList.add("open");
+  toggleBtn.style.display = "none";
+});
+
+closeBtn.addEventListener("click", () => {
+  chatBox.classList.remove("open");
+  toggleBtn.style.display = "flex";
+});
+
+// Add message to chat box
+function addMessage(role, content, timestamp = Date.now()) {
+  const msg = document.createElement("div");
+  msg.className =
+    role === "user" ? "text-end mb-1" : "text-start text-muted mb-2";
+
+  const time = new Date(timestamp).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  msg.innerHTML = `<div class="small text-secondary">${time}</div><span class=${
+    role === "user" ? "chat-bubble-user" : "chat-bubble-assistant"
+  }>${content}</span>`;
+  chatContent.appendChild(msg);
+  chatContent.scrollTop = chatContent.scrollHeight;
+}
+
+if (chatHistory.length === 0)
+  addMessage("assistant", "Hello! How can I assist you today?", Date.now());
+
+// Send message
+async function sendMessage() {
+  const userMsg = chatInput.value.trim();
+  chatInput.value = "";
+
+  // Display user message
+  addMessage("user", userMsg);
+  chatHistory.push({ role: "user", content: userMsg, timestamp: Date.now() });
+  cacheChat(chatHistory);
+
+  let recaptchaToken = sessionStorage.getItem("APIrecaptchaToken");
+
+  if (!recaptchaToken) {
+    try {
+      const token = await grecaptcha.execute(
+        "6LdMGNspAAAAAI7hAtxj18KrkVYCp-kQq1CPiymO",
+        {
+          action: "submit_review",
+        }
+      );
+      const result = await verifyRecaptcha(token);
+      if (result.error) throw new Error("reCAPTCHA failed");
+
+      recaptchaToken = token;
+      sessionStorage.setItem("APIrecaptchaToken", recaptchaToken);
+    } catch (err) {
+      console.error("reCAPTCHA error:", err);
+      alert("Verification failed. Please refresh and try again.");
+      return;
+    }
+  }
+
+  // Send to API
+  try {
+    // Thinking
+    const thinkingMsg = document.createElement("div");
+    thinkingMsg.className = "text-start text-muted my-2";
+    thinkingMsg.innerHTML = `<img src="/images/lazyBlue.svg" alt="Thinking..." />`;
+    chatContent.appendChild(thinkingMsg);
+
+    const response = await chatAPI({
+      message: userMsg,
+      history: chatHistory.slice(-10),
+    });
+    if (response.error) throw new Error("Chat API failed");
+
+    console.log("Chat API response:", response);
+
+    const reply =
+      response.choices?.[0]?.message?.content?.trim() || "No response received";
+
+    const cleanHTML = DOMPurify.sanitize(marked.parse(reply));
+    thinkingMsg.remove(); // Remove thinking message
+    addMessage("assistant", cleanHTML, Date.now());
+    //   addMessage(
+    //     "assistant",
+    //     response.choices[0].message.content || "No response received"
+    //   );
+    chatHistory.push({
+      role: "assistant",
+      content: reply || "No response received",
+      timestamp: Date.now(),
+    });
+    cacheChat(chatHistory);
+  } catch (err) {
+    console.error("Chat API error:", err);
+    thinkingMsg.remove(); // Remove thinking message
+  }
+}
+chatInput.addEventListener("keydown", async (e) => {
+  if (e.key === "Enter" && chatInput.value.trim()) {
+    await sendMessage();
+  }
+});
+document.getElementById("send-button").addEventListener("click", async () => {
+  if (chatInput.value.trim()) {
+    await sendMessage();
+  }
+});
