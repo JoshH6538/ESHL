@@ -1,6 +1,6 @@
-import { getCachedChat, cacheChat } from "/js/chat-data.js";
-import { verifyRecaptcha } from "/js/api.js";
-import chatAPI from "/js/chat-api.js";
+import { getCachedChat, cacheChat } from "./chat-data.js";
+import { verifyRecaptcha } from "./api.js";
+import { chatAPI } from "./api.js";
 
 const chatWidget = document.createElement("div");
 chatWidget.id = "chat-widget";
