@@ -790,6 +790,7 @@ option:hover {
   transform: translateX(0);
   display: block;
   opacity: 1;
+  z-index: 11 !important;
 }
 
 #send-button:hover {
@@ -826,7 +827,7 @@ option:hover {
 }
 
 .grecaptcha-badge {
-  z-index: 99999 !important;
+  z-index: 10 !important;
   position: fixed !important;
   bottom: 70px !important;
 }
