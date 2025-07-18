@@ -17269,4 +17269,8 @@ option:hover {
   bottom: 70px !important;
 }
 
+body > div > div > div.review-content > p {
+  color: red !important;
+}
+
 /*# sourceMappingURL=style.css.map */
