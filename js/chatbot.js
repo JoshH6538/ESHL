@@ -61,6 +61,13 @@ closeBtn.addEventListener("click", () => {
   toggleBtn.style.display = "flex";
 });
 
+// Try it now button
+document.getElementById("try-chat-btn").addEventListener("click", () => {
+  chatBox.classList.add("open");
+  toggleBtn.style.display = "none";
+  chatInput.focus();
+});
+
 // Add message to chat box
 function addMessage(role, content, timestamp = Date.now()) {
   const msg = document.createElement("div");

@@ -633,6 +633,18 @@ option:hover {
   animation: rotated 2s infinite linear;
 }
 
+.spinner-lg::after {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url(../images/es/svg/shape_79.svg) no-repeat center;
+  background-size: cover;
+  margin-left: 5px;
+  vertical-align: 2px;
+  animation: rotated 2s infinite linear;
+}
+
 .map-wrapper,
 .map-wrapper-outer,
 .map-info {
