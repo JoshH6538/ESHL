@@ -2,15 +2,19 @@ const CHAT_HISTORY_KEY = "chatHistory";
 
 export function getCachedChat() {
   const cached = sessionStorage.getItem(CHAT_HISTORY_KEY);
-
+  console.log("Cached chat:", cached);
+  if (!cached) {
+    return { history: [] };
+  }
   try {
+    // console.log("Parsing:", cached);
     return {
-      history: cached ? JSON.parse(cached) : [],
+      history: cached && cached !== null ? JSON.parse(cached) : [],
     };
   } catch {
     console.warn("Failed to parse chat cache.");
     clearCachedChat();
-    return { history: [], role: "homeLoans" };
+    return { history: [] };
   }
 }
 

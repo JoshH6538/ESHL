@@ -104,7 +104,7 @@ export async function verifyRecaptcha(token) {
 
 // ChatGPT integration function
 export async function chatAPI(bodyData) {
-  return await fetchWithRetry(BASE_URL, {
+  const response = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -116,4 +116,6 @@ export async function chatAPI(bodyData) {
       history: bodyData.history || [],
     }),
   });
+
+  return await response.json();
 }
