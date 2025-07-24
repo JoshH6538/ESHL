@@ -2,7 +2,7 @@ const CHAT_HISTORY_KEY = "chatHistory";
 
 export function getCachedChat() {
   const cached = sessionStorage.getItem(CHAT_HISTORY_KEY);
-  console.log("Cached chat:", cached);
+  // console.log("Cached chat:", cached);
   if (!cached) {
     return { history: [] };
   }
