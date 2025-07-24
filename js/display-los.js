@@ -74,7 +74,7 @@ function renderLoanOfficers(loanOfficerArray) {
       <div class="agent-card-two position-relative z-1 mb-50 wow fadeInUp">
         <div class="media position-relative overflow-hidden">
           <div class="tag bg-white position-absolute text-uppercase">${branchName}</div>
-          <a href="loan_officer-details.html?userId=${
+          <a href="loan-officer-details.html?userId=${
             loanOfficer.userId
           }" class="position-relative d-block">
             <img
@@ -87,7 +87,7 @@ function renderLoanOfficers(loanOfficerArray) {
         </div>
         <div class="text-center pt-30">
           <h6 class="name">
-            <a href="loan_officer-details.html?userId=${loanOfficer.userId}">
+            <a href="loan-officer-details.html?userId=${loanOfficer.userId}">
               ${loanOfficer.firstName ?? "First"} ${
       loanOfficer.lastName ?? "Last"
     }
