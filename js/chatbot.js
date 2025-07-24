@@ -62,11 +62,14 @@ closeBtn.addEventListener("click", () => {
 });
 
 // Try it now button
-document.getElementById("try-chat-btn").addEventListener("click", () => {
-  chatBox.classList.add("open");
-  toggleBtn.style.display = "none";
-  chatInput.focus();
-});
+const tryChatBtn = document.getElementById("try-chat-btn");
+if (tryChatBtn)
+  tryChatBtn.addEventListener("click", () => {
+    chatBox.classList.add("open");
+    toggleBtn.style.display = "none";
+    chatInput.focus();
+    tryChatBtn.classList.remove("pulse");
+  });
 
 // Add message to chat box
 function addMessage(role, content, timestamp = Date.now()) {

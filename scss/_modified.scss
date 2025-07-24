@@ -747,6 +747,9 @@ option:hover {
   transform: scale(1.05);
   animation: none;
 }
+#try-chat-btn.pulse {
+  animation: pulse 4s infinite;
+}
 
 // Chat widget box styles
 .chat-bubble-user {

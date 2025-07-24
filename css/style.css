@@ -17188,6 +17188,10 @@ option:hover {
   animation: none;
 }
 
+#try-chat-btn.pulse {
+  animation: pulse 4s infinite;
+}
+
 .chat-bubble-user {
   opacity: 0.9;
   font-weight: 400;

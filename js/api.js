@@ -113,6 +113,7 @@ export async function chatAPI(bodyData) {
       action: "chatAPI",
       role: "homeLoans",
       message: bodyData.message,
+      page: window.location.pathname,
       history: bodyData.history || [],
     }),
   });

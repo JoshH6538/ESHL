@@ -45,79 +45,115 @@
 
   <body>
     <header
-      class="theme-main-menu menu-overlay menu-style-six sticky-menu black-text-header"
+      class="theme-main-menu menu-overlay menu-style-seven white-vr sticky-menu black-text-header contact-header"
     >
-      <div class="inner-content gap-two">
+      <div class="inner-content gap-one">
         <div class="top-header position-relative">
           <div class="d-flex align-items-center justify-content-between">
+            <!-- ES NAV LOGO -->
             <div class="logo order-lg-0">
               <a href="/" class="d-flex align-items-center logo-link">
                 <img
-                  src="images/es/ESHL-RES-LOGO.png"
-                  alt="Equity Smart Home Loans Logo"
-                  height="50"
+                  loading="lazy"
+                  src="images/es/ESHL-LOGO.png"
+                  alt="Logo"
+                  style="height: 50px"
                   class="logo-img"
                 />
               </a>
             </div>
-            <div class="right-widget ms-auto me-3 order-lg-3">
+            <!-- CONTACT US BUTTON -->
+            <div class="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
               <ul class="d-none d-lg-flex align-items-center style-none">
                 <li>
-                  <a href="contact.html" class="btn-one black-vr">
-                    <i class="fa-regular fa-comment"></i>
-                    <span>Contact Us</span>
-                  </a>
+                  <a href="contact.html" class="btn-one black-vr"
+                    ><i class="fa-regular fa-comment"></i>
+                    <span class="d-none d-xl-inline">Contact Us</span></a
+                  >
                 </li>
               </ul>
             </div>
+            <!-- NAVBAR -->
             <nav class="navbar navbar-expand-lg p0 order-lg-2">
               <button
                 class="navbar-toggler d-block d-lg-none"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
               >
                 <span></span>
               </button>
               <div class="collapse navbar-collapse px-4" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center">
+                  <!-- MOBILE ES LOGO -->
                   <li class="d-block d-lg-none">
                     <div class="logo">
-                      <a href="/" class="d-block">
-                        <img
-                          src="images/es/ESHL-RES-LOGO-WHITE.png"
-                          alt="Equity Smart Home Loans"
-                        />
-                      </a>
+                      <a href="/" class="d-block"
+                        ><img
+                          loading="lazy"
+                          src="images/es/ESHL-LOGO-WHITE.png"
+                          alt=""
+                      /></a>
                     </div>
                   </li>
-                  <li class="nav-item me-5">
+                  <!-- HOME LINK -->
+                  <li
+                    class="nav-item me-3 me-sm-3 me-md-4"
+                    style="white-space: nowrap"
+                  >
                     <a class="nav-link" href="./">Home</a>
                   </li>
-                  <li class="nav-item me-5">
-                    <a class="nav-link" href="products.html">Loan Products</a>
+                  <!-- LOAN OFFICERS LINK -->
+                  <li
+                    class="nav-item me-3 me-sm-3 me-md-4"
+                    style="white-space: nowrap"
+                  >
+                    <a class="nav-link" href="loan_officers.html"
+                      >Loan Officers</a
+                    >
                   </li>
-                  <li class="nav-item me-5">
-                    <a class="nav-link" href="rates.html">Rates</a>
+                  <!-- PRE QUAL LINK -->
+                  <li
+                    class="nav-item me-3 me-sm-3 me-md-4"
+                    style="white-space: nowrap"
+                  >
+                    <a class="nav-link" href="preq.html">Pre-Qualification</a>
                   </li>
-                  <li class="nav-item me-5">
-                    <a class="nav-link" href="refinance.html">Refinance</a>
+                  <!-- Calculator LINK -->
+                  <li
+                    class="nav-item me-3 me-sm-3 me-md-4"
+                    style="white-space: nowrap"
+                  >
+                    <a class="nav-link" href="calculator.html">Calculator</a>
                   </li>
-                  <li class="nav-item me-5">
+                  <!-- ABOUT LINK -->
+                  <li
+                    class="nav-item me-3 me-sm-3 me-md-4"
+                    style="white-space: nowrap"
+                  >
                     <a class="nav-link" href="about.html">About</a>
                   </li>
-                  <li class="d-md-none ps-2 pe-2 mt-20">
-                    <a href="contact.html" class="btn-two w-100">
-                      <span>Contact Us</span>
-                      <i class="fa-regular fa-comment"></i>
-                    </a>
+                  <!-- CONTACT US BUTTON -->
+                  <li
+                    class="d-md-none ps-2 pe-2 mt-20"
+                    style="white-space: nowrap"
+                  >
+                    <a href="contact.html" class="btn-two w-100"
+                      ><span>Contact Us</span>
+                      <i class="fa-regular fa-comment"></i
+                    ></a>
                   </li>
                 </ul>
               </div>
             </nav>
           </div>
         </div>
+        <!--/.top-header-->
       </div>
+      <!-- /.inner-content -->
     </header>
 
     <div class="main-page-wrapper">
