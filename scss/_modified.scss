@@ -645,6 +645,18 @@ option:hover {
   animation: rotated 2s infinite linear;
 }
 
+@media screen and (max-width: 991.98px) {
+  .spinner-lg::after {
+    width: 20px;
+    height: 20px;
+  }
+}
+// @media screen and (min-width: 767.98px) and (max-width: 991.98px) {
+//   .spinner-lg::after {
+//     display: none;
+//   }
+// }
+
 .map-wrapper,
 .map-wrapper-outer,
 .map-info {
@@ -849,4 +861,8 @@ option:hover {
 
 body > div > div > div.review-content > p {
   color: red !important;
+}
+
+.color-one {
+  color: $color-one !important;
 }

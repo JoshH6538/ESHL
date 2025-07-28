@@ -17091,6 +17091,12 @@ option:hover {
   animation: rotated 2s infinite linear;
 }
 
+@media screen and (max-width: 991.98px) {
+  .spinner-lg::after {
+    width: 20px;
+    height: 20px;
+  }
+}
 .map-wrapper,
 .map-wrapper-outer,
 .map-info {
@@ -17287,6 +17293,10 @@ option:hover {
 
 body > div > div > div.review-content > p {
   color: red !important;
+}
+
+.color-one {
+  color: #007dab !important;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-const CLEAN_URLS_ENABLED = false; // Toggle OFF in dev if needed
+const CLEAN_URLS_ENABLED = true; // Toggle OFF in dev if needed
 
 document.addEventListener("DOMContentLoaded", () => {
   if (CLEAN_URLS_ENABLED) {
