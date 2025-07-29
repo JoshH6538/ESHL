@@ -88,7 +88,7 @@ MongoDB and Zapier Webhook
 
 - All credentials stored in environment variables
 - Public API access returns only sanitized, non-sensitive data
-- CORS restricted to allowed origins (e.g., GitHub Pages)
+- CORS restricted to allowed origins
 
 ## Resources
 
