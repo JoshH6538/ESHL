@@ -17104,7 +17104,7 @@ option:hover {
 }
 
 .map-wrapper-outer {
-  padding-top: 60px; /* or more depending on popup size */
+  padding-top: 100px;
 }
 
 /* ==================== MISC ==================== */
