@@ -1,16 +1,18 @@
 # Equity Smart Home Loans Web App
 
-A full-stack serverless mortgage platform featuring loan officer discovery, prequalification forms, secure API integration, and fully static frontend deployment. Built with MongoDB, AWS, and Retool, and deployed via GitHub Pages + CloudFront.
+A full-stack serverless mortgage platform featuring loan officer discovery, prequalification forms, and a built-in AI assistant. The system is powered by AWS, MongoDB, and Retool Workflows, with a fully static frontend deployed via GitHub Pages and delivered globally via CloudFront.
 
 ## Overview
 
-Equity Smart Home Loans enables dynamic search and display of loan officers and supports secure form submissions through a modern serverless web architecture:
+Equity Smart Home Loans allows users to explore licensed loan officers, calculate estimated mortgage payments, and securely submit prequalification forms through a modern, public-facing web platform. The site combines static delivery with dynamic backend workflows and AI-assisted interactions.
 
-- **Secure Serverless Backend** using AWS Lambda and API Gateway
-- **Retool Workflows** powering MongoDB queries and external webhook integration
-- **Public-Safe Frontend** hosted on GitHub Pages, using vanilla JS, HTML, CSS, and SASS
-- **Fully Static Client** with client-side filtering and data caching
-- **Cloud Distribution** via AWS S3 & CloudFront
+- **Serverless Backend** using AWS Lambda and API Gateway
+- **Three Retool Workflows** powering MongoDB access, form routing, and AI-assisted queries
+- **Static Frontend** built with HTML, CSS, JavaScript, and SASS
+- **Client-Side Filtering** for user search with local caching
+- **RAG-Based AI Assistant** that understands natural language and responds using live backend data
+- **Prequalification Forms** sent via Zapier Webhooks with reCAPTCHA v3 verification
+- **Static Deployment** via GitHub Pages + AWS S3 and CloudFront for global delivery
 
 ## Architecture
 
@@ -22,18 +24,17 @@ API Gateway (Public Endpoint)
 ↓  
 Lambda (Secure Proxy)  
 ↓  
-Retool Workflow (API Logic)  
+Retool Workflows (MongoDB / Form / AI)  
 ↓  
-MongoDB (Data Layer)
+MongoDB and Zapier Webhook
 
 ## Key Features
 
-- **Serverless & Scalable**: No backend servers to maintain
-- **Secure Data Flow**: API keys and credentials handled entirely server-side
-- **Prequalification Integration**: Submits form data to Zapier webhook with reCAPTCHA verification
-- **CORS-Safe**: Controlled domain access for frontend API usage
-- **Real-Time Filtering**: Frontend pulls and filters loan officer data locally
-- **DevOps Ready**: GitHub Actions auto-deploys latest frontend build to AWS S3
+- **Serverless and Modular**: Built with AWS Lambda and decoupled services
+- **Secure Form Handling**: reCAPTCHA-protected prequalification sent to an external automation platform
+- **AI Assistant Integration**: GPT-4o-mini assistant interprets user queries and returns safe, contextual results
+- **Safe Public API Access**: All queries validated server-side with CORS and projection rules
+- **Auto Deployment**: GitHub Actions deploy frontend to S3 and invalidate CloudFront cache automatically
 
 ## Frontend Structure
 
