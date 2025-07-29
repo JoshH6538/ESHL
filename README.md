@@ -36,6 +36,9 @@ MongoDB and Zapier Webhook
 - **Safe Public API Access**: All queries validated server-side with CORS and projection rules
 - **Auto Deployment**: GitHub Actions deploy frontend to S3 and invalidate CloudFront cache automatically
 
+[View Full Documentation (PDF)](./EquitySmart_ExternalDocumentation.pdf)
+
+
 ## Frontend Structure
 
 ```bash
