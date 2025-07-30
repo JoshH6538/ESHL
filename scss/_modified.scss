@@ -866,3 +866,24 @@ body > div > div > div.review-content > p {
 .color-one {
   color: $color-one !important;
 }
+@media screen and (min-width: 991.98px) {
+  .feedback-block-four {
+    height: 500px; /* adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+  }
+
+  .feedback-block-four blockquote {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8; /* max lines before cutoff */
+    -webkit-box-orient: vertical;
+  }
+}
