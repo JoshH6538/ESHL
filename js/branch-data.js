@@ -29,7 +29,7 @@ export async function getBranches() {
     console.warn("No branches found or API call failed.");
     return [];
   }
-  console.log("Branches fetched:", branches);
+  // console.log("Branches fetched:", branches);
 
   // Cache with expiration
   localStorage.setItem(BRANCH_CACHE_KEY, JSON.stringify(branches));

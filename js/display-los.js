@@ -294,7 +294,6 @@ document
       ).toLowerCase();
 
       const zipcode = (loanOfficer.zipcode ?? "").toLowerCase();
-      const zipcode2 = (loanOfficer.zipcode2 ?? "").toLowerCase();
       const branchZipcode = (
         branchMap.get(loanOfficer.branchId)?.address?.zipcode ?? ""
       ).toLowerCase();
@@ -307,7 +306,6 @@ document
         dre.includes(query) ||
         branchName.includes(query) ||
         zipcode.includes(query) ||
-        zipcode2.includes(query) ||
         branchZipcode.includes(query) ||
         branchCity.includes(query)
       );
