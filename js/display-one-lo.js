@@ -32,6 +32,7 @@ async function loadUserCached(userId) {
     console.warn(`No user found for ID: ${userId}`);
     return;
   }
+  renderUser(user);
   // console.log("User found in cache:", user);
   // SECTION: Fetch user reviews
   const reviews = await getUserReviews(userId);
@@ -42,118 +43,79 @@ async function loadUserCached(userId) {
   } else {
     user.reviews = [];
   }
-  renderUser(user);
+  updateRender(user);
 }
 // SECTION: Populate page with user data
-async function renderUser(user) {
-  // SECTION: UPDATE SITE TITLE
+export async function renderUser(user) {
   document.title = `${user.firstName} ${user.lastName} | ESRE`;
 
-  // SECTION: Prepare data
-  const branchArray = await getBranches();
-  const branches = arrayToMap(branchArray, "branchId");
-  if (!branches || branches.size === 0) {
-    console.warn("No branches found or API call failed.");
-  }
-  // SECTION: Get container and clear previous content
+  const branches = arrayToMap(await getBranches(), "branchId");
   const container = document.getElementById("userContainer");
-  container.innerHTML = ""; // Clear out previous content
-  // SECTION: Check if user data is valid
+  container.innerHTML = "";
+
   if (!user || Object.keys(user).length === 0) {
     container.innerHTML = "<p>No user data found.</p>";
     return;
   }
-  // SECTION: Define user properties
-  const fullName = `${user["firstName"] ?? ""} ${
-    user["lastName"] ?? ""
-  }`.trim();
-  const title = (user["title"] ?? []).join(" / ") || "Agent";
-  const branchName = branches.get(user["branchId"])?.name ?? "N/A";
 
-  // SECTION: Build basic info field display
+  const fullName = `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim();
+  const branchName = branches.get(user.branchId)?.name ?? "N/A";
+
   const fields = [
-    { label: "NMLS #", value: user["nmls"] },
+    { label: "NMLS #", value: user.nmls },
     { label: "Branch", value: branchName },
-    { label: "Phone", value: user["primaryPhone"] },
-    { label: "Email", value: user["primaryEmail"] },
-    { label: "Secondary Phone", value: user["secondaryPhone"] },
-    // { label: "Secondary Email", value: user["secondaryEmail"] },
+    { label: "Phone", value: user.primaryPhone },
+    { label: "Email", value: user.primaryEmail },
+    { label: "Secondary Phone", value: user.secondaryPhone },
   ];
-  // Populate fields with fields array
+
   const fieldHtml = fields
     .filter(({ value }) => value && value.toString().trim() !== "")
     .map(
-      ({ label, value }) => `
-        <div class="d-flex mb-2">
-          <strong class="me-2">${label}:</strong> <span>${value}</span>
-        </div>`
+      ({ label, value }) =>
+        `<div class="d-flex mb-2"><strong class="me-2">${label}:</strong> <span>${value}</span></div>`
     )
     .join("");
 
-  // SECTION: Render user info into container
-  container.innerHTML = `
-    <h4>${fullName}</h4>
-    <div>${fieldHtml}</div>`;
-  // <ul class="style-none d-flex align-items-center social-icon mt-3">
-  //   <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
-  //   <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-  //   <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-  //   <li><a href="#"><i class="fa-brands fa-viber"></i></a></li>
-  // </ul>
+  container.innerHTML = `<h4>${fullName}</h4><div>${fieldHtml}</div>`;
 
-  // SECTION: Add "Apply Now" button if POS URL exists
-  // if (user["posURL"]?.trim()) {
-  //   const button = document.createElement("button");
-  //   button.className = "btn-nine text-uppercase w-100 mb-20 mt-10";
-  //   button.textContent = "Apply Now";
-  //   button.onclick = () => window.open(user["posURL"], "_blank");
-  //   container.appendChild(button);
-  // }
-
-  // SECTION: Update breadcrumb name
   const breadcrumb = document.getElementById("breadcrumbLoanOfficerName");
-  if (breadcrumb) {
-    breadcrumb.innerText = fullName;
-  }
+  if (breadcrumb) breadcrumb.innerText = fullName;
 
-  // SECTION: Update image wrapper with profile photo and tag
   const wrapper = document.getElementById("loanOfficerImageWrapper");
-  const iconURL =
+  wrapper.style.backgroundImage = `url(${
     user.iconURL?.trim() ||
-    "https://equitysmartloans.com/wp-content/uploads/2022/05/placeHolder.jpeg";
-  wrapper.style.backgroundImage = `url(${iconURL})`;
+    "https://equitysmartloans.com/wp-content/uploads/2022/05/placeHolder.jpeg"
+  })`;
   wrapper.style.backgroundSize = "contain";
   wrapper.style.backgroundPosition = "center";
-
   wrapper.innerHTML = `
     <div class="tag bg-white position-absolute text-uppercase" style="top: 50px; left: 10px;">
       ${branchName}
     </div>
   `;
 
-  // SECTION: Set bio if available
   const bioContainer = document.getElementById("loanOfficerBio");
-  if (bioContainer && user["bio"]?.trim()) {
-    bioContainer.innerHTML = user["bio"];
+  if (bioContainer && user.bio?.trim()) {
+    bioContainer.innerHTML = user.bio;
   }
 
-  // SECTION: Add custom "INQUIRY" mail button that CCs another address
-  let contactForm = document.getElementById("contactForm");
+  const contactForm = document.getElementById("contactForm");
+  contactForm.innerHTML = "";
+
   const emailToUse =
     user.primaryEmail?.trim() ||
     user.secondaryEmail?.trim() ||
-    user.externalEmail?.trim() ||
-    null;
+    user.externalEmail?.trim();
 
   if (emailToUse) {
-    const inquiry = document.createElement("button");
-    inquiry.className = "btn-nine text-uppercase w-100 mb-20";
-    inquiry.textContent = "INQUIRE";
-    inquiry.type = "submit"; // Prevent default form behavior
+    const inquiryBtn = document.createElement("button");
+    inquiryBtn.className = "btn-nine text-uppercase w-100 mb-20";
+    inquiryBtn.textContent = "INQUIRE";
+    inquiryBtn.type = "submit";
 
     contactForm.addEventListener("submit", function (e) {
-      e.preventDefault(); // Stop actual form submission
-
+      e.preventDefault();
       const form = e.target;
       const email = form.email.value.trim();
       const phone = form.phone.value.trim();
@@ -164,77 +126,56 @@ async function renderUser(user) {
         return;
       }
 
-      // Choose which user email to use
-      const emailToUse =
-        user.primaryEmail?.trim() ||
-        user.secondaryEmail?.trim() ||
-        user.externalEmail?.trim() ||
-        null;
-
-      if (!emailToUse) {
-        alert("No email address available to send inquiry.");
-        return;
-      }
-
-      const ccEmail = "ithelp@equitysmartloans.com";
       const subject = `Inquiry for ${user.firstName} ${user.lastName}`;
       const body = `Hello ${user.firstName},\n\n${message}\n\nPhone: ${phone}\nEmail: ${email}\n\nBest regards,`;
-
       const mailtoURL = `mailto:${emailToUse}?cc=${encodeURIComponent(
-        ccEmail
+        "ithelp@equitysmartloans.com"
       )}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
         body
       )}`;
-
-      // console.log("Submitting inquiry via mailto:", mailtoURL);
       window.location.href = mailtoURL;
     });
 
-    contactForm.appendChild(inquiry);
-  } else {
-    contactForm.innerHTML = "";
+    contactForm.appendChild(inquiryBtn);
   }
-  // SECTION: Add custom "CALL NOW" phone button
-  const phoneToUse =
-    user.primaryPhone?.trim() || user.secondaryPhone?.trim() || null;
-  if (phoneToUse) {
-    const callButton = document.createElement("button");
-    callButton.className = "btn-nine text-uppercase w-100 mb-20";
-    callButton.textContent = "CALL NOW";
-    callButton.type = "button";
 
-    callButton.onclick = () => {
-      const phone = user.primaryPhone.replace(/\D/g, ""); // strip non-digits
-      const telURL = `tel:${phone}`;
-      // console.log("CALL NOW button clicked:", telURL);
+  const phoneToUse = user.primaryPhone?.trim() || user.secondaryPhone?.trim();
+  if (phoneToUse) {
+    const callBtn = document.createElement("button");
+    callBtn.className = "btn-nine text-uppercase w-100 mb-20";
+    callBtn.textContent = "CALL NOW";
+    callBtn.type = "button";
+    callBtn.onclick = () => {
+      const telURL = `tel:${phoneToUse.replace(/\D/g, "")}`;
       window.location.href = telURL;
     };
-
-    contactForm.appendChild(callButton);
+    contactForm.appendChild(callBtn);
   }
+}
 
-  // SECTION: User Reviews
-  const commentsSection = document.getElementById("commentsSection");
+export async function updateRender(user) {
+  const reviews = await getUserReviews(user.userId);
+  user.reviews = Array.isArray(reviews) ? reviews : [];
+
   const commentsContainer = document.getElementById("commentsContainer");
-  commentsContainer.innerHTML = ""; // Clear previous comments
+  commentsContainer.innerHTML = "";
+
   const commentsHeader = document.createElement("h3");
   commentsHeader.className = "blog-inner-title pb-35";
   commentsHeader.textContent = `${user.reviews.length} Reviews`;
+  commentsContainer.appendChild(commentsHeader);
+
   const commentForm = document.getElementById("commentForm");
   if (user.reviews.length === 0) {
     commentsContainer.classList.add("d-none", "col-0");
     commentForm.classList.add("col-12");
     commentForm.classList.remove("col-lg-5");
   }
-  commentsContainer.appendChild(commentsHeader);
-  // SECTION: Render each review
+
   user.reviews.forEach((review) => {
     const comment = document.createElement("div");
     comment.className = "comment position-relative d-flex mb-30";
-    let starsHtml = "";
-    for (let i = 1; i <= review.rating; i++) {
-      starsHtml += `&#9733;`; // Filled star
-    }
+    const starsHtml = "★".repeat(review.rating);
     comment.innerHTML = `
       <div class="comment-text">
         <h5 class="mb-10">${review.reviewer}</h5>
@@ -243,75 +184,8 @@ async function renderUser(user) {
         ).toLocaleDateString()}</span>
         <p style="color: #007dab; font-size: 1.5em">${starsHtml}</p>
         <p>${review.message}</p>
-      </div>
-    `;
+      </div>`;
     commentsContainer.appendChild(comment);
-  });
-
-  // SECTION: Add review form
-  const reviewForm = document.getElementById("reviewForm");
-  reviewForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const submitButton = document.getElementById("submitReviewBtn");
-
-    submitButton.disabled = true; // Disable button to prevent multiple submissions
-    submitButton.textContent = "Submitting";
-    submitButton.classList.add("inactive-input");
-    const loadingImg = document.createElement("img");
-    loadingImg.src = "images/lazyBlue.svg";
-
-    document.getElementById("reviewFormSubmission").appendChild(loadingImg);
-
-    const form = e.target;
-    const formData = new FormData(form);
-    const reviewer = formData.get("reviewer").trim();
-    const rating = parseInt(formData.get("rating"), 10);
-
-    const message = formData.get("message").trim();
-
-    try {
-      const token = await grecaptcha.execute(
-        "6LdMGNspAAAAAI7hAtxj18KrkVYCp-kQq1CPiymO",
-        {
-          action: "submit_review",
-        }
-      );
-      console.log("reCAPTCHA token received:", token);
-      const response = await fetch(
-        "https://v3tnqbn900.execute-api.us-east-1.amazonaws.com/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            recaptchaToken: token,
-            action: "verifyRecaptcha",
-          }),
-        }
-      );
-
-      const result = await response.json();
-
-      if (result.error) {
-        alert("reCAPTCHA failed or API error");
-      } else {
-        await addReview(userId, reviewer, rating, message);
-        reviewForm.innerHTML = `
-            <p class="text-success">Thank you for your review!</p>
-            <p class="text-muted">Your feedback is valuable to us.</p>
-          `;
-        // Set cooldown for another review submission through cache
-        const cooldownTime = 60 * 60 * 1000; // 1 hour in milliseconds
-        const cooldownEnd = Date.now() + cooldownTime;
-        localStorage.setItem(
-          "reviewTimeCache",
-          JSON.stringify({ [userId]: cooldownEnd })
-        );
-      }
-    } catch (err) {
-      console.error("Submit error:", err);
-      alert("Something went wrong.");
-    }
   });
 }
 
