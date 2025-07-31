@@ -1,6 +1,7 @@
 import { getCachedChat, cacheChat } from "./chat-data.js";
 import { verifyRecaptcha } from "./api.js";
 import { chatAPI } from "./api.js";
+import { generateLoader } from "./loading.js";
 
 const chatWidget = document.createElement("div");
 chatWidget.id = "chat-widget";
@@ -127,10 +128,43 @@ async function sendMessage() {
   // Send to API
   try {
     // Thinking
-    thinkingMsg = document.createElement("div");
-    thinkingMsg.className = "text-start text-muted my-2";
-    thinkingMsg.innerHTML = `<img src="/images/lazyBlue.svg" alt="Thinking..." />`;
+    // Thinking
+    const thinkingMsg = document.createElement("div");
+    thinkingMsg.className = "loader-container chat";
+    thinkingMsg.innerHTML = `
+  <img
+    src="/images/lazyBlue.svg"
+    class="loader-gif"
+    alt="Loading..."
+    style="width: 30px; height: 30px; margin-right: 8px;"
+  />
+  <div
+    class="loader-message"
+    style="font-size: 0.9rem; display: inline-block;"
+  >
+    Loading...
+  </div>
+`;
+
+    thinkingMsg.style.display = "flex";
+    thinkingMsg.style.alignItems = "center";
+    thinkingMsg.style.justifyContent = "flex-start";
+    thinkingMsg.style.gap = "8px";
+
     chatContent.appendChild(thinkingMsg);
+
+    generateLoader(
+      [
+        "Thinking...",
+        "Searching our database...",
+        "Reviewing data...",
+        "Generating a response...",
+      ],
+      {
+        selector: ".loader-container.chat .loader-message",
+        interval: 1500,
+      }
+    );
     chatContent.scrollTop = chatContent.scrollHeight;
 
     const response = await chatAPI({
