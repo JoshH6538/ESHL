@@ -1,6 +1,7 @@
 import { allLOs } from "./api.js";
 import { getBranches, arrayToMap } from "./branch-data.js";
 import { getUserData } from "./user-data.js";
+import { generateLoader } from "./loading.js";
 
 let allLOsData = []; // now an array
 let branchMap = new Map(); // Initialize branchMap
@@ -347,6 +348,18 @@ document.getElementById("sortSelect").addEventListener("change", (e) => {
 
 // Initial setup
 window.addEventListener("DOMContentLoaded", async () => {
+  generateLoader(
+    [
+      "Fetching Loan Officers...",
+      "Updating Cache...",
+      "Rendering Information...",
+      "Almost There...",
+    ],
+    {
+      interval: 1500,
+      gifSrc: "/images/lazyBlue.svg",
+    }
+  );
   await getUserData(); // If this populates userCache
   await getBranches(); // Loads branchCache
   await loadLoanOfficers(); // Reads from userCache and renders

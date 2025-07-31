@@ -267,18 +267,14 @@
                       class="ps-xxl-3 pe-xxl-3 pe-xl-0 ps-xl-0 pe-3 ps-3 pt-40 lg-pt-30 pb-45 lg-pb-30 justify-content-center d-flex flex-column"
                       id="userContainer"
                     >
-                      <h4
-                        class="align-items-center text-center justify-content-center"
-                      >
-                        Loading Loan Officer...
-                      </h4>
-                      <img
-                        src="images/lazyBlue.svg"
-                        alt=""
-                        class="lazy-img mb-20"
-                        style="object-fit: cover"
-                        loading="lazy"
-                      />
+                      <div class="loader-container">
+                        <img
+                          src="/images/lazyBlue.svg"
+                          class="loader-gif"
+                          alt="Loading..."
+                        />
+                        <div class="loader-message">Loading...</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -351,15 +347,14 @@
               class="blog-comment-area col-lg-7 align-items-center ps-md-5 px-5"
               id="commentsContainer"
             >
-              <h4 class="align-items-center text-center justify-content-center">
-                Loading Reviews...<img
-                  src="images/lazyBlue.svg"
-                  alt=""
-                  class="lazy-img mb-20 w-50 mt-50"
-                  style="object-fit: cover"
-                  loading="lazy"
+              <div class="loader-container">
+                <img
+                  src="/images/lazyBlue.svg"
+                  class="loader-gif"
+                  alt="Loading..."
                 />
-              </h4>
+                <div class="loader-message reviews">Loading...</div>
+              </div>
             </div>
             <!-- /.blog-comment-area -->
             <div class="theme-sidebar-one dot-bg col-lg-5 p-5" id="commentForm">

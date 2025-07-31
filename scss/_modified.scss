@@ -887,3 +887,38 @@ body > div > div > div.review-content > p {
     -webkit-box-orient: vertical;
   }
 }
+
+// LOADER STYLES
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.loader-gif {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.loader-message {
+  margin-top: 20px;
+  font-size: 1.25rem;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.8s ease;
+}

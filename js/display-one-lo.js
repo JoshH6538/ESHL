@@ -1,6 +1,7 @@
 import { getBranches, arrayToMap } from "./branch-data.js";
 import { getUserData, getUserReviews } from "./user-data.js";
 import { addReview, verifyRecaptcha } from "./api.js";
+import { generateLoader } from "./loading.js";
 
 // Grab the userId from the URL query parameters
 const userId = new URLSearchParams(window.location.search).get("userId");
@@ -191,6 +192,31 @@ export async function updateRender(user) {
 
 // SECTION: Initialize the page
 window.addEventListener("DOMContentLoaded", async () => {
+  generateLoader(
+    [
+      "Fetching Loan Officer Details...",
+      "Updating Cache...",
+      "Rendering Information...",
+      "Almost There...",
+    ],
+    {
+      interval: 1500,
+      gifSrc: "/images/lazyBlue.svg",
+    }
+  );
+  generateLoader(
+    [
+      "Fetching Reviews...",
+      "Updating Cache...",
+      "Rendering Reviews...",
+      "Almost There...",
+    ],
+    {
+      selector: ".loader-message.reviews",
+      interval: 1500,
+      gifSrc: "/images/lazyBlue.svg",
+    }
+  );
   await getUserData(); // If this populates userCache
   await getBranches(); // Loads branchCache
   await loadUserCached(userId); // Reads from userCache and renders
