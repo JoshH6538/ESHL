@@ -27,11 +27,3 @@ export function generateLoader(messages, options = {}) {
 
   return intervalId;
 }
-
-// Usage
-generateLoader([
-  "Fetching Data...",
-  "Connecting to the Database...",
-  "Pulling Information...",
-  "Almost There...",
-]);
