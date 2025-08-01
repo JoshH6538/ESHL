@@ -144,6 +144,13 @@ About Client
     };
     zapier(zapierData);
 
+    // Track form submission with Google Analytics
+    if (typeof gtag === "function") {
+      gtag("event", "prequal_form_submit", {
+        event_category: "form",
+        event_label: "Prequalification Form",
+      });
+    }
     window.location.href = mailtoLink;
   });
 });
