@@ -199,11 +199,23 @@ async function sendMessage() {
 }
 chatInput.addEventListener("keydown", async (e) => {
   if (e.key === "Enter" && chatInput.value.trim()) {
+    if (typeof gtag === "function") {
+      gtag("event", "user_chat_submit", {
+        event_category: "form",
+        event_label: "User Chatbot Message",
+      });
+    }
     await sendMessage();
   }
 });
 document.getElementById("send-button").addEventListener("click", async () => {
   if (chatInput.value.trim()) {
+    if (typeof gtag === "function") {
+      gtag("event", "user_chat_submit", {
+        event_category: "form",
+        event_label: "User Chatbot Message",
+      });
+    }
     await sendMessage();
   }
 });
