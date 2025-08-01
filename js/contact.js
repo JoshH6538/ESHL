@@ -3,7 +3,13 @@ const contactForm = document.getElementById("contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent default PHP submission
-
+    // Track form submission with Google Analytics
+    if (typeof gtag === "function") {
+      gtag("event", "contact_form_submit", {
+        event_category: "form",
+        event_label: "Contact Form",
+      });
+    }
     const form = e.target;
 
     const firstName = form.first_name?.value?.trim();

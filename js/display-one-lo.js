@@ -117,6 +117,13 @@ export async function renderUser(user) {
 
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      // Track form submission with Google Analytics
+      if (typeof gtag === "function") {
+        gtag("event", "user_contact_form_submit", {
+          event_category: "form",
+          event_label: "User Contact Form",
+        });
+      }
       const form = e.target;
       const email = form.email.value.trim();
       const phone = form.phone.value.trim();
@@ -167,6 +174,8 @@ export async function updateRender(user) {
   commentsContainer.appendChild(commentsHeader);
 
   const commentForm = document.getElementById("commentForm");
+  const reviewForm = document.getElementById("reviewForm");
+
   if (user.reviews.length === 0) {
     commentsContainer.classList.add("d-none", "col-0");
     commentForm.classList.add("col-12");
@@ -187,6 +196,67 @@ export async function updateRender(user) {
         <p>${review.message}</p>
       </div>`;
     commentsContainer.appendChild(comment);
+  });
+
+  // Cooldown check
+  const reviewTimeCache = JSON.parse(
+    localStorage.getItem("reviewTimeCache") || "{}"
+  );
+  const cooldownEnd = reviewTimeCache[user.userId];
+  if (cooldownEnd && Date.now() < cooldownEnd) {
+    reviewForm.innerHTML = `
+      <p class="text-danger">You can only submit one review per hour.</p>
+      <p class="text-muted">Please wait until the cooldown period ends.</p>
+    `;
+    return;
+  }
+
+  // Add submit listener
+  reviewForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitButton = document.getElementById("submitReviewBtn");
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting";
+    submitButton.classList.add("inactive-input");
+
+    const loadingImg = document.createElement("img");
+    loadingImg.src = "images/lazyBlue.svg";
+    document.getElementById("reviewFormSubmission").appendChild(loadingImg);
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const reviewer = formData.get("reviewer")?.trim();
+    const rating = parseInt(formData.get("rating"), 10);
+    const message = formData.get("message")?.trim();
+
+    try {
+      const token = await grecaptcha.execute(
+        "6LdMGNspAAAAAI7hAtxj18KrkVYCp-kQq1CPiymO",
+        { action: "submit_review" }
+      );
+      const response = await verifyRecaptcha(token);
+
+      if (response.error) {
+        alert("reCAPTCHA failed or API error");
+      } else {
+        await addReview(user.userId, reviewer, rating, message);
+        reviewForm.innerHTML = `
+          <p class="text-success">Thank you for your review!</p>
+          <p class="text-muted">Your feedback is valuable to us.</p>
+        `;
+
+        const cooldownTime = 60 * 60 * 1000;
+        const cooldownEnd = Date.now() + cooldownTime;
+        localStorage.setItem(
+          "reviewTimeCache",
+          JSON.stringify({ [user.userId]: cooldownEnd })
+        );
+      }
+    } catch (err) {
+      console.error("Submit error:", err);
+      alert("Something went wrong.");
+    }
   });
 }
 
@@ -220,17 +290,4 @@ window.addEventListener("DOMContentLoaded", async () => {
   await getUserData(); // If this populates userCache
   await getBranches(); // Loads branchCache
   await loadUserCached(userId); // Reads from userCache and renders
-
-  // Check if user has already submitted a review within the cooldown period
-  const reviewTimeCache = JSON.parse(
-    localStorage.getItem("reviewTimeCache") || "{}"
-  );
-  const cooldownEnd = reviewTimeCache[userId];
-  if (cooldownEnd && Date.now() < cooldownEnd) {
-    reviewForm.innerHTML = `
-        <p class="text-danger">You can only submit one review per hour.</p>
-        <p class="text-muted">Please wait until the cooldown period ends.</p>
-      `;
-    return;
-  }
 });

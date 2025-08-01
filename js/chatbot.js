@@ -201,7 +201,7 @@ chatInput.addEventListener("keydown", async (e) => {
   if (e.key === "Enter" && chatInput.value.trim()) {
     if (typeof gtag === "function") {
       gtag("event", "user_chat_submit", {
-        event_category: "form",
+        event_category: "chat",
         event_label: "User Chatbot Message",
       });
     }
@@ -212,7 +212,7 @@ document.getElementById("send-button").addEventListener("click", async () => {
   if (chatInput.value.trim()) {
     if (typeof gtag === "function") {
       gtag("event", "user_chat_submit", {
-        event_category: "form",
+        event_category: "chat",
         event_label: "User Chatbot Message",
       });
     }
