@@ -15,6 +15,13 @@ function addSubmitListener(formId, callback) {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    // Track form submission with Google Analytics
+    if (typeof gtag === "function") {
+      gtag("event", "calc_form_submit", {
+        event_category: "form",
+        event_label: "Calculator Form",
+      });
+    }
     callback();
   });
 }
