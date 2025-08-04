@@ -13,7 +13,7 @@ chatWidget.innerHTML = `
   <div id="chat-widget-box" class="card position-fixed bottom-0 start-0 m-3 p-3 z-2"">
     <div class="card-body p-2">
       <div class="d-flex justify-content-between align-items-center mb-2">
-        <h6 class="mb-0 spinner">Chat with our <span class="fst-italic">AI Assistant</span></h6>
+        <h6 class="mb-0 spinner">Chat with <span style="color: #007dab">Marty</span>, our <span class="fst-italic">AI Assistant</span></h6>
         <button id="chat-close-btn" class="btn"><i class="fa-solid fa-x"></i></button>
       </div>
       <div id="chat-content" class="mb-2 px-2" style="max-height: 50vh; overflow-y: auto;"></div>
