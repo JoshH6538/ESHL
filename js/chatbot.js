@@ -14,7 +14,7 @@ chatWidget.innerHTML = `
     <div class="card-body p-2">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h6 class="mb-0 spinner">Chat with <span style="color: #007dab">Marty</span>, our <span class="fst-italic">AI Assistant</span></h6>
-        <button id="chat-close-btn" class="btn"><i class="fa-solid fa-x"></i></button>
+        <button id="chat-close-btn" class="btn"><i class="bi bi-x-lg"></i></button>
       </div>
       <div id="chat-content" class="mb-2 px-2" style="max-height: 50vh; overflow-y: auto;"></div>
       <div class="input-group mb-3">
