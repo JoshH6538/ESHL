@@ -62,7 +62,7 @@ document.querySelectorAll(".location-pin").forEach((pin) => {
     popup.innerHTML = `
       <div class="map-info tran3s d-flex flex-column align-items-start" style="box-shadow: none">
         <div class="d-flex align-items-center gap-2 mb-2 justify-content-center w-100">
-          <img src="/images/es/RE_ICON.png" alt="" class="lazy-img" style="width: 36px; height: 36px;" />
+          <img src="/images/es/RE_ICON.webp" alt="" class="lazy-img" style="width: 36px; height: 36px;" />
           <h5 class="mb-0 popup-header">${stateName}</h5>
         </div>
         <div class="d-flex align-items-center gap-2 justify-content-center w-100">

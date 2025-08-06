@@ -11,16 +11,62 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Sync files to S3
+      # Sync images with long-term cache
+      - name: Sync images
         uses: jakejarvis/s3-sync-action@master
         with:
-          args: --delete
+          args: "--delete --exclude '*' --include 'images/*' --cache-control 'public, max-age=31536000, immutable'"
         env:
           AWS_S3_BUCKET: equitysmartloans.com
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-1
 
+      # Sync fonts with long-term cache
+      - name: Sync fonts
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: "--delete --exclude '*' --include 'fonts/*' --cache-control 'public, max-age=31536000, immutable'"
+        env:
+          AWS_S3_BUCKET: equitysmartloans.com
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+
+      # Sync video with 1-year cache
+      - name: Sync hero video
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: "--delete --exclude '*' --include 'wp-content/uploads/**/*.mp4' --cache-control 'public, max-age=31536000, immutable'"
+        env:
+          AWS_S3_BUCKET: equitysmartloans.com
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+
+      # Sync other uploads with 30-day cache (excluding .mp4)
+      - name: Sync other uploads
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: "--delete --exclude '*' --include 'wp-content/uploads/**/*' --exclude 'wp-content/uploads/**/*.mp4' --cache-control 'public, max-age=2592000'"
+        env:
+          AWS_S3_BUCKET: equitysmartloans.com
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+
+      # Sync everything else with short-term cache
+      - name: Sync everything else
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: "--delete --exclude 'images/*' --exclude 'webp/*' --exclude 'fonts/*' --cache-control 'public, max-age=600'"
+        env:
+          AWS_S3_BUCKET: equitysmartloans.com
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+
+      # Invalidate CloudFront cache
       - name: Invalidate CloudFront cache
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

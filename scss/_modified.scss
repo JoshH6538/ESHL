@@ -34,7 +34,7 @@
 }
 // Changes the background image of the contact section
 .fancy-banner-five {
-  background: url(../images/es/small/white-house.jpg) no-repeat center;
+  background: url(../images/es/webp/white-house.webp) no-repeat center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -262,6 +262,9 @@ header.theme-main-menu.fixed .right-widget ul li a:hover {
       rgba(0, 6, 8, 0.224) 100%
     ) !important;
   }
+}
+.hero-banner-three {
+  max-height: 85vh;
 }
 
 // Changes to title font size for "Agents you trust. Results you love." specifically
