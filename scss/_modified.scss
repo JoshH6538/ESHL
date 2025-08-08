@@ -474,17 +474,15 @@ option:hover {
   transform-origin: center;
 
   /* Shadow & masking */
-  filter: drop-shadow(0 20px 15px rgba(1, 46, 82, 0.65));
-  mask-image: radial-gradient(
+  --map-shadow: rgba(1, 46, 82, 0.65);
+  --map-mask: radial-gradient(
     circle at 40% 30%,
     rgba(0, 0, 0, 1) 70%,
     transparent 100%
   );
-  -webkit-mask-image: radial-gradient(
-    circle at 40% 30%,
-    rgba(0, 0, 0, 1) 70%,
-    transparent 100%
-  );
+  filter: drop-shadow(0 20px 15px var(--map-shadow));
+  mask-image: var(--map-mask);
+  -webkit-mask-image: var(--map-mask);
 }
 
 .map-wrapper {
@@ -513,7 +511,7 @@ option:hover {
 .map-info,
 .map-info::before {
   background-color: #0f3848 !important;
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.575);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.575);
   overflow: visible;
 }
 
@@ -524,14 +522,14 @@ option:hover {
 .info > h5,
 .popup-header {
   color: white;
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  text-shadow: 2px 2px 4px black;
 }
 
 .info a,
 .popup-a {
   color: rgb(111, 195, 255) !important;
   font-size: 20px !important;
-  text-shadow: 2px 4px 4px rgb(0, 0, 0);
+  text-shadow: 2px 4px 4px black;
   display: inline-block;
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -550,23 +548,16 @@ option:hover {
   color: rgb(132, 204, 254) !important;
 }
 
+/* ==================== MOBILE STYLES ==================== */
+
 @media (max-width: 600px) {
   .map-wrapper-outer {
-    /* Shadow & masking */
-    filter: drop-shadow(0 10px 5px rgba(1, 46, 82, 0.65));
-    mask-image: radial-gradient(
-      circle at 40% 30%,
-      rgba(0, 0, 0, 1) 70%,
-      transparent 100%
-    );
-    -webkit-mask-image: radial-gradient(
-      circle at 40% 30%,
-      rgba(0, 0, 0, 1) 70%,
-      transparent 100%
-    );
+    filter: drop-shadow(0 10px 5px var(--map-shadow));
+    mask-image: var(--map-mask);
+    -webkit-mask-image: var(--map-mask);
   }
+
   .mobile-map-info {
-    transition: transform 0.3s ease, opacity 0.1s ease;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -580,6 +571,7 @@ option:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     font-size: 14px;
     color: white;
+    transition: transform 0.3s ease, opacity 0.1s ease;
   }
 
   .mobile-map-info h5 {
@@ -603,11 +595,6 @@ option:hover {
     color: rgb(207, 207, 207);
   }
 
-  /* Hide default map-info inside pins on mobile */
-  .location-pin .map-info {
-    display: none !important;
-  }
-
   .mobile-map-info .close-btn {
     margin-top: 12px;
     font-size: 14px;
@@ -620,6 +607,11 @@ option:hover {
 
   .mobile-map-info .close-btn:hover {
     color: white;
+  }
+
+  /* Hide default map-info inside pins on mobile */
+  .location-pin .map-info {
+    display: none !important;
   }
 }
 
